@@ -1,0 +1,362 @@
+{% extends "uk/nav.html" %}
+{% load static %}
+
+{% comment %} {% include "static.html" %} {% endcomment %}
+ {% block body %}
+
+
+	<!-- Start of banner section
+	============================================= -->
+	<section id="it-up-banner" class="it-up-banner-section position-relative">
+		<span class="it-up-banner-deco1 position-absolute"> <img src="{% static "assets/img/its/b-vector1.png" %}" alt=""></span>
+		<span class="it-up-banner-deco2 position-absolute"> <img src="{% static "assets/img/its/b-shape1.png" %}" alt=""></span>
+		{% comment %} <span class="it-up-banner-deco3 position-absolute"> <img src="{% static "assets/img/its/b-shape2.png" %}" alt=""></span> {% endcomment %}
+		{% comment %} <span class="it-up-banner-deco4 position-absolute"> <img src="{% static "assets/img/its/b-shape3.png" %}" alt=""></span> {% endcomment %}
+		<div class="container">
+			<div class="it-up-banner-content position-relative">
+				<div class="it-up-banner-text headline-1 pera-content">
+					{% comment %} <span>Focus On Business</span> {% endcomment %}
+					<h1 style="font-size:63px"> We Empower Businesses to Innovate, Overcome Challenges,Achieve Success.
+						 </h1>
+					<p>Experience top-tier IT support and services tailored to elevate your business in the UK. </p>
+					
+				</div>
+				<div class="it-up-banner-img">
+					<img src="{% static "assets/img/uk-img/Home/home-uk-1.jpg" %}" alt="">
+					<span class="it-up-img-deco1 position-absolute" data-parallax='{"x" : -70}'> <img style="border-radius:7px"
+							src="{% static "assets/img/canada-img/HOME/HTML.jpg" %}" alt=""></span>
+					<span class="it-up-img-deco2 position-absolute" data-parallax='{"y" : -70}'> <img style="border-radius:7px"
+							src="{% static "assets/img/canada-img/HOME/INSTA.jpg" %}" alt=""></span>
+					<span class="it-up-img-deco3 position-absolute" data-parallax='{"y" : 70}'> <img style="border-radius:7px" src="{% static "assets/img/canada-img/HOME/PYTHON.jpg" %}"
+							alt=""></span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End of banner section
+	============================================= -->
+
+
+
+	<!-- Start of about section
+	============================================= -->
+	<section id="it-up-about" class="it-up-about-section">
+		<div class="container">
+			<div class="it-up-about-content">
+				<div class="row">
+					<div class="col-lg-5">
+						<div class="it-up-about-img position-relative">
+							<span></span>
+							
+							<div class="it-up-about-img-wrap text-right">
+								<img src="{% static "assets/img/uk-img/Home/home-uk-2.jpg" %}" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7">
+						<div class="it-up-about-text">
+							<div class="it-up-section-title headline-1">
+								<span>_About our Company_</span>
+								<h2>Who We Are</h2>
+								<p>At Zaco Information Technology, we pride ourselves on being a premier IT service provider in the United Kingdom with a commitment towards excellence and innovation. With decades of experience and a team of highly skilled professionals, we deliver tailored IT solutions that help businesses thrive in an ever-evolving digital landscape. Our customer-centric approach ensures that we understand your specific challenges and provide solutions that are not only effective but also aligned with your business goals.</p>
+							</div>
+						
+							<div class="it-up-about-btn">
+								<span>Want to work with us?</span>
+								<a href="{% url "uk_about" %}">Get started <i class="fas fa-arrow-right"></i></a>
+								{% comment %} <a  style="background-color:#FF6700">View More</a> {% endcomment %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End of about section
+	============================================= -->
+
+	<!-- Start of Featured section
+	============================================= -->
+	<section id="it-up-featured" class="it-up-featured-section position-relative">
+		<span class="it-up-ft-bg position-absolute"><img src="{% static "assets/img/its/ft-bg.png" %}" alt=""></span>
+		<span class="it-up-ft-shape position-absolute"><img src="{% static "assets/img/its/ft-shape1.png" %}" alt=""></span>
+		<span class="it-up-ft-shape2 position-absolute"><img src="{% static "assets/img/its/b-shape3.png" %}" alt=""></span>
+		<div class="container">
+			<div class="it-up-section-title-2 headline-1 text-center">
+				<span>_Our Featured Services_</span>
+				<h2>Tailored IT Services with a Personal Touch</h2>
+			</div>
+			<div class="it-up-featured-content">
+				<div class="row">
+					<div class="col-lg-4 col-md-6">
+						<div class="it-up-featured-innerbox text-center">
+							<div class="it-up-featured-icon">
+								<img src="{% static "assets/img/its/icon/ft-icon1.png" %}" alt="">
+							</div>
+							<div class="it-up-featured-text headline-1 pera-content">
+								<h3><a href="#">Custom Software Solutions</a></h3>
+								<p>Our team creates scalable, secure, and efficient software applications that streamline operations and enhance productivity, ensuring you stay ahead of the competition.</p>
+								{% comment %} <a class="it-up-ft-more" href="#">Read more <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="it-up-featured-innerbox text-center">
+							<div class="it-up-featured-icon" >
+								<img src="{% static "assets/img/its/icon/ft-icon2.png" %}" alt="">
+							</div>
+							<div class="it-up-featured-text headline-1 pera-content">
+								<h3><a href="#">UI/UX Design
+								</a></h3>
+								<p>Enhance user satisfaction and retention with our expert UI/UX design services. We create intuitive and visually appealing interfaces that provide seamless user experiences, making it easy for your customers to navigate and interact with your digital assets.</p>
+								{% comment %} <a class="it-up-ft-more" href="#">Read more <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="it-up-featured-innerbox text-center">
+							<div class="it-up-featured-icon">
+								<img src="{% static "assets/img/its/icon/ft-icon3.png" %}" alt="">
+							</div>
+							<div class="it-up-featured-text headline-1 pera-content">
+								<h3><a href="#">Web Development
+								</a></h3>
+								<p>Our web development services in the United Kingdom are designed to build responsive, high-performance websites that engage users and drive conversions. </p>
+								{% comment %} <a class="it-up-ft-more" href="#">Read more <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="it-up-featured-innerbox text-center">
+							<div class="it-up-featured-icon">
+								<img src="{% static "assets/img/its/icon/ft-icon4.png" %}" alt="">
+							</div>
+							<div class="it-up-featured-text headline-1 pera-content">
+								<h3><a href="#">Custom Mobile App Development
+								</a></h3>
+								<p>Develop custom mobile applications that cater to your business needs with our mobile app development services. We design and build user-friendly apps for iOS, Android, and cross-platform solutions, ensuring a seamless experience for your users.</p>
+								{% comment %} <a class="it-up-ft-more" href="#">Read more <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="it-up-featured-innerbox text-center">
+							<div class="it-up-featured-icon">
+								<img src="{% static "assets/img/its/icon/ft-icon5.png" %}" alt="">
+							</div>
+							<div class="it-up-featured-text headline-1 pera-content">
+								<h3><a href="#">Digital Marketing Solutions
+								</a></h3>
+								<p>Maximize your online presence with our comprehensive digital marketing services. We offer SEO services in the UK to improve your search engine visibility, as well as social media marketing (SMM) and social media optimization (SMO) to engage your audience and build brand loyalty.</p>
+								{% comment %} <a class="it-up-ft-more" href="#">Read more <i class="fas fa-arrow-right"></i></a> {% endcomment %}
+							</div>
+						</div>
+					</div>
+					 <div class="col-lg-4 col-md-6">
+						<div class="it-up-featured-innerbox text-center">
+							<div class="it-up-featured-icon">
+								<img src="{% static "assets/img/its/icon/ft-icon6.png" %}" alt="">
+							</div>
+							<div class="it-up-featured-text headline-1 pera-content">
+								<h3><a href="#">Cloud Services 
+								</a></h3>
+								<p>Leverage the power of cloud computing with our comprehensive cloud services. We offer cloud migration, management, and optimization services that help you achieve greater flexibility, scalability, and cost efficiency. Our cloud solutions are designed to support your business growth and enhance your operational capabilities.</p>
+							</div>
+						</div>
+					</div> 
+				</div>
+				 <div class="it-up-ft-btn text-center">
+					<a href="{% url "uk_service" %}" style="background-color:#FF6700">View More</a>
+				</div> 
+				{% comment %} <div class="btn-clr it-up-ft-btn text-center">
+					<a href="">view</a>
+				</div> {% endcomment %}
+			</div>
+		</div>
+	</section>
+	<!-- End of Featured section
+	============================================= -->
+
+
+
+	<!-- Start of achivement section
+	============================================= -->
+	<section id="it-up-achivement" class="it-up-achivement-section position-relative">
+		<span class="it-up-achive-shape1 position-absolute"><img src="{% static "assets/img/its/achive-bg.png" %}" alt=""></span>
+		<span class="it-up-achive-shape2 position-absolute"><img src="{% static "assets/img/its/achive-bg2.png" %}" alt=""></span>
+		<div class="container">
+			<div class="it-up-section-title headline-1 text-center">
+				<span>_Our awesome funfact_</span>
+				<h2>Our Achievement!</h2>
+			</div>
+			<div class="it-up-achivement-content">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<div class="it-up-achivement-innerbox position-relative text-center">
+							<span class="inner-border"></span>
+							<div class="it-up-achivement-icon">
+								{% comment %} <img src="{% static "assets/img/its/icon/ach-icon1.png" %}" alt=""> {% endcomment %}
+							</div>
+							<div class="it-up-achivement-text pera-content headline-1">
+								<h3 class="counter">1200</h3><strong>+</strong>
+								<p>Satisfied Clients</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="it-up-achivement-innerbox position-relative text-center">
+							<span class="inner-border"></span>
+							<div class="it-up-achivement-icon">
+								{% comment %} <img src="{% static "assets/img/its/icon/ach-icon2.png" %}" alt=""> {% endcomment %}
+							</div>
+							<div class="it-up-achivement-text pera-content headline-1">
+								<h3 class="counter">55</h3><strong>+</strong>
+								<p>Team Member</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="it-up-achivement-innerbox position-relative text-center">
+							<span class="inner-border"></span>
+							<div class="it-up-achivement-icon">
+								{% comment %} <img src="{% static "assets/img/its/icon/ach-icon3.png" %}" alt=""> {% endcomment %}
+							</div>
+							<div class="it-up-achivement-text pera-content headline-1">
+								<h3 class="counter">15</h3><strong>+</strong>
+								<p>Award Winner</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="it-up-achivement-innerbox position-relative text-center">
+							<span class="inner-border"></span>
+							<div class="it-up-achivement-icon">
+								{% comment %} <img src="{% static "assets/img/its/icon/ach-icon4.png" %}" alt=""> {% endcomment %}
+							</div>
+							<div class="it-up-achivement-text pera-content headline-1">
+								<h3 class="counter">155</h3><strong>+</strong>
+								<p>Works Done</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End of achivement section
+	============================================= -->
+
+	<!-- Start of testimonial section
+	============================================= -->
+	<section id="it-up-testimonial" class="it-up-testimonial-section">
+		<div class="container">
+			<div class="it-up-section-title-2 headline-1 text-center">
+				<span>_Our Client’s Feedback_</span>
+				<h2>We are happy to share
+					our client’s review.</h2>
+			</div>
+			<div class="it-up-testimonial-content position-relative">
+				<span class="it-up-testi-shape1 position-absolute"><img src="{% static "assets/img/its/b-shape3.png" %}" alt=""></span>
+				<span class="it-up-testi-shape2 position-absolute" data-parallax='{"y" : 70}'><img
+						src="{% static "assets/img/its/tst-sh1.png" %}" alt=""></span>
+				<span class="it-up-testi-shape3 position-absolute" data-parallax='{"x" : -70}'><img
+						src="{% static "assets/img/its/tst-sh2.png" %}" alt=""></span>
+				<span class="it-up-testi-shape4 position-absolute"><img src="{% static "assets/img/its/tst-sh3.png" %}" alt=""></span>
+				<div class="it-up-testimonial-slider-wrap owl-carousel">
+					<div class="it-up-testimonial-innerbox it-up-testimonial-pink text-center">
+						
+						<div class="it-up-testimonial-text pera-content headline-1">
+							<p>Zaco understood my business in depth and provided a website exactly
+								what I was looking for. They not only provided a good looking SEO friendly
+								website but also studied technicalities of our industrial fasteners so that our
+								customers get accurate information of our products. Totally recommended for
+								going one step ahead! Thanks.</p>
+							<div class="it-up-testi-author position-relative">
+								<h4><a href="#">Mac-Fit Industries Pvt Ltd</a></h4>
+								<span>Director</span>
+							</div>
+						</div>
+					</div>
+					<div class="it-up-testimonial-innerbox it-up-testimonial-green text-center">
+						
+						<div class="it-up-testimonial-text pera-content headline-1">
+							<p>Team Zaco has helped us in realizing how important it is to go
+								online and reach to our customers globally. They understood our requirement
+								clearly and designed a beautiful website for us. Team is efficient and capable
+								to resolve all our Web and Digital marketing problems.</p>
+							<div class="it-up-testi-author position-relative">
+								<h4><a href="#">GenesisImperial Arts Pvt Ltd</a></h4>
+								<span>Lead Developer</span>
+							</div>
+						</div>
+					</div>
+					<div class="it-up-testimonial-innerbox it-up-testimonial-blue text-center">
+						{% comment %} <div class="it-up-testimonial-img-wrap position-relative">
+							<div class="it-up-testimonial-img">
+								<img src="{% static "assets/img/its/tst3.jpg" %}">
+							</div>
+							<span class="quote-sign">“</span>
+						</div> {% endcomment %}
+						<div class="it-up-testimonial-text pera-content headline-1">
+							<p>Zaco made our vision for the Arden Mill Family Dentistry website a reality. Their professionalism, creativity, and attention to detail were outstanding. The site is user-friendly, visually appealing, and perfectly reflects our brand. We highly recommend Zaco for anyone in need of exceptional web development services.
+
+							</p>
+							<div class="it-up-testi-author position-relative">
+								<h4><a href="#">Arden Mill Family Dentistry</a></h4>
+								<span>Director
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="it-up-testimonial-innerbox it-up-testimonial-pink text-center">
+						
+						<div class="it-up-testimonial-text pera-content headline-1">
+							<p>I had an outstanding experience with Zaco for my recent website redesigning project. From start to finish, their team was highly professional and responsive. They took the time to understand my vision and provided valuable insights that enhanced the final outcome.</p>
+							<div class="it-up-testi-author position-relative">
+								<h4><a href="#">Junk Car Removal
+								</a></h4>
+								<span>Director</span>
+							</div>
+						</div>
+					</div>
+					<div class="it-up-testimonial-innerbox it-up-testimonial-green text-center">
+			
+						<div class="it-up-testimonial-text pera-content headline-1">
+							<p>If you are looking for the best in website development and maintenance, then Zaco should be your only choice. I loved how they took into account all my requirements and demands. Their proactive team always strives to give you the best. I highly recommend Zaco for all your technical and website needs.
+
+							</p>
+							<div class="it-up-testi-author position-relative">
+								<h4><a href="#">Crafty Creations
+								</a></h4>
+								<span>Director
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="it-up-testimonial-innerbox it-up-testimonial-blue text-center">
+					
+						<div class="it-up-testimonial-text pera-content headline-1">
+							<p>Zaco understood my business in depth and provided a website exactly what I was looking for. They not only provided a good looking SEO friendly website but also studied technicalities of our industrial fasteners so that our customers get accurate information of our products. Totally recommended for going one step ahead! Thanks.</p>
+							<div class="it-up-testi-author position-relative">
+								<h4><a href="#">Neza Impex
+								</a></h4>
+								<span>Director</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End of testimonial section
+	============================================= -->
+
+
+
+
+	
+
+
+
+
+{% endblock body %}

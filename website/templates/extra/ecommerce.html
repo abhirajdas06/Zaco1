@@ -1,0 +1,1425 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6766028831.js" crossorigin="anonymous"></script>
+
+    <title>DigiMedia - Creative SEO HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/new-web-css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/new-web-css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/new-web-css/templatemo-digimedia-v1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/new-web-css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/new-web-css/owl.css' %}">
+   
+<!--
+
+TemplateMo 568 DigiMedia
+
+https://templatemo.com/tm-568-digimedia
+
+-->
+
+
+<style>
+
+ {
+    overflow:hidden;
+  }
+    h2, h4, h3, h1, h6{
+        color:#232670 !important;
+    }
+
+      #about{
+        padding-top:0%;
+      }
+
+     
+    
+
+    span{
+        color:#ff6700 !important;
+    }
+    p{
+        color:#585476 !important;
+    }
+
+    .section-heading{
+      margin-bottom:0px;
+      padding-bottom:0%;
+    }
+
+    .border-first-button a {
+       
+      
+        color: white !important;
+        border: 1px solid #232670 !important;
+        border-radius: 23px;
+        background:#232670 !important;
+       
+       
+    }
+    .border-first-button a:hover{
+        background:#ff6700 !important;
+        border:2px solid white !important;
+    }
+
+    .thumb{
+        color:#282370 !important;
+    }
+
+    .main-banner:after {
+      content: '';
+      background-image: url("{% static 'assets/new-web-img/slider-left-dec.jpg' %}");
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 0;
+      top: 60px;
+      width: 262px;
+      height: 625px;
+      z-index: 1;
+    }
+    
+    .main-banner:before {
+      content: '';
+      background-image: url("{% static 'assets/new-web-img/slider-right-dec.jpg' %}");
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 60px;
+      width: 1159px;
+      height: 797px;
+      z-index: -1;
+    }
+    
+
+
+    .services:after {
+      content: '';
+      background-image: url("{% static 'assets/new-web-img/texture.png' %}");
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 0;
+      top: 0px;
+      width: 786px;
+      height: 1217px;
+      z-index: 0;
+    }
+    
+    .services:before {
+      content: '';
+      background-image: url("{% static 'assets/new-web-img/services-right-dec.jpg' %}");
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 400px;
+      width: 161px;
+      height: 413px;
+      z-index: 0;
+    }
+
+
+
+    .our-portfolio:before {
+      content: '';
+      background-image: url("{% static 'assets/new-web-img/portfolio-right-dec.jpg' %}");
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 0px;
+      width: 414px;
+      height: 861px;
+      z-index: 1;
+    }
+    
+    .our-portfolio:after {
+      content: '';
+      background-image: url("{% static 'assets/new-web-img/portfolio-left-dec.jpg' %}");
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 0;
+      top: 0px;
+      width: 677px;
+      height: 759px;
+      z-index: 1;
+    }
+
+
+
+    {% comment %} newly added {% endcomment %}
+
+    .hovereffects{
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      cursor: default;
+      margin-bottom: 10px;
+   }
+   
+   .hovereffects .overlay{
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     overflow: hidden;
+     top: 0;
+     left: 0;
+     opacity: 0;
+     background-color: rgba(0,0,0,0.5);
+     -webkit-transition: all 0.4s ease-in-out;
+     transition: all 0.4s ease-in-out
+   }
+   
+   .hovereffects img{
+     display: block;
+     position: relative;
+     -webkit-transition: all .4s linear;
+     transition: all .4s linear;
+   }
+   
+   .hovereffects h2{
+     text-transform: uppercase;
+     color: #fff;
+     text-align: center;
+     position: relative;
+     font-size: 17px;
+     background: rgba(0,0,0,0.6);
+     -webkit-transform: translateY(-100px);
+     -ms-transform: translateY(-100px);
+     transform: translateY(-100px);
+     -webkit-transition: all .2s ease-in-out;
+     transition: all .2s ease-in-out;
+     padding: 10px;
+   }
+   
+   .hovereffects a.info{
+     text-decoration: none;
+     display: inline-block;
+     text-transform: uppercase;
+     color: #fff;
+     border:1px solid #fff;
+     background-color: transparent;
+     opacity: 0;
+     filter: alpha(opacity=0);
+     -webkit-transition: all .2s ease-in-out;
+     transition: all .2s ease-in-out;
+     margin: 50px 0 0;
+     padding: 7px 14px;
+   }
+   
+   .hovereffects a.info:hover{
+     box-shadow: 0 0 5px #fff;
+   
+   }
+   
+   .hovereffects:hover img{
+     -ms-transform: scale(1.2);
+     -webkit-transform: scale(1.2);
+     transform: scale(1.2);
+   }
+   
+   .hovereffects:hover .overlay{
+     opacity: 1;
+     filter: alpha(opacity=100);
+   }
+   
+   .hovereffects:hover h2, .hovereffects:hover a.info{
+     opacity: 1;
+     filter: alpha(opacity=100);
+     -ms-transform: translateY(0);
+     -webkit-transform: translateY(0);
+     transform: translateY(0);
+   }
+   
+   .hovereffects:hover a.info{
+     -webkit-transition-delay: .2s;
+     transition-delay: .2s;
+   }
+   
+    
+
+{% comment %} table css {% endcomment %}
+
+
+/* CSS */
+.button-5 {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-5:hover,
+.button-5:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-5:hover {
+  transform: translateY(-1px);
+}
+
+.button-5:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+
+
+{% comment %} new added section  {% endcomment %}
+.subjects {
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 80vh;
+    font-family: "Open Sans";
+  }
+  
+  .education {
+    --bg-color: #ffd861;
+    --bg-color-light: #ffeeba;
+    --text-color-hover: #4C5656;
+    --box-shadow-color: rgba(255, 215, 97, 0.48);
+  }
+  
+  .credentialing {
+    --bg-color: #B8F9D3;
+    --bg-color-light: #e2fced;
+    --text-color-hover: #4C5656;
+    --box-shadow-color: rgba(184, 249, 211, 0.48);
+  }
+  
+  .wallet {
+    --bg-color: #CEB2FC;
+    --bg-color-light: #F0E7FF;
+    --text-color-hover: #fff;
+    --box-shadow-color: rgba(206, 178, 252, 0.48);
+  }
+  
+  .human-resources {
+    --bg-color: #DCE9FF;
+    --bg-color-light: #f1f7ff;
+    --text-color-hover: #4C5656;
+    --box-shadow-color: rgba(220, 233, 255, 0.48);
+  }
+  
+  .card-111 {
+    width: 220px;
+    height: 321px;
+    background: #fff;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+  }
+  
+  .card-111:hover {
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+    box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+      0 24px 46px var(--box-shadow-color);
+  }
+  
+  .card-111:hover .overlay {
+    transform: scale(4) translateZ(0);
+  }
+  
+  .card-111:hover .circle {
+    border-color: var(--bg-color-light);
+    background: var(--bg-color);
+  }
+  
+  .card-111:hover .circle:after {
+    background: var(--bg-color-light);
+  }
+  
+  .card-111:hover p {
+    color: var(--text-color-hover);
+  }
+  
+  .card-111:active {
+    transform: scale(1) translateZ(0);
+    box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+      0 15px 24px var(--box-shadow-color);
+  }
+  
+  .card-111 p {
+    font-size: 17px;
+    color: #4C5656;
+    margin-top: 30px;
+    z-index: 1000;
+    transition: color 0.3s ease-out;
+  }
+  
+  .circle {
+    width: 131px;
+    height: 131px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+  }
+  
+ 
+  
+ 
+  
+  .overlay {
+    width: 118px;
+    position: absolute; 
+    height: 118px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    top: 70px;
+    left: 50px;
+    z-index: 0;
+    transition: transform 0.3s ease-out;
+  }
+
+
+
+  .section-heading-1{
+    color: #2a2a2a;
+    font-size: 35px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+    text-align:center;
+    margin-top:60px;
+}
+
+
+.section-heading-1:after{
+    content:'';
+    
+}
+
+
+
+{% comment %} portfolio card  {% endcomment %}
+
+.gallery {
+  display: flex;
+  padding: 2px;
+  margin-left:30px;
+  margin-right:30px;
+  transition: 0.3s;
+}
+.gallery:hover .gallery__image {
+  filter: grayscale(1);
+}
+.gallery__column {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+.gallery__link {
+  margin: 2px;
+  overflow: hidden;
+}
+.gallery__link:hover .gallery__image {
+  filter: grayscale(0);
+}
+.gallery__link:hover .gallery__caption {
+  opacity: 1;
+}
+.gallery__thumb {
+  position: relative;
+}
+.gallery__image {
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+}
+.gallery__image:hover {
+  transform: scale(1.1);
+}
+.gallery__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 25px 15px 15px;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: white;
+  opacity: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, 0) 100%);
+  transition: 0.3s;
+}
+
+/* CSS */
+.button-34 {
+
+  margin-top:10px;
+  background: #5E5DF0;
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 6px 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+
+.hhh1{
+  margin-top:60px;
+  margin-bottom:60px;
+}
+.hed{
+  text-align:center;
+ 
+}
+
+.ban1{
+  flex-direction:row-reverse;
+}
+
+.con1{
+  flex-direction:row-reverse;
+}
+
+.crow{
+  flex-direction:row-reverse;
+}
+
+@media (max-width:590px) {
+  .subjects{
+    margin-bottom:200px;
+  }
+}
+@media (max-width:440px) {
+  .subjects{
+    margin-bottom:850px;
+  }
+}
+@media (max-width:700px) {
+  .subjects{
+    margin-bottom:200px;
+  }
+}
+@media (max-width:790px) {
+  .subjects{
+    margin-bottom:200px;
+  }
+}
+@media (max-width:850px) {
+  .subjects{
+    margin-bottom:200px;
+  }
+}
+
+
+{% comment %} popup  {% endcomment %}
+
+
+.case {
+  width:100%;
+ display:flex;
+  padding: clamp(16px, 5vw, 32px);
+  margin: 0;
+ 
+  font-family: "poppins", sans-serif;
+ 
+  margin: 0 auto;
+  color: #444;
+  line-height: 1.5;
+  
+}
+.case img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
+.case a {
+  color: #1c7adc;
+}
+.case a:hover, a:focus {
+  text-decoration: none;
+}
+.case a:focus {
+  outline: 2px solid rgba(0, 0, 0, .1);
+}
+.case h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.case p {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #1c7adc;
+}
+.btn:hover, .btn:focus {
+  background-color: #2d87e4;
+}
+.btn:focus {
+  outline: 4px solid rgba(0, 0, 0, .3);
+  outline-offset: -4px;
+}
+.card-case {
+  padding: clamp(16px, 5vw, 32px);
+  margin-bottom: clamp(16px, 5vw, 32px);
+  background-color: #fff;
+}
+.card-actions {
+  position: relative;
+  margin-bottom: 16px;
+}
+.card-btn-float {
+  position: absolute;
+  z-index: 10;
+  bottom: 16px;
+  left: 16px;
+}
+.card-btn-float + .card-btn-float {
+  left: 64px;
+}
+.card-image {
+  display: block;
+  overflow: hidden;
+}
+.card-image img {
+  transform: scale3d(1, 1, 1);
+  transition: transform 1s ease-in-out;
+}
+.card-image:hover img, .card-image:focus img, .card-btn-float:focus ~ .card-image img, .card-btn-float:hover ~ .card-image img {
+  transform: scale3d(1.5, 1.5, 1);
+  transition: transform 5s ease-in-out;
+}
+
+
+.layout{
+  display:flex;
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:70px;
+  
+
+}
+
+.div-left-i p{
+  text-align:right;
+  max-width:300px;
+  padding-right:10px;
+  line-height:1.3;
+}
+
+.div-left-i{
+  width:35%;
+}
+.div-middle-i{
+  width:40%;
+
+  margin-left:70px;
+}
+.div-right-i{
+  width:35%;
+}
+.div-right-i p{
+  max-width:300px;
+  padding-left:10px;
+  line-height:1.3;
+}
+.div-right-i img{
+  width:70px;
+  height:70px;
+}
+
+.text-div{
+  display:column;
+}
+.col-div{
+  display:flex;
+  margin-top:30px;
+}
+.col-div img{
+  margin-top:40px;
+}
+
+
+.div-left-i img{
+  width:70px;
+  height:70px;
+}
+.div-right-i img{
+  width:70px;
+  height:70px;
+}
+
+.col-div-2{
+  display:flex;
+
+  flex-direction:row-reverse;
+}
+
+.div-middle-i img{
+  
+  width:85%;
+  margin-top:80px;
+}
+
+
+.col-div span{
+  text-align:left !important;
+}
+
+
+.head-head h6{
+  text-align:center;
+  color:#282670 !important;
+  font-weight: 600;
+}
+.head-head2 h6{
+  text-align:center;
+  color:#282670 !important;
+  font-weight: 600;
+}
+
+.col-div-2{
+  margin-top:30px;
+}
+
+
+@media (max-width:1200px) {
+  .div-left-i{
+    width:35%;
+  }
+  .div-middle-i{
+    width:35%;
+  
+    margin-left:70px;
+  }
+  .div-right-i{
+    width:35%;
+  }
+
+
+  .div-left-i p{
+   
+   
+   
+  }
+
+  .div-middle-i img{
+  
+    width:85%;
+    margin-top:150px;
+  }
+}
+@media (max-width:1100px) {
+  .div-left-i{
+    width:40%;
+  }
+  .div-middle-i{
+    width:40%;
+  
+    margin-left:70px;
+  }
+  .div-middle-i img{
+    width:100%;
+    height:auto;
+  }
+  .div-right-i{
+    width:40%;
+  }
+
+
+  .div-left-i p{
+   max-width:330px;
+   
+   
+  }
+
+  .div-middle-i img{
+  
+    width:85%;
+    margin-top:150px;
+  }
+}
+
+
+@media (max-width:1000px) {
+
+  .layout{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content:center;
+  }
+  .div-middle-i{
+    display:none;
+  }
+
+  .div-right-i{
+    width:45%;
+  }
+  .div-left-i{
+    width:45%;
+  }
+
+  .div-left-i p{
+    
+    
+    
+   }
+}
+
+@media (max-width:800px) {
+  .layout{
+    display: block;
+  }
+
+  .div-left-i{
+    width:100%;
+    
+  }
+  .div-right-i{
+    width:100%;
+
+  }
+ .col-div{
+  display:block;
+ }
+}
+
+#h{
+  text-align:center;
+  margin-top:70px;
+  font-size:35px;
+}
+
+
+/* CSS */
+.case a{
+  
+
+}
+
+
+
+
+
+
+
+
+</style>
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+ 
+  <!-- ***** Preloader End ***** -->
+
+  <!-- Pre-header Starts -->
+ 
+  <!-- Pre-header End -->
+
+  <!-- ***** Header Area Start ***** -->
+ 
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner ban1 wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container con1">
+      <div class="row crow">
+        <div class="col-lg-12">
+          <div class="row crow">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row crow">
+                  <div class="col-lg-12">
+                    <h6 style="color:#ff6700 !important;">Web Development Services</h6>
+                    <h2>We Boost Your Business <span style="color:#ff6700;">Online</span> </h2>
+                    <p>We are here to provide you the best out of the rest web services at a nominal cost which will generate you good profits and will increase your customers satisfaction.</p>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="border-first-button scroll-to-section">
+                      <a href="#contact">Contact Us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="assets/images/slider-dec.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<!-- digital life area -->
+  <section class="container mx-auto life-area">
+    <div class="grid cols-1 lg-cols-2 text-center md-text-left">
+        <div class="grid-images">
+            <div class="item-one"></div>
+            <div class="item-two"></div>
+            <div class="item-three"></div>
+        </div>
+        <div class="py-10">
+         
+            <div class="font-poppins">
+                <h1 class="text-lg text-dark py-5">
+                    Connect people in <br>
+                    digital life
+                </h1>
+
+                <p class="py-5 text-gray">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates odit, mollitia quidem minima modi praesentium?</p>
+
+                <p class="text-gray py-5">
+                    Lorem50 ipsum dolor sit, amet consectetur 
+                    adipisicing elit. Voluptatibus fuga provident
+                    consequuntur. Magnam, inventore
+                    laboriosam modi et saepe necessitatibus facilis,
+                    sed in quasi possimus minus esse quisquam a
+                    eaque harum omnis. Eius quo ratione sed
+                    incidunt quidem, quis, repudiandae deleniti
+                    nobis ullam tempore, cumque deserunt
+                    temporibus consequatur accusantium perspiciatis
+                    beatae.
+                </p>
+
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /digital life area -->
+
+  <div id="about" class="about crow section">
+    <div class="container con1">
+      <div class="row crow">
+        <div class="col-lg-12">
+          <div class="row crow">
+            <div class="col-lg-6">
+              <div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="{% static 'assets/new-web-img/web-dev-png.png' %}" alt="">
+              </div>
+            </div>
+            <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+              <div class="about-right-content">
+                <div class="section-heading">
+                  <h6 style="color:#ff6700 !important;">About Us</h6>
+                  <h4>Utilize a top-tier web development <span>business</span> to stand out <span>online</span> .</h4>
+                  <div class="line-dec"></div>
+                </div>
+                <p>Web development entails the process of developing websites or web-based applications. Web development is often done through CMS tools such as WordPress, or programming languages such as HTML, React.<br><br>A web development company's job is to find and create solutions that may most effectively achieve each client's specific business objectives. You may create a successful product from beginning or improve the performance of an existing one with the correct web development services.
+
+                </p>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                      <div class="progress" data-percentage="90">
+                        <span class="progress-left">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">
+                          <div>
+                            90%<br>
+                            <span style="font-size:14px;">Custom web development</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item second-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                      <div class="progress" data-percentage="80">
+                        <span class="progress-left">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">
+                          <div>
+                            80%<br>
+                            <span style="font-size:14px;">Full stack development</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item third-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                      <div class="progress" data-percentage="80">
+                        <span class="progress-left">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">
+                          <div>
+                            80%<br>
+                            <span style="font-size:14px;">Responsive development</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} new sectin1 {% endcomment %}
+  <h4 class="section-heading-1">OUR COURSE OF <span>ACTION</span> </h4>
+  <section class="subjects">
+  <a href="#" class="card-111 education">
+    <div class="overlay"></div>
+ <div class="circle">
+
+ </div>
+ <p>Analysis</p>
+</a>
+
+
+
+
+
+
+<a href="#" class="card-111 credentialing">
+    <div class="overlay"></div>
+ <div class="circle">
+   
+<img src="{% static 'assets/new-web-img/1-2.png' %}" alt="">
+
+ </div>
+ <p>Credentialing</p>
+</a>
+
+
+
+
+
+
+
+
+
+<a href="#" class="card-111 wallet">
+    <div class="overlay"></div>
+ <div class="circle">
+   
+   
+
+
+ </div>
+ <p>Wallet</p>
+</a>
+
+
+
+
+
+
+
+
+
+
+<a href="#" class="card-111 human-resources">
+    <div class="overlay"></div>
+ <div class="circle">
+    
+   
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+   <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+   <desc>Created with Sketch.</desc>
+   <defs></defs>
+   <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(1855.000000, 26.000000)">
+       <path d="M4.28872448,42.7464904 C4.28872448,39.3309774 5.4159227,33.7621426 6.40576697,30.4912557 C10.5920767,32.1098991 14.3021264,35.1207513 18.69596,35.1207513 C30.993618,35.1207513 42.5761396,28.7162991 49.9992251,17.9014817 C56.8027248,23.8881252 60.8188351,33.0463165 60.8188351,42.7464904 C60.8188351,60.817447 47.6104607,76.6693426 32.5537798,76.6693426 C17.4970989,76.6693426 4.28872448,60.817447 4.28872448,42.7464904" id="Fill-8" fill="#AFCEFF"></path>
+       <path d="M64.3368879,31.1832696 L62.8424171,46.6027478 L60.6432609,46.7824348 L59.8340669,34.6791304 L47.6573402,25.3339478 C44.2906753,34.068487 34.3459503,40.2903304 24.4684093,40.2903304 C17.7559812,40.2903304 10.046244,37.4168 5.80469412,32.8004522 L5.80469412,34.6791304 L5.80469412,46.6027478 L4.28932167,46.6027478 L1.30187314,27.8802435 C1.30187314,20.9790957 3.52342407,15.5432 7.27229127,11.3578087 C13.132229,4.79558261 21.8124018,0.0492173913 30.5672235,0.342852174 C37.4603019,0.569286957 42.6678084,2.72991304 50.8299179,0.342852174 C51.4629405,1.44434783 51.8615656,3.00455652 51.5868577,5.22507826 C51.4629405,6.88316522 51.2106273,7.52302609 50.8299179,8.45067826 C58.685967,14.1977391 64.3368879,20.7073739 64.3368879,31.1832696" id="Fill-10" fill="#3B6CB7"></path>
+       <path d="M58.9405197,54.5582052 C62.0742801,54.8270052 65.3603242,52.60064 65.6350321,49.5386574 C65.772386,48.009127 65.2617876,46.5570226 64.3182257,45.4584487 C63.3761567,44.3613357 62.0205329,43.6162922 60.4529062,43.4818922 L58.9405197,54.5582052 Z" id="Fill-13" fill="#568ADC"></path>
+       <path d="M6.32350389,54.675367 C3.18227865,54.8492104 0.484467804,52.4957496 0.306803449,49.4264626 C0.217224782,47.8925496 0.775598471,46.4579757 1.75200594,45.3886191 C2.7284134,44.3192626 4.10792487,43.6165843 5.67853749,43.530393 L6.32350389,54.675367 Z" id="Fill-15" fill="#568ADC"></path>
+   </g>
+</svg>
+
+ </div>
+ <p>Human Resources</p>
+</a>
+
+</section>
+  {% comment %} new sectin1 end {% endcomment %}
+
+
+  <div id="services" class="services section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h6 style="color:#ff6700 !important; font-weight:600;">Our Services</h6>
+            <h4>What Our Agency <span>Provides</span></h4>
+            <div class="line-dec"></div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="grid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="menu">
+                    <div class="first-thumb active">
+                      <div class="thumb">
+                        <span class="icon"><img src="assets/images/service-icon-01.png" alt=""></span>
+                        Website 
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/service-icon-02.png" alt=""></span>
+                       Ecommerce
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/service-icon-03.png" alt=""></span>
+                        Web Application
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/service-icon-04.png" alt=""></span>
+                        Cms 
+                      </div>
+                    </div>
+                    <div class="last-thumb">
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/service-icon-01.png" alt=""></span>
+                       Full Stack 
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-lg-12">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4 style="color:#232670 !important;">Web Development</h4>
+                                <p>A strong marketing and communication tool, a well-designed website can assist establish credibility and generate leads.</p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i> Responsive Website </span> <span><i class="fa fa-check"></i> Expert Developers</span> <span><i class="fa fa-check"></i> Focus on UI/UX</span>
+                                  <span><i class="fa fa-check"></i> Data Info</span> <span><i class="fa fa-check"></i> Development using Html5, Css3, Javascript, Wordpress & more.</span> </div>
+                                
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="{% static 'assets/new-web-img/web-design-png1.png' %}" alt="">
+                              </div>
+                            </div>
+
+                             {% comment %} table start {% endcomment %}
+                             <button class="button-5" role="button">View More</button>
+
+                        {% comment %} table end {% endcomment %}
+                          </div>
+
+                           
+                        </div>
+                      </div>
+                      <div>
+
+                       
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4 style="color:#232670 !important;">Ecommerce</h4>
+                                <p>With eCommerce solutions, businesses can operate 24 hours a day, 7 days a week, and reach customers in any time zone.</p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i> Web based apps</span> <span><i class="fa fa-check"></i> CRM & Erp development</span> <span><i class="fa fa-check"></i> Custom database apps</span>
+                                   <span><i class="fa fa-check"></i> Admin Dashboards</span> </div>
+                              
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="{% static 'assets/new-web-img/web-app.gif' %}" alt="">
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {% comment %} table start {% endcomment %}
+                          <button class="button-5" role="button">View More</button>
+
+                          {% comment %} table end {% endcomment %}
+
+                        </div>
+                      </div>
+                    </li>
+                   
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4 style="color:#232670 !important;">Web App Development</h4>
+                                <p>A global audience can access web apps. They may easily keep users' attention because they are interactive and captivating.</p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i> Web based apps</span> <span><i class="fa fa-check"></i> CRM & Erp development</span> <span><i class="fa fa-check"></i> Custom database apps</span>
+                                   <span><i class="fa fa-check"></i> Admin Dashboards</span> </div>
+                              
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="{% static 'assets/new-web-img/web-app.gif' %}" alt="">
+                              </div>
+                            </div>
+                          </div>
+
+
+                          {% comment %} table start {% endcomment %}
+                         
+                         <!-- HTML !-->
+                      <button class="button-5" role="button">View More</button>
+
+
+                          {% comment %} table end {% endcomment %}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4 style="color:#232670 !important;">Content Management System</h4>
+                                <p>A dedicated CMS designed to the specific needs of your business will save time and money by optimizing internal workflows.</p>
+                               
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="{% static 'assets/new-web-img/content.gif' %}" alt="">
+                              </div>
+                            </div>
+                          </div>
+
+                          {% comment %} table start {% endcomment %}
+                          <button class="button-5" role="button">View More</button>
+                          {% comment %} table end {% endcomment %}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4 style="color:#232670 !important;">Full Stack Development</h4>
+                                <p>In order to ensure the success of your product, we provide end-to-end web development services that combine frontend and backend solutions with other technologies.</p>
+                                
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="{% static 'assets/new-web-img/full-s.gif' %}" alt="">
+                              </div>
+                            </div>
+                          </div>
+                          <button class="button-5" role="button">View More</button>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  {% comment %} section column {% endcomment %}
+<h4 id="h" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">Ecommerce <span>Development</span> 
+</h4>
+  <section class="layout">
+    <div class="div-left-i">
+      <div class="text-div">
+        <div class=col-div>
+        <div class="head-head">
+          <h6>iPhone Application Development</h6>
+          <p>iPhone Application Development We know what it takes to create a robust iPhone mobile application and we have already delivered 100+ iPhone apps for different industry verticals. Alphonic can turn your raw app idea into a successful reality.</p></div>
+        <img src="{% static 'assets/new-web-img/icons8-app.png' %}" alt="">
+      </div>
+        <div class=col-div>
+        <div class="head-head">
+          <h6>Web Application Development</h6>
+          <p>iPhone Application Development Our team of experienced web application developers offers engaging web application solutions with enhanced user interface and user experience.</p></div>
+        <img src="{% static 'assets/new-web-img/icons8-app.png' %}" alt="">
+      </div>
+        <div class=col-div>
+       <div class="head-head">
+        <h6>Progressive Web Apps</h6>
+        <p>iPhone Application Development PWA are the latest trends in web and app development and we are the experts in providing custom progressive web application development services with advanced features and flexibility</p></div> 
+        <img src="{% static 'assets/new-web-img/icons8-app.png' %}" alt="">
+      </div>
+      </div>
+     
+    </div>
+{% comment %} second div {% endcomment %}
+    <div class="div-middle-i">
+      <img src="{% static 'assets/new-web-img/crypto.png' %}" alt="">
+    </div>
+{% comment %} third div {% endcomment %}
+    <div class="div-right-i">
+      <div class="div-text">
+
+      
+      <div class=col-div-2>
+    
+        <div class="head-head2">
+          <h6>Android Application Development</h6>
+          <p>We use the latest development frameworks, tools, and technologies to deliver Android application development services that are integrated with future-ready features and functionalities.!</p></div>
+        <img src="{% static 'assets/new-web-img/icons8-app.png' %}" alt="" >
+      </div>
+        <div class=col-div-2>
+        <div class="head-head2">
+          <h6>Blockchain Development</h6>
+          <p>Our website developers offer custom website design and development services for both front-end and back-end. From designing response user-interfaces to websites, we have got it all covered.</p></div>
+        <img src="{% static 'assets/new-web-img/icons8-app.png' %}" alt="">
+      </div>
+        <div class=col-div-2>
+        <div class="head-head2">
+          <h6>Software Development</h6>
+          <p>We aim at delivering custom software development solutions by automating the development process for empowering business productivity and sales with huge Retune on Investment.</p></div>
+        <img src="{% static 'assets/new-web-img/icons8-app.png' %}" alt="">
+      </div>
+      </div> 
+    </div>             
+  </section>
+ 
+
+  
+
+
+
+ 
+{% comment %} 
+
+port {% endcomment %}
+
+
+  <!-- Scripts -->
+  <script src="{% static 'assets/new-web-js/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/new-web-js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/new-web-js/owl-carousel.js' %}"></script>
+  <script src="{% static 'assets/new-web-js/animation.js' %}"></script>
+  <script src="{% static 'assets/new-web-js/imagesloaded.js' %}"></script>
+  <script src="{% static 'assets/new-web-js/custom.js' %}"></script>
+ <script>
+
+  
+  
+  
+ </script>
+</body>
+</html>
+
+
+
+<!-- HTML !-->
+
+

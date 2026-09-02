@@ -1,0 +1,143 @@
+{% comment %} <div class="it-header-up-top clearfix">
+    <div class="container">
+        <div class="header-2" style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    ">
+            <div class="it-header-top-cta float-left">
+                <a href="#"><i class="fas fa-envelope" style="color:white"></i> info@webmail.com</a>
+                <a href="#"><i class="fas fa-phone" style="color:white"></i> +987 876 765 65 5</a>
+                <a href="#"><i class="fas fa-map-marker-alt" style="color:white"></i> 14/A, Brown City, NYC</a>
+            </div>
+            <div class="it-header-top-social float-right">
+
+                <div class="dropdown-container" style="padding: 10px;">
+
+                    <select id="country-select"
+                        style=" appearance: none; width: 200px; padding: 1px 15px; font-size: 15px; border: 2px solid #FF6700; border-radius: 5px; background-color: #fff; color: #333; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease; background-image: url('data:image/svg+xml;utf8,<svg fill=&quot;%23FF6700&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><path d=&quot;M7 10l5 5 5-5z&quot;/></svg>'); background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;">
+                        <option value="IN" data-url="https://example.com/india">India</option>
+                        <option value="USA" data-url="{% url 'usa_home' %}">USA</option>
+                        <option value="UK" data-url="https://example.com/uae">UK</option>
+                        <option value="CA" data-url="{% url 'canada_home' %}">Canada</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('country-select').addEventListener('change', function () {
+        // Remove active class from all options
+        var options = this.options;
+        for (var i = 0; i < options.length; i++) {
+            options[i].classList.remove('active');
+        }
+
+        // Add active class to selected option
+        this.options[this.selectedIndex].classList.add('active');
+
+        // Redirect to the selected URL
+        var url = this.options[this.selectedIndex].getAttribute('data-url');
+        if (url) {
+            window.location.href = url;
+        }
+    });
+</script>
+
+<style>
+    /* Style for the active option */
+    .dropdown-container select option.active {
+        background-color: #FF6700;
+        color: white;
+    }
+</style> {% endcomment %}
+
+
+
+<div class="it-header-up-top clearfix" style="background-color: #FF6700; color: white;">
+    <div class="container">
+        <div class="header-2" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="it-header-top-cta float-left" style="font-size: 14px;">
+                <a href="mailto:info@zacocomputer.com" style="margin-right:30px;">
+                    <i class="fas fa-envelope" style="color:white;"></i> info@zacocomputer.com
+                </a>
+                <a href="tel:+91 226 9288 800" style="margin-right:30px;">
+                    <svg style="margin-top: 2px;" height="12px" version="1.1" viewBox="0 0 18 18" width="12px" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="white" fill-rule="evenodd">
+                            <g fill="#ffffff" transform="translate(-85.000000, -126.000000)">
+                                <g transform="translate(85.000000, 126.000000)">
+                                    <path d="M3.6,7.8 C5,10.6 7.4,12.9 10.2,14.4 L12.4,12.2 C12.7,11.9 13.1,11.8 13.4,12 C14.5,12.4 15.7,12.6 17,12.6 C17.6,12.6 18,13 18,13.6 L18,17 C18,17.6 17.6,18 17,18 C7.6,18 0,10.4 0,1 C0,0.4 0.4,0 1,0 L4.5,0 C5.1,0 5.5,0.4 5.5,1 C5.5,2.2 5.7,3.4 6.1,4.6 C6.2,4.9 6.1,5.3 5.9,5.6 L3.6,7.8 L3.6,7.8 Z"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg> +91 226 9288 800
+                </a>
+                <a  style="margin-right:30px;">
+                    <i class="fas fa-map-marker-alt" style="color:white;"></i> 3, DLH Park, S. V. Road, Goregaon (West), Mumbai – 400062.
+                </a>
+            </div>
+            <div class="it-header-top-social float-right">
+                <div class="dropdown-container" style="padding: 10px;">
+                    <select id="country-select"
+                        style="appearance: none; width: 200px; padding: 1px 15px; font-size: 15px; border: 2px solid #FF6700; border-radius: 5px; background-color: #fff; color: #333; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease; background-image: url('data:image/svg+xml;utf8,<svg fill=&quot;%23FF6700&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><path d=&quot;M7 10l5 5 5-5z&quot;/></svg>'); background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;">
+                        <option value="IN" data-url="{% url 'home' %}">India</option>
+                        <option value="USA" data-url="{% url 'usa_home' %}">USA</option>
+                        <option value="UK" data-url="{% url 'uk_home' %}">UK</option>
+                        <option value="CA" data-url="{% url 'canada_home' %}">Canada</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('country-select').addEventListener('change', function () {
+        // Get the selected option's URL
+        var url = this.options[this.selectedIndex].getAttribute('data-url');
+
+        // Save the selected value to localStorage
+        localStorage.setItem('selectedCountry', this.value);
+
+        // Redirect to the selected URL
+        if (url) {
+            window.location.href = url;
+        }
+    });
+
+    // On page load, check localStorage for the saved value
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectedCountry = localStorage.getItem('selectedCountry');
+        if (selectedCountry) {
+            var selectElement = document.getElementById('country-select');
+            selectElement.value = selectedCountry;
+
+            // Add active class to the selected option
+            var options = selectElement.options;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].value === selectedCountry) {
+                    options[i].classList.add('active');
+                } else {
+                    options[i].classList.remove('active');
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    /* Style for the active option */
+    .dropdown-container select option.active {
+        background-color: #FF6700;
+        color: white;
+    }
+
+    .it-header-up-top .clearfix {
+        background-color: #FF6700;
+        color: white;
+    }
+</style>

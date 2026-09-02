@@ -1,0 +1,291 @@
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600,500,700|Roboto:100,300,400,500,700&display=swap");
+
+@keyframes fadeFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeFromUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fadeFromUp {
+  animation-name: fadeFromUp;
+}
+
+.fadeFromRight {
+  animation-name: fadeFromRight;
+}
+
+.fadeFromLeft {
+  animation-name: fadeFromLeft;
+}
+
+
+.smm-headline h1,
+.smm-headline h2,
+.smm-headline h3,
+.smm-headline h4,
+.smm-headline h5,
+.smm-headline h6 {
+  margin: 0;
+  font-family: "Poppins";
+}
+
+.smm-section-title span {
+  font-weight: 500;
+  color: #ff5722;
+  /* padding: 6px 20px; */
+  display: inline-block;
+  margin-bottom: 15px;
+  /* background-color: #fff4f1; */
+}
+.smm-section-title h2 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.25;
+  padding-bottom: 12px;
+ 
+
+}
+
+.smm-title-subtext {
+  font-size: 18px;
+}
+.smm-title-subtext a {
+  font-weight: 700;
+}
+
+/*---------------------------------------------------- */
+/*Banner area*/
+/*----------------------------------------------------*/
+.smm-banner-section {
+  background-color: #f7faff;
+}
+.smm-banner-section .smm-banner-wrapper .smm-banner-img {
+   top: 0px; 
+  right: -240px; 
+  position: absolute;
+  animation: fadeInRight 1.7s both 0.3s;
+}
+.smm-banner-section .smm-banner-text-content {
+  max-width: 560px;
+  padding: 260px 0px 280px;
+}
+.smm-banner-section .smm-banner-text-content span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ff5722;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+.smm-banner-section .smm-banner-text-content h1 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.25;
+  position: relative;
+  padding: 20px 0px 50px;
+  color:#282350;
+}
+.smm-banner-section .smm-banner-text-content h1 span {
+  color: #ff5722;
+}
+.smm-banner-section .smm-banner-text-content a {
+  color: #fff;
+  width: 100%;
+  height: 60px;
+  width: 200px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 8px;
+  display: inline-block;
+  transition: 0.3s all ease-in-out;
+  background-color: #ff5722;
+  margin-top: 25px;
+}
+.smm-banner-section .smm-banner-text-content a:hover {
+  background-color: #282350 !important;
+}
+
+/*---------------------------------------------------- */
+/*Contact area*/
+/*----------------------------------------------------*/
+.smm-social-section {
+  top: -60px;
+  overflow: visible;
+  margin-bottom: -60px;
+}
+.smm-social-section .smm-social-wrapper .smm-social-icon-text {
+  padding: 30px 15px 32px;
+  background-color: #fff;
+  box-shadow: 0px 16px 32px 0px rgba(125, 130, 131, 0.08);
+}
+.smm-social-section .smm-social-wrapper .smm-social-icon-text .smm-social-icon {
+  margin-right: 25px;
+}
+.smm-social-section .smm-social-wrapper .smm-social-icon-text .smm-social-text p {
+  font-size: 18px;
+  font-weight: 700;
+}
+.smm-social-section .smm-social-wrapper .smm-social-icon-text .smm-social-text span {
+  font-size: 18px;
+}
+
+/*---------------------------------------------------- */
+/*Form area*/
+/*----------------------------------------------------*/
+.smm-about-section {
+  padding: 100px 0px 100px;
+}
+
+.smm-about-text-wrap {
+  float: right;
+  padding-top: 40px;
+  max-width: 520px;
+}
+.smm-about-text-wrap .smm-title-subtext {
+  padding: 12px 0px 35px;
+}
+.smm-about-text-wrap .smm-about-service-list li {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.smm-about-text-wrap .smm-about-service-list li i {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 40px;
+  color: #ff5722;
+  margin-right: 20px;
+  background-color: #fff4f1;
+}
+
+.smm-about-img {
+  left: -165px;
+  position: absolute;
+  padding-top: 50px;
+}
+
+
+/* location section  */
+.it-up-achivement-section {
+  padding: 100px 0px;
+  background-color: #f5f5f5;
+}
+.it-up-achivement-section .it-up-achive-shape1 {
+  top: 0;
+  left: -50px;
+}
+.it-up-achivement-section .it-up-achive-shape2 {
+  bottom: 0;
+  right: -50px;
+}
+
+
+
+/*---------------------------------------------------- */
+/*responsive area*/
+/*----------------------------------------------------*/
+@media screen and (max-width: 1024px) {
+ 
+
+  .smm-banner-section .smm-banner-wrapper .smm-banner-img {
+    right: -275px;
+  }
+
+  .smm-about-img {
+    left: -330px;
+  }
+
+}
+
+@media screen and (max-width: 991px) {
+ 
+
+  .smm-banner-section .smm-banner-wrapper .smm-banner-img {
+    display: none;
+  }
+
+  .smm-banner-section {
+    padding-bottom: 50px;
+  }
+
+  .smm-banner-section .smm-banner-text-content {
+    max-width: 560px;
+    padding: 260px 0px 50px;
+  }
+
+  .smm-about-img {
+    position: static;
+  }
+
+  .smm-about-text-wrap {
+    float: none;
+  }
+
+  
+}
+
+@media screen and (max-width: 480px) {
+  .smm-banner-section .smm-banner-text-content h1 {
+    font-size: 30px;
+    padding: 20px 0px 20px;
+  }
+  .it-up-achivement-section{
+    padding: 50px 0px;
+
+  }
+
+  .smm-banner-section .smm-banner-text-content {
+    padding: 170px 0px 0px;
+  }
+
+  .smm-banner-section .smm-banner-text-content a {
+    height: 50px;
+    width: 145px;
+    line-height: 50px;
+  }
+
+  .smm-section-title h2 {
+    font-size: 26px;
+  }
+
+  .smm-about-text-wrap .smm-about-service-list li {
+    font-size: 16px;
+  }
+
+  .smm-social-section {
+    top: 0;
+    padding-top: 40px;
+  }
+  .smm-about-section {
+    padding: 40px 0px 40px;
+  }
+}
+/*---------------------------------------------------- */

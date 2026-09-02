@@ -1,0 +1,508 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Zaco Info Tech | Services</title>
+<meta name="description" content="">
+{% endblock meta %}
+
+{% block body_about %}
+
+
+<style>
+  
+
+ 
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+   
+
+    .accordions {
+        width: 90%;
+        
+        margin: 0 auto;
+    }
+
+    .accordion {
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        transition: border-color .5s ease;
+        background-color: #f1f1f1;
+
+    }
+
+    .accordion:hover {
+        border-color: #000;
+    }
+
+    .accordion__header {
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 1rem;
+        color: #666;
+
+    }
+
+    .accordion__header:after,
+    .accordion__header:before {
+        content: '';
+        position: absolute;
+        right: 1.5em;
+        width: 2px;
+        height: 0.75em;
+        background-color: #666;
+        transition: all 0.2s;
+    }
+
+    .accordion__header:after {
+        transform: rotate(90deg);
+    }
+
+    .accordion:has(input:checked) .accordion__header {
+        color: #000;
+    }
+
+    .accordion__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+
+        * {
+            padding: 0 1em 1em;
+        }
+    }
+
+    .accordion input {
+        display: none;
+    }
+
+    .accordion:has(input:checked) {
+        border-color: #000;
+        background-color: #fff;
+        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    }
+
+    .accordion input:checked~.accordion__header:before {
+        transform: rotate(270deg) !important;
+        background-color: #000;
+    }
+
+    .accordion input:checked~.accordion__header:after {
+        transform: rotate(270deg) !important;
+        background-color: #000;
+    }
+
+    .accordion input:checked~.accordion__content {
+        max-height: 1000px;
+        /* Adjust based on content length */
+    }
+</style>
+
+
+<body class="saas-classic">
+    <!-- Start of breadcurmb section
+    	=============================================  -->
+    <section id="saasio-breadcurmb" class="saasio-breadcurmb-section">
+        <div class="container">
+            <div class="breadcurmb-title text-center">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <!-- <div class="breadcurmb-item-list text-center ul-li">
+                <ul class="saasio-page-breadcurmb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Terms & Condition</a></li>
+                </ul>
+            </div> -->
+        </div>
+    </section>
+    <!-- End of breadcurmb section
+    	============================================= -->
+
+    <!-- Start of Privacy Policy section
+     	=============================================  -->
+    <section id="sa_privacy_policy" class="sa_privacy_policy_section inner-page-padding">
+        <div class="container">
+            <div class="saas_two_section_title saas2-headline text-center mb-3">
+                <span class="title_tag">Frequently Asked Questions</span>
+                <h2>Read Our Customers <span> FAQs
+                    </span> </h2>
+            </div>
+            <!-- <div class="sa_fq_question_content">
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">What types of hosting services do you offer?</h4>
+                            <p>We offer a variety of hosting solutions, including:
+
+                            <ol>
+                                <li class="mb-1">
+                                    <span>Shared Hosting:</span> Affordable options for individuals and small
+                                    businesses.
+                                </li>
+                                <li class="mb-1">
+                                    <span>Web Hosting Plus:</span> Enhanced plans with more resources and features for
+                                    growing websites.
+                                </li>
+                                <li class="mb-1">
+                                    <span>VPS Hosting:</span> Virtual private servers for those needing dedicated
+                                    resources.
+                                </li>
+                                <li class="mb-1">
+                                    <span>Colocation:</span> Secure hosting for your own servers in our data centers.
+                                </li>
+                            </ol>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">What is included in your shared hosting packages?</h4>
+                            <p>
+                                Our shared hosting packages typically include:
+                            <ol>
+                                <li class="mb-1">
+                                    A specified number of websites and databases.
+                                </li>
+                                <li class="mb-1">
+                                    SSD storage for faster performance.
+                                </li>
+                                <li class="mb-1">
+                                    Free SSL certificates for security.
+                                </li>
+                                <li class="mb-1">
+                                    A user-friendly control panel (Plesk) for easy management.
+                                </li>
+                                <li class="mb-1">
+                                    24/7 customer support.
+                                </li>
+                            </ol>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">How do I choose the right hosting plan for my needs?</h4>
+                            <p>
+                                To select the best plan, consider:
+                            <ol>
+                                <li class="mb-1">
+                                    The number of websites you plan to host.
+                                </li>
+                                <li class="mb-1">
+                                    The expected traffic and resource needs.
+                                </li>
+                                <li class="mb-1">
+                                    Your budget. Our team can help guide you based on your specific requirements.
+                                </li>
+                            </ol>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">How secure is my data with your hosting services?</h4>
+                            <p>
+                                We take security seriously. Our hosting services include:
+                            <ol>
+                                <li class="mb-1">
+                                    Free SSL certificates to encrypt data.
+                                </li>
+                                <li class="mb-1">
+                                    Regular backups to protect your information.
+                                </li>
+                                <li class="mb-1">
+                                    Advanced security measures to guard against threats.
+                                </li>
+                            </ol>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">Can I upgrade my hosting plan later?</h4>
+                            <p>
+                                Yes! You can easily upgrade your hosting plan at any time. Our support team will assist
+                                you in the transition to ensure minimal downtime.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">Do you provide customer support?</h4>
+                            <p>
+                                Absolutely! Our support team is available 24/7 to assist you with any questions or
+                                issues related to your hosting services. You can reach us via email, live chat, or
+                                phone.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">Can I host multiple websites on one plan?</h4>
+                            <p>
+                                Yes, depending on your chosen hosting plan. Our Web Hosting Plus plans allow hosting
+                                multiple websites, while our shared hosting plans offer a single website option. Review
+                                each plan’s specifications for details.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">What is the difference between shared hosting and VPS hosting?</h4>
+                            <p>
+                            <ul>
+                                <li class="mb-1">
+                                    <span>Shared Hosting:</span> Resources are shared among multiple users, making it
+                                    cost-effective
+                                    for small websites.
+                                </li>
+                                <li class="mb-1">
+                                    <span>VPS Hosting:</span> Provides dedicated resources in a virtualized environment,
+                                    offering
+                                    better performance and control for growing businesses.
+                                </li>
+                            </ul>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">How do I migrate my existing website to your hosting service?</h4>
+                            <p>
+                                We offer tools and support for migration, including a free WordPress migration tool for
+                                WordPress sites. If you need assistance with other types of websites, our support team
+                                is here to help.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="faq-feed-item saas2-headline pera-content">
+                            <h4 class="mb-2">Do you offer a money-back guarantee on your hosting plans?</h4>
+                            <p>
+                                Yes, we stand behind our hosting services with a 30-day
+                                money-back guarantee. This allows you to try our services risk-free, and if you’re not
+                                fully satisfied, you can request a refund within the guarantee period.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+
+            <div class="accordions">
+                <div class="accordion">
+                    <input type="checkbox" id="question-1" class="accordion-toggle">
+                    <label for="question-1" class="accordion__header" id="question-1">What types of hosting services do you offer?</label>
+                    <div class="accordion__content">
+                        <p>We offer a variety of hosting solutions, including:
+
+                            <ul>
+                                <li class="mb-1">
+                                    <span>Shared Hosting:</span> Affordable options for individuals and small
+                                    businesses.
+                                </li>
+                                <li class="mb-1">
+                                    <span>Web Hosting Plus:</span> Enhanced plans with more resources and features for
+                                    growing websites.
+                                </li>
+                                <li class="mb-1">
+                                    <span>VPS Hosting:</span> Virtual private servers for those needing dedicated
+                                    resources.
+                                </li>
+                                <li class="mb-1">
+                                    <span>Colocation:</span> Secure hosting for your own servers in our data centers.
+                                </li>
+                            </ul>
+
+                            </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-2" class="accordion-toggle">
+                    <label for="question-2" class="accordion__header">What is included in your shared hosting packages?</label>
+                    <div class="accordion__content">
+                        <p>
+                            Our shared hosting packages typically include:
+                        <ul>
+                            <li class="mb-1">
+                                A specified number of websites and databases.
+                            </li>
+                            <li class="mb-1">
+                                SSD storage for faster performance.
+                            </li>
+                            <li class="mb-1">
+                                Free SSL certificates for security.
+                            </li>
+                            <li class="mb-1">
+                                A user-friendly control panel (Plesk) for easy management.
+                            </li>
+                            <li class="mb-1">
+                                24/7 customer support.
+                            </li>
+                        </ul>
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-3" class="accordion-toggle">
+                    <label for="question-3" class="accordion__header">How do I choose the right hosting plan for my needs?</label>
+                    <div class="accordion__content">
+                        <p>
+                            To select the best plan, consider:
+                        <ul>
+                            <li class="mb-1">
+                                The number of websites you plan to host.
+                            </li>
+                            <li class="mb-1">
+                                The expected traffic and resource needs.
+                            </li>
+                            <li class="mb-1">
+                                Your budget. Our team can help guide you based on your specific requirements.
+                            </li>
+                        </ul>
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-4" class="accordion-toggle">
+                    <label for="question-4" class="accordion__header">How secure is my data with your hosting services?</label>
+                    <div class="accordion__content">
+                        <p>
+                            We take security seriously. Our hosting services include:
+                        <ul>
+                            <li class="mb-1">
+                                Free SSL certificates to encrypt data.
+                            </li>
+                            <li class="mb-1">
+                                Regular backups to protect your information.
+                            </li>
+                            <li class="mb-1">
+                                Advanced security measures to guard against threats.
+                            </li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-5" class="accordion-toggle">
+                    <label for="question-5" class="accordion__header">Can I upgrade my hosting plan later?</label>
+                    <div class="accordion__content">
+                        <p>
+                            Yes! You can easily upgrade your hosting plan at any time. Our support team will assist
+                            you in the transition to ensure minimal downtime.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-6" class="accordion-toggle">
+                    <label for="question-6" class="accordion__header">Do you provide customer support?</label>
+                    <div class="accordion__content">
+                        <p>
+                            Absolutely! Our support team is available 24/7 to assist you with any questions or
+                            issues related to your hosting services. You can reach us via email, live chat, or
+                            phone.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-7" class="accordion-toggle">
+                    <label for="question-7" class="accordion__header">Can I host multiple websites on one plan?</label>
+                    <div class="accordion__content">
+                        <p>
+                            Yes, depending on your chosen hosting plan. Our Web Hosting Plus plans allow hosting
+                            multiple websites, while our shared hosting plans offer a single website option. Review
+                            each plan’s specifications for details.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-8" class="accordion-toggle">
+                    <label for="question-8" class="accordion__header">What is the difference between shared hosting and VPS hosting?</label>
+                    <div class="accordion__content">
+                        <p>
+                            <ul>
+                                <li class="mb-1">
+                                    <span>Shared Hosting:</span> Resources are shared among multiple users, making it
+                                    cost-effective
+                                    for small websites.
+                                </li>
+                                <li class="mb-1">
+                                    <span>VPS Hosting:</span> Provides dedicated resources in a virtualized environment,
+                                    offering
+                                    better performance and control for growing businesses.
+                                </li>
+                            </ul>
+
+                            </p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <input type="checkbox" id="question-9" class="accordion-toggle">
+                    <label for="question-9" class="accordion__header">How do I migrate my existing website to your hosting service?</label>
+                    <div class="accordion__content">
+                        <p>
+                            We offer tools and support for migration, including a free WordPress migration tool for
+                            WordPress sites. If you need assistance with other types of websites, our support team
+                            is here to help.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- End of Privacy Policy section
+     	=============================================  -->
+
+    <script>
+    document.querySelectorAll('.accordion-toggle').forEach((checkbox) => {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                document.querySelectorAll('.accordion-toggle').forEach((otherCheckbox) => {
+                    if (otherCheckbox !== this) {
+                        otherCheckbox.checked = false;
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
+</body>
+{% include 'newsletter.html' %}
+{% endblock body_about %}

@@ -1,0 +1,198 @@
+{% include "static.html" %}
+{% load static %}
+
+<body>
+    {% block nav %}
+
+
+<!-- Start of header section
+	============================================= -->
+	<div class="county-outter">
+
+		{% include 'countrytop.html' %}
+	</div>
+	<header id="header_main" class="saas_two_main_header">
+		<div class="container">
+			<div class="s_main_menu" style="padding-block:4px">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="brand_logo">
+							<a href="!#"><img  src="{%static 'assets\z_img\ZIT_logo2-250x70.png'%}" alt=""></a>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<div class="main_menu_list clearfix float-right">
+			  <nav class="s2-main-navigation  clearfix ul-li">
+				<ul id="main-nav" class="navbar-nav text-capitalize clearfix">
+				  
+					<li><a href="{% url 'uk_home' %}">Home</a></li>
+							<li><a href="{% url 'uk_about' %}">About</a></li>
+				  <li class="dropdown">
+					<a href="{% url 'uk_service' %}">Services</a>
+					<ul class="dropdown-menu clearfix">
+						<li><a href="{% url 'uk_web' %}"	>Web Development</a></li>
+						<li><a href="{% url 'uk_seo' %}">SEO Services </a></li>
+						<li><a href="{% url 'uk_sd' %}">Custom Software Development </a></li>
+						<li><a href="{% url 'uk_dm' %}">Digital Marketing</a></li>
+						<li><a href="{% url 'uk_tc' %}">Technical Consulting </a></li>
+					</ul>
+				  </li>
+				
+				  <li class="">
+					<a href="{% url 'uk_contact' %}">Contact</a>
+				
+				  </li>
+				 
+				</ul>
+			  </nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //desktop menu -->
+			<div class="s2-mobile_menu relative-position">
+				<div class="s2-mobile_menu_button s2-open_mobile_menu">
+					<i class="fas fa-bars"></i>
+				</div>
+				<div class="s2-mobile_menu_wrap">
+					<div class="mobile_menu_overlay s2-open_mobile_menu"></div>
+					<div class="s2-mobile_menu_content">
+						<div class="s2-mobile_menu_close s2-open_mobile_menu">
+							<i class="far fa-times-circle"></i>
+						</div>
+						<div class="m-brand-logo text-center" >
+							<a href="!#"><img src="{%static 'assets\z_img\ZIT_logo2-250x70.png'%}" alt=""></a>
+						</div>
+						<nav class="s2-mobile-main-navigation  clearfix ul-li">
+							<ul id="m-main-nav" class="navbar-nav text-capitalize clearfix">
+								<li><a href="{% url 'uk_home' %}">Home</a></li>
+								<li><a href="{% url 'uk_about' %}">About</a></li>
+								<li class="dropdown">
+									<a href="{% url 'uk_service' %}">Services</a>
+									<ul class="dropdown-menu clearfix">
+                                        <li><a href="{% url 'uk_web' %}"	>Web Development</a></li>
+                                        <li><a href="{% url 'uk_seo' %}">SEO Services </a></li>
+                                        <li><a href="{% url 'uk_sd' %}">Custom Software Development </a></li>
+                                        <li><a href="{% url 'uk_dm' %}">Digital Marketing</a></li>
+                                        <li><a href="{% url 'uk_tc' %}">Technical Consulting </a></li>
+									</ul>
+								</li>
+								<li class="">
+									<a href="{% url 'uk_contact' %}">Contact</a>
+									
+								</li>
+								
+							</ul>
+						</nav>
+                        <div class="county-inner">
+                            {% include "countrymob.html" %}
+                                                    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+<body>
+{% block body %}{% endblock body %}
+	<!-- End of header section
+	============================================= -->
+
+    <!-- start of Footer section ============================================= -->
+
+    <footer class="footer12">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/" class="footer-site-logo"><img src="{%static 'assets\z_img\ZIT_logo2-250x70.png'%}" alt="" style="width: 50%"></a>
+                    <p class="footerp">Zaco Information Technology - A leading offshore IT company offers Software
+                        solutions, Web & Mobile App development and Digital marketing services all over the globe. </p>
+                </div>
+                <div class="col-md-2 ml-auto">
+                    <h3>Useful Links</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="{% url 'canada_home' %}">Home</a></li>
+                        <li><a href="{% url 'canada_about' %}">About us</a></li>
+                        <li><a href="{% url 'canada_service' %}">Services</a></li>
+                        {% comment %} <li><a href="{% url 'solutions' %}">Solutions</a></li>
+                        <li><a href="{% url 'technologies' %}">Technologies</a></li> {% endcomment %}
+                        <li><a href="{% url 'canada_contact' %}">Contact us</a></li>
+                        {% comment %} <li><a href="{% url 'blog' %}">Blog</a></li> {% endcomment %}
+                    </ul>
+                </div>
+                <div class="col-md-2 ml-auto">
+                    <h3>Services</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="{% url 'custom-software' %}">Software Solutions</a></li>
+                        <li><a href="{% url 'web-development' %}">Web Development</a></li>
+                        <li><a href="{% url 'canada_seo' %}">SEO Services</a></li>
+                        <li><a href="{% url 'canada_smm' %}">Social Media Marketing</a></li>
+                        <li><a href="{% url 'canada_sd' %}">Custom Software</a></li>
+                        <li><a href="{% url 'canada_dm' %}">Digital Marketing</a></li>
+                        {% comment %} <li><a href="{% url 'application-development' %}">Mobile App Development</a></li> {% endcomment %}
+                        {% comment %} <li><a href="#">Cloud Solutions</a></li> {% endcomment %}
+                    </ul>
+                </div>
+                <div class="col-md-4 ml-auto">
+                    <h3>Contact</h3>
+                    <ul class="list-unstyled social links">
+                        <li><span class="fas fa-map-marker-alt"></span><a class=" lightbox-image overlay-box"
+                                href="#">3,
+                                124 City Road, London, England, EC1V 2NX.</a></li>
+                        <li> <svg style="margin-top: 2px;" height="14px" version="1.1" viewBox="0 0 18 18" width="14px" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="white" fill-rule="evenodd">
+                                <g fill="#000000" transform="translate(-85.000000, -126.000000)">
+                                    <g transform="translate(85.000000, 126.000000)">
+                                        <path d="M3.6,7.8 C5,10.6 7.4,12.9 10.2,14.4 L12.4,12.2 C12.7,11.9 13.1,11.8 13.4,12 C14.5,12.4 15.7,12.6 17,12.6 C17.6,12.6 18,13 18,13.6 L18,17 C18,17.6 17.6,18 17,18 C7.6,18 0,10.4 0,1 C0,0.4 0.4,0 1,0 L4.5,0 C5.1,0 5.5,0.4 5.5,1 C5.5,2.2 5.7,3.4 6.1,4.6 C6.2,4.9 6.1,5.3 5.9,5.6 L3.6,7.8 L3.6,7.8 Z"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg></span><a href="tel:+44 7785 246 591">+44 7785 246 591</a></li>
+                        <li><span class="fas fa-envelope"></span><a href="mailto:info@zacoinfotech.com">info@zacoinfotech.com</a>
+                        </li>
+                        <div class="footersocial text-md-left">
+                            <a href="#"><i class="fab fa-facebook-f f-2xl"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab  fa-instagram"></i></a>
+                            <a href="#"><i class="fab  fa-linkedin "></i></a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-12 ">
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="row partner-wrap">
+                <div class="col-md-12">
+                    <div class="row align-items-center">
+                        
+                        <div class="col-12 mt-2">
+                        </div>
+                        <div class="col-lg-8  mt-3">
+                            <p class="footerp">Copyright ©2022 All rights reserved | Zaco Information Technology </p>
+                        </div>
+                        <div class="col-lg-4 text-right mt-3">
+                            <p class="footerp"><a href={% url 'terms_conditions' %}>Terms & Conditions</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        </div>
+    </footer>
+    <!-- End of Footer  section ============================================= -->
+    <script>
+   
+    </script>
+    
+    
+    {% endblock %}
+</body>
+
+

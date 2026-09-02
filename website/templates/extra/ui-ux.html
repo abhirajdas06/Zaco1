@@ -1,0 +1,1103 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/6766028831.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    /> 
+    <title>UI UX page</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      h1{
+        font-size:60px;
+      }
+      a {
+        color: #282350;
+        font-family:"poppins";
+        text-decoration: unset;
+      }
+   
+      .section1 {
+     
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction:row-reverse;
+        
+      }
+      .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction:row-reverse;
+        /* background-color: aqua; */
+      }
+      .left {
+        width: 50%;
+        height: 600px;
+        background: url({% static 'assets/img/custom-soft/gg1.jpg' %})
+        no-repeat center / cover;
+        border-radius: 8px;
+      }
+      .right {
+        width: 50%;
+        min-height: 400px;
+        background-color: #fbfbfb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        border-radius: 8px;
+        color: white;
+        margin-right: -150px;
+      }
+      .right h2 {
+      
+        font-weight: 600;
+        font-family:"poppins" "sans-serif";
+        color: #010148;
+      }
+      .right p {
+        margin: 20px 0;
+        font-weight: 500;
+        line-height: 25px;
+        font-family:"poppins" "sans-serif";
+        color: #585476;
+      }
+      .right a {
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: white;
+        color: black;
+        padding: 20px 30px;
+        display: inline-block;
+        letter-spacing: 2px;
+      }
+
+      {% comment %} section2 {% endcomment %}
+      .section2 {
+     
+        width: 100%;
+        display: flex;
+        flex-direction:column-reverse;
+        align-items: center;
+        justify-content: center;
+        
+      }
+      .container2 {
+        width: 90%;
+        max-width: 1000px;
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: aqua; */
+      }
+      .right1 {
+        width: 50%;
+        height: 600px;
+        background: url({% static 'assets/img/custom-soft/graphic11.jpg' %})
+        no-repeat center / cover;
+        border-radius: 8px;
+      }
+      .left1 {
+        width: 50%;
+        min-height: 400px;
+        background-color: #fbfbfb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        border-radius: 8px;
+        color: white;
+        margin-left: -150px;
+      }
+      .left1 h2 {
+      
+        font-weight: 600;
+        font-family:"poppins" "sans-serif";
+        color: #010148;
+      }
+      .left1 p {
+        margin: 20px 0;
+        font-weight: 500;
+        line-height: 25px;
+        font-family:"poppins" "sans-serif";
+        color: #585476;
+      }
+      .left1 a {
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: white;
+        color: black;
+        padding: 20px 30px;
+        display: inline-block;
+        letter-spacing: 2px;
+      }
+
+      {% comment %} card {% endcomment %}
+      .section3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        padding: 0;
+        margin: 0;
+        perspective: 500px;
+        background: radial-gradient(white,lightgray);
+      }
+      
+      .card {
+        position: relative;
+        width:100%;
+        transition: all .5s ease-in;
+      }
+      
+      
+      .card__image {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      
+      .card__overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        visibility: none;
+        transition: .5s ease;
+        background-color: #393839;
+      }
+      
+      .card:hover .card__overlay {
+        opacity: 1;
+      }
+      
+      .overlay__text {
+        color: white;
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .heading h1{
+        text-align:center;
+        color:#010148;
+        font-family: "poppins","sans-serif";
+        font-weight:700;
+        margin-bottom:40px;
+      }
+    {% comment %} logo section {% endcomment %}
+    
+  
+    .cont3-inner{
+      display: flex;
+      justify-content: space-around;
+    }
+    .i-cont{
+      width:20%;
+    
+      text-align: center;
+      margin-top:100px;
+      background-color: #f2f2f2;
+    }
+    .i-cont img{
+      width:40%;
+      padding-top: 20px;
+      padding-bottom:20px;
+    }
+    
+    .cont3-inner2{
+      display: flex;
+      justify-content: space-around;
+    }
+
+
+    {% comment %} contact {% endcomment %}
+    .background1 {
+      display: flex;
+      min-height:80vh ;
+      width:100%;
+     
+    
+    
+    }
+    
+    .container6 {
+      flex: 0 1 700px;
+      margin: auto;
+      padding: 10px;
+      width:100%;
+    
+    
+    }
+    
+    .screen {
+      position: relative;
+      background: #010148;
+      border-radius: 15px;
+    }
+    
+    .screen:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      bottom: 0;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+      z-index: -1;
+    }
+    
+    .screen-header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: orange;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    
+    .screen-header-left {
+      margin-right: auto;
+    }
+    
+    .screen-header-button {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 3px;
+      border-radius: 8px;
+      background: white;
+    }
+    
+    .screen-header-button.close {
+      background: #ed1c6f;
+    }
+    
+    .screen-header-button.maximize {
+      background: #e8e925;
+    }
+    
+    .screen-header-button.minimize {
+      background: #74c54f;
+    }
+    
+    .screen-header-right {
+      display: flex;
+    }
+    
+    .screen-header-ellipsis {
+      width: 3px;
+      height: 3px;
+      margin-left: 2px;
+      border-radius: 8px;
+      background: #999;
+    }
+    
+    .screen-body {
+      display: flex;
+    }
+    
+    .screen-body-item {
+      flex: 1;
+      padding: 50px;
+    }
+    
+    .screen-body-item.left {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .app-title {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      color: white;
+      font-size: 26px;
+    }
+    
+    .app-title:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 25px;
+      height: 4px;
+      background: white;
+    }
+    
+    .app-contact {
+      margin-top: auto;
+      font-size: 8px;
+      color: #888;
+    }
+    
+    .app-form-group {
+      margin-bottom: 15px;
+    }
+    
+    .app-form-group.message {
+      margin-top: 40px;
+    }
+    
+    .app-form-group.buttons {
+      margin-bottom: 0;
+      text-align: right;
+    }
+    
+    .app-form-control {
+      width: 100%;
+      padding: 10px 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid #666;
+      color: #ddd;
+      font-size: 14px;
+      text-transform: uppercase;
+      outline: none;
+      transition: border-color .2s;
+    }
+    
+    .app-form-control::placeholder {
+      color: #666;
+    }
+    
+    .app-form-control:focus {
+      border-bottom-color: #ddd;
+    }
+    
+    .app-form-button {
+      background: none;
+      border: none;
+      color: orange;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    .app-form-button:hover {
+      color: #b9134f;
+    }
+    
+    
+      
+      @media only screen and (max-width: 768px) {
+        html,body {
+          overflow-x: hidden !important;
+          width: 100% !important;
+          margin:0%;
+          padding: 0%;
+  
+          
+      }
+        .container {
+          flex-direction: column;
+          width: 100%;
+          margin: 0 20px;
+        }
+        .left {
+          width: 100%;
+          height: 400px;
+        }
+        .right {
+          width: 90%;
+          margin: 0;
+          margin-top: -100px;
+        }
+
+        {% comment %} second sec {% endcomment %}
+        .container2 {
+          flex-direction: column;
+          width: 100%;
+          margin: 0 20px;
+        }
+        .right1 {
+          width: 100%;
+          height: 400px;
+        }
+        .left1 {
+          width: 90%;
+          margin: 0;
+          margin-top: -100px;
+        }
+
+
+        {% comment %} section3 {% endcomment %}
+
+        .section3{
+          display:block;
+          margin-bottom:100px;
+        }
+
+
+      }
+
+      @media screen and (max-width: 520px) {
+        .screen-body {
+          flex-direction: column;
+        }
+      
+        .screen-body-item.left {
+          margin-bottom: 30px;
+        }
+      
+        .app-title {
+          flex-direction: row;
+        }
+      
+        .app-title span {
+          margin-right: 12px;
+        }
+      
+        .app-title:after {
+          display: none;
+        }
+
+        h1{
+          font-size:40px;
+        }
+      }
+      
+      @media screen and (max-width: 600px) {
+        .screen-body {
+          padding: 40px;
+        }
+      
+        .screen-body-item {
+          padding: 0;
+        }
+      }
+
+      {% comment %} newly added contact {% endcomment %}
+      .contact-section{
+        width:100%;
+        height:650px;
+        position:relative;
+        margin-top:80px;
+      }
+      .login-root {
+        background: #fff;
+        display: flex;
+        width: 100%;
+       
+        overflow: hidden;
+    }
+    .loginbackground {
+       position:absolute;
+        position: f;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 10;
+        z-index: 0;
+        overflow: hidden;
+    }
+    .flex-flex {
+        display: flex;
+    }
+    .align-center {
+      align-items: center; 
+    }
+    .center-center {
+      align-items: center;
+      justify-content: center;
+    }
+    .box-root {
+        box-sizing: border-box;
+    }
+    .flex-direction--column {
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .loginbackground-gridContainer {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: [start] 1fr [left-gutter] (86.6px)[16] [left-gutter] 1fr [end];
+        grid-template-columns: [start] 1fr [left-gutter] repeat(16,86.6px) [left-gutter] 1fr [end];
+        -ms-grid-rows: [top] 1fr [top-gutter] (64px)[8] [bottom-gutter] 1fr [bottom];
+        grid-template-rows: [top] 1fr [top-gutter] repeat(8,64px) [bottom-gutter] 1fr [bottom];
+        justify-content: center;
+        margin: 0 -2%;
+        transform: rotate(-12deg) skew(-12deg);
+    }
+    .box-divider--light-all-2 {
+        box-shadow: inset 0 0 0 2px #e3e8ee;
+    }
+    .box-background--blue {
+        background-color: #5469d4;
+    }
+    .box-background--white {
+      background-color: #ffffff; 
+    }
+    .box-background--blue800 {
+        background-color: #212d63;
+    }
+    .box-background--gray100 {
+        background-color: #e3e8ee;
+    }
+    .box-background--cyan200 {
+        background-color: #7fd3ed;
+    }
+    .padding-top--64 {
+      padding-top: 64px;
+    }
+    .padding-top--24 {
+      padding-top: 24px;
+    }
+    .padding-top--48 {
+      padding-top: 48px;
+    }
+    .padding-bottom--24 {
+      padding-bottom: 24px;
+    }
+    .padding-horizontal--48 {
+      padding: 48px;
+    }
+    .padding-bottom--15 {
+      padding-bottom: 15px;
+    }
+    
+    
+    .flex-justifyContent--center {
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    
+    .formbg {
+        margin: 0px auto;
+        width: 100%;
+        max-width: 448px;
+        background: white;
+        border-radius: 4px;
+        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    }
+    span {
+        display: block;
+        font-size: 20px;
+        line-height: 28px;
+        color: #1a1f36;
+    }
+    label {
+        margin-bottom: 10px;
+    }
+    .reset-pass a,label {
+        font-size: 14px;
+        font-weight: 600;
+        display: block;
+    }
+    .reset-pass > a {
+        text-align: right;
+        margin-bottom: 10px;
+    }
+    .grid--50-50 {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items: center;
+    }
+    
+    .field input {
+        font-size: 16px;
+        line-height: 28px;
+        padding: 8px 16px;
+        width: 100%;
+        min-height: 44px;
+        border: unset;
+        border-radius: 4px;
+        outline-color: rgb(84 105 212 / 0.5);
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    }
+    
+    input[type="submit"] {
+        background-color: #282350;
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, 
+                    rgb(84, 105, 212) 0px 0px 0px 1px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                    rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .field-checkbox input {
+        width: 20px;
+        height: 15px;
+        margin-right: 5px; 
+        box-shadow: unset;
+        min-height: unset;
+    }
+    .field-checkbox label {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+    a.ssolink {
+        display: block;
+        text-align: center;
+        font-weight: 600;
+    }
+    .footer-link span {
+        font-size: 14px;
+        text-align: center;
+    }
+    .listing a {
+        color: #697386;
+        font-weight: 600;
+        margin: 0 10px;
+    }
+    
+    .animationRightLeft {
+      animation: animationRightLeft 2s ease-in-out infinite;
+    }
+    .animationLeftRight {
+      animation: animationLeftRight 2s ease-in-out infinite;
+    }
+    .tans3s {
+      animation: animationLeftRight 3s ease-in-out infinite;
+    }
+    .tans4s {
+      animation: animationLeftRight 4s ease-in-out infinite;
+    }
+    
+    @keyframes animationLeftRight {
+      0% {
+        transform: translateX(0px);
+      }
+      50% {
+        transform: translateX(1000px);
+      }
+      100% {
+        transform: translateX(0px);
+      }
+    } 
+    
+    @keyframes animationRightLeft {
+      0% {
+        transform: translateX(0px);
+      }
+      50% {
+        transform: translateX(-1000px);
+      }
+      100% {
+        transform: translateX(0px);
+      }
+    } 
+
+    
+/* banner start  */
+
+.banner-color {
+  background-image:url("{% static 'assets/img/custom-soft/ui-banner.jpg' %}");
+height:550px;
+  
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+
+ 
+/* responsive navbar css */
+@media screen and (max-width: 600px) {
+  nav .menubtn{
+    display: flex;
+  }
+  nav .navLinks{
+    display: none;
+  }
+  .sideNav {
+    display: block !important;
+  }
+}
+ 
+.sideNav{
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0%;
+  background-color: rgb(44, 1, 197);
+  overflow-x: hidden;
+  transition: 0.3s ease-in;
+  padding-top: 60px;
+  display: none;
+}
+ 
+.sideNav a{
+  padding: 8px 8px 8px 40px;
+  display: block;
+  font-size: 25px;
+  font-weight: 500;
+  color: #d1d1d1;
+  transition: 0.3s;
+  text-decoration: none;
+}
+.sideNav a button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: blue;
+  font-size: 16px;
+  border-style: none;
+  font-weight: 700;
+}
+.sideNav a:hover{
+  color: white;
+}
+.sideNav .closeBtn{
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 20px;
+  margin-left: 50px;
+}
+ 
+.row-banner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2% 5%;
+}
+.row-banner .column1 {
+  padding-right: 50px;
+}
+
+.column1{
+  padding-top:80px;
+}
+.column2{
+  padding-top:80px;
+}
+.column1 h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+.column1 p {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.column1 button {
+  width: 150px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border-style: none;
+  color: blue;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+   /* Header content responsive */
+   @media screen and (max-width: 980px) {
+  .column2 img {
+    width: 350px;
+  }
+  .column1 h1 {
+    font-size: 40px;
+  }
+  .column1 p{
+    font-size: 17px;
+  }
+ 
+}
+ 
+@media screen and (max-width: 600px) {
+ 
+  .column1 h1 {
+    font-size: 35px;
+  }
+  .row-banner{
+    display:block;
+  }
+  .row {
+    flex-direction: column;
+ 
+  }
+  .row .column1 {
+    padding: 30px;
+  }
+}
+
+
+
+
+
+    
+      
+      
+      /* ********************* */
+      /* This Code is for only the floating card in right bottom corner */
+      /* ********************** */
+      
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+  
+      
+    </style>
+    <body>
+
+      {% comment %} section banner {% endcomment %}
+      <section
+class="banner-color">
+<div class="row-banner">
+  <div class="column1">
+    <h1 style="color:white; ">Smart Solutions For Your Growing Business </h1>
+    
+ 
+  </div>
+  <div class="column2">
+    <img src="{% static 'assets/img/custom-soft/ui-img.png' %}" alt="banner" width="500px">
+  </div>
+</div>
+</section>
+
+
+      {% comment %} section banner {% endcomment %}
+
+      <section class="section1">
+        <div class="container">
+          <div class="left"></div>
+          <div class="right">
+            <div class="content">
+              <h2>Complex-Product
+                We build designs that uncomplicate the use of complicated systems.</h2>
+              <p>We build impactful UX design and branding for product-led companies around the world. Using the industry-proven methods Jobs to be Done and Design Sprints, we've developed a highly optimised process that brings results in just a few weeks.</p>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {% comment %} card sectiuon {% endcomment %}
+      <div class="heading"> <h1>How We Work</h1></div>
+     
+      <section class="section3">
+        <div class="card">
+          <img src="{% static 'assets/img/custom-soft/tes.jpg' %}" class="card__image">
+          <div class="card__overlay">
+            <div class="overlay__text">
+              <h3>Testing</h3>
+              <p>We finetune our designs using state-of-the-art testing techniques by testing the overall product usability at Omni-channel platforms to impart a clear big picture of design experience benchmarking, blueprints, personas, and journey maps of ideal consumers.</p>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="{% static 'assets/img/custom-soft/define.jpg' %}" class="card__image">
+          <div class="card__overlay">
+            <div class="overlay__text">
+              <h3>Defining The Problem</h3>
+              <p>Apt logic and detailing is incorporated precisely with elements like design functions, features, functionalities, workflow and beyond to solve complex issues with minimal snags.</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{% static 'assets/img/custom-soft/problem.jpeg' %}" class="card__image">
+          <div class="card__overlay">
+            <div class="overlay__text">
+              <h3>Empathise</h3>
+              <p>As a thriving UI UX agency, we harness the proven empathy-driven human-focused design process to craft the best digital solutions mapping the users preferences.</p>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- *******************   -->
+      <!--  !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+      <!--  This Code is for only the floating card in right bottom corner -->
+      <!-- ********************  -->
+      <section class="section2">
+        <div class="container2">
+          <div class="right1"></div>
+          <div class="left1">
+            <div class="content content1">
+              <h2>Working hand in hand with DEVs.</h2>
+              <p>A product is made great when all the resources working on it come together to build it. But this is not the case all the time. Generally, the designers create a sketch and send it to developers for further development. But when developers get a query in design while developing, they are not present to solve them.</p>
+              
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+      {% comment %} section4 logo {% endcomment %}
+      <h1 style="text-align:center; color: #010148; font-family: spartan , san-serif; font-weight:700; margin-top: 40px;">Tools We Use</h1>
+
+      <section class="section4">
+       
+                      
+                        <div class="cont3-inner">
+                          <div class="i-cont">
+                            <img src="{% static 'assets/img/custom-soft/illustrator.png' %}" alt="">
+                          </div>
+                          <div class="i-cont">
+                            <img src="{% static 'assets/img/custom-soft/indesign.png' %}" alt="">
+                          </div>
+                          <div class="i-cont">
+                            <img src="{% static 'assets/img/custom-soft/figma.png' %}" alt="">
+                          </div>
+                          
+                          
+                          
+                        </div>
+                        <div class="cont3-inner2">
+                          <div class="i-cont">
+                            <img src="{% static 'assets/img/custom-soft/ps-file.png' %}" alt="">
+                          </div>
+                          <div class="i-cont">
+                            <img src="{% static 'assets/img/custom-soft/xd.png' %}" alt="">
+                          </div>
+                          <div class="i-cont">
+                            <img src="{% static 'assets/img/custom-soft/canva.png' %}" alt="">
+                          </div>
+                          
+                        
+                      </div>
+
+      </section>
+
+      {% comment %} section contact  {% endcomment %}
+      <section class="contact-section">
+        <div class="login-root">
+          <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+            <div class="loginbackground box-background--white padding-top--64">
+              <div class="loginbackground-gridContainer">
+                <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+                  <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+                  </div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+                  <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+                  <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+                  <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+                  <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+                  <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+                  <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+                  <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+                  <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+              <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                <h1><a href="" rel="dofollow">Get Free Consultation</a></h1>
+              </div>
+              <div class="formbg-outer">
+                <div class="formbg">
+                  <div class="formbg-inner padding-horizontal--48">
+                  
+                    <form id="stripe-login">
+                      <div class="field padding-bottom--24">
+                        <label for="email">Email</label>
+                        <input type="email" name="email">
+                      </div>
+                      <div class="field padding-bottom--24">
+                        <div class="grid--50-50">
+                          <label for="Password">Password</label>
+                        
+                        </div>
+                        <input type="password" name="password">
+                      </div>
+                      <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                        
+                      </div>
+                      <div class="field padding-bottom--24" style="color:282350;">
+                        <input type="submit" name="submit" value="Continue">
+                      </div>
+                      
+                      </div>
+                    </form>
+                  </div>
+                </div>
+               
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+      
+        
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+ 
+  {% comment %} <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+ {% endcomment %}
+    </body>
+    </html>

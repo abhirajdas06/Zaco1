@@ -1,0 +1,535 @@
+
+{% extends "header.html" %}
+{% load static %}
+
+
+
+
+
+  {% block head %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Application Development</title>
+
+    <!-- Bootstrap core CSS -->
+    {% comment %} <link href="{% static 'assets/app-css/bootstrap.min.css' %}" rel="stylesheet"> {% endcomment %}
+
+
+    <!-- Additional CSS Files -->
+    {% comment %} <link rel="stylesheet" href="{% static 'assets/app-css/fontawesome.css' %}"> {% endcomment %}
+ 
+    {% comment %} <link rel="stylesheet" href="{% static 'assets/app-css/owl.css' %}"> {% endcomment %}
+
+    <script src="https://kit.fontawesome.com/6766028831.js" crossorigin="anonymous"></script>
+<!--
+
+
+
+-->
+<style>
+
+</style>
+
+
+
+{% endblock head %}
+
+{% block body_about %}
+<body>
+
+
+  <!-- ***** Header Area Start ***** -->
+ 
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+  
+  {% comment %} <section class="main-banner-app" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 align-self-center">
+          <div class="header-text-app">
+          <h5 style="color:#ff6700;">Application Development Service</h5>
+            <h2 style="font-family:poppins !important">Accelerate Your Business <span style="color:#ff6700;">Growth</span></h2>
+            <p>We assist brands in designing and developing superior digital products that provide seamless user experiences across all modern platforms and devices..</p>
+
+           
+            <div class="buttons">
+              <a href="/contact"><button class="btn-hover color-7">Contact Us </button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="right-image-app" style="width:100% !important">
+            <img src="{% static 'assets/new-dg-img/image-1.png' %}" alt="team meeting" >
+          </div>
+        </div>
+      </div>
+    </div> 
+  </section> {% endcomment %}
+
+
+<section id="dia-banner" class="dia-banner-section position-relative">
+    {% comment %} <div class="banner-side-img banner-img1 position-absolute"><img
+            src="{% static 'assets/img/d-agency/banner/ns2.png' %}" alt=""></div> {% endcomment %}
+    <div class="banner-side-img banner-img2 position-absolute img-app" style="width:77% !important; right: -150px !important;"> <img src="{% static 'assets/new-dg-img/image-1.png' %}" alt="team meeting" >
+    </div>
+    <div class="container">
+        <div class="dia-banner-content dia-headline pera-content">
+            <h1 class="cd-headline clip is-full-width h1-res" style="font-size:65px ;">Application Development <span>Service</span> 
+                
+
+                
+            </h1>
+            <h5 class="bannerhead">We assist brands in designing and developing superior digital products that provide seamless user experiences across all modern platforms and devices.
+            </h5>
+            <div class="dia-banner-btn d-flex">
+               
+                    {% comment %} <a href="https://www.youtube.com/watch?v=kxPCFljwJws"
+                        class="lightbox-image overlay-box"> {% endcomment %}
+                        {% comment %} <i class="fa fa-play"></i></a> {% endcomment %}
+               
+                <div class="dia-abt-btn text-center d-inline-block">
+                    <a href="/contact">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="services-app" class="services-app section-app">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading-app  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h4 style="font-size:40px; font-family:poppins !important;">Why Zaco For <span style="color:#ff6700;">Application</span> Development</h4>
+            {% comment %} <img src="{% static 'assets/new-tech-img/heading-line-dec.png' %}" alt=""> {% endcomment %}
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="service-item-app first-service-app s1-app">
+            <div class="icon-app"></div>
+            <h4>Full-Cycle Product Development</h4>
+            <p>Get Consistent Help From Concept to Launch.</p>
+           
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="service-item-app second-service-app s1-app">
+            <div class="icon-app"></div>
+            <h4>Ideation & <br> Design</h4>
+            <p>Visual Designs That Convert Product Visitors Into Customers.</p>
+          
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="service-item-app third-service-app s1-app">
+            <div class="icon-app"></div>
+            <h4>Product <br> Growth</h4>
+            <p>Accelerating Your Business and Revenue with Scalability.</p>
+           
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="service-item-app fourth-service-app s1-app">
+            <div class="icon-app"></div>
+            <h4>Research & Innovation</h4>
+            <p>Scalability Accelerates Your Business and Revenue.</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ***** Main Banner Area End ***** -->
+
+ 
+  {% comment %} section description  {% endcomment %}
+  {% comment %} <section id="section-1">
+    <div class="div1 i-1" id="img-i-1">
+      <img src="{% static 'assets/app-img/aa-img.png' %}" alt="">
+    </div>
+    <div class="div1" id="div-border">
+      <h1><span style="color:#ff6700;">SIMPLIFY</span> YOUR WORKFLOW WITH HELP OF OUR MOBILE APP <span style="color:#ff6700;">DEVELOPMENT</span> SERVICES</h1>
+      <p>Application development services are in high demand these days. Skilled Development teams who can create innovative and interactive mobile apps for their clients are also in high demand. At Zaco, we provide a wide range of mobile app development services, including the creation of IOS, Android, and native app or an e-commerce apps. <br> We also have an in-house strategy team to assist our clients in making the best decisions for their online reputation management.
+        If you want to increase app downloads and manage your online reputation, we provide a wide range of mobile app development services. We develop iOS, Android, and native apps that are compatible with different devices.
+        .</p>
+    </div>
+  </section> {% endcomment %}
+
+
+
+  
+  <section class="pr1-business-section pr-padding" data-background="{% static 'assets/img/business-1/busines/bg.jpg'%}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="pr1-business-left wow">
+                    <span class="pr1-business-shape-1"><img
+                            src="{% static 'assets/img/business-1/business/shape-01.png'%}" alt=""></span>
+                    <div class="pr1-img-bg">
+                        <div class="pr1-img-container">
+                            <img src="{% static 'assets/app-img/app11 (1).png'%}" alt="">
+                 <div class="pr1-img-container pr1-img-2">
+                     <img src="{% static 'assets/app-img/a-dev-1 (1).png'%}" alt="">
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>           
+ <div class="col-lg-6">
+     <div class="pr1-business-right">
+         <div class="pr1-title-area2 wow ">
+             <div class="pr1-headline sec-app-h2">
+                 <h2 style="font-size:40px; font-weight:900 !important; font-family:poppins;" class="nnn"><span style="color:#ff6700 !important;">Simplyfy</span> Your Workflow With Help Of Our Mobile App <span style="color:#ff6700 !important;">Development Services</span> </h2>
+             </div>
+             <div class="pr1-business-txt pr1-pera-txt wow fadeInUp">
+                 {% comment %} <p>We have Years of experience. We offer Best Custom Software Solutions.</p> {% endcomment %}
+             </div>
+             <div class="pr1-business-content sec-app-con">
+                 <div class="row">
+                   <p>Application development services are in high demand these days. Skilled Development teams who can create innovative and interactive mobile apps for their clients are also in high demand. At Zaco, we provide a wide range of mobile app development services, including the creation of IOS, Android, and native app or an e-commerce apps.
+                                We also have an in-house strategy team to assist our clients in making the best decisions for their online reputation management. If you want to increase app downloads and manage your online reputation, we provide a wide range of mobile app development services. We develop iOS, Android, and native apps that are compatible with different devices. .</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+
+  {% comment %} section description end  {% endcomment %}
+
+
+  <section class="our-courses-app" id="courses-app">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading-app">
+            <h6 style="color:#ff6700 !important;">OUR Expertise</h6>
+            <h4 style="font-size:40px">What We <span style="color:#ff6700;">Offer</span></h4>
+           
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="tabs">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="menu">
+                    <div class="active gradient-border"><span>ANDROID APP DEVELOPMENT</span></div>
+                    <div class="gradient-border"><span>IOS APP DEVELOPMENT</span></div>
+                    <div class="gradient-border"><span>ECOMMERCE APP DEVELOPMENT</span></div>
+                    <div class="gradient-border"><span>HYBRID APP DEVELOPMENT</span></div>
+                  </div>
+                </div>
+                <div class="col-lg-9">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="left-image-app i-1-app">
+                          <img src="{% static 'assets/app-img/app-dev1 (1).jpg' %}" alt="">
+                          
+                        </div>
+                        <div class="right-content-app">
+                          <h4>Android App Development</h4>
+                          <p>Zaco has the proven ability to turn your ideas into reality. We create bespoke Android mobile applications that provide cutting-edge services, ensuring you reap the benefits of technology while maintaining your competitive edge in your marketplace. Our unique set of comprehensive solutions delivers optimal results for your business.</p>
+                          
+                       
+                          
+                          <div class="pr1-readmore-btn">
+                            <a href="#"> <u>Learn more</u><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image-app i-1-app">
+                          <img src="{% static 'assets/app-img/courses-02.jpg' %}" alt="">
+                          
+                        </div>
+                        <div class="right-content-app">
+                          <h4>Ios App Development</h4>
+                          <p>Businesses from all over the globe can benefit from Zaco's top-notch iOS app development services. Our success in developing iOS mobile applications ensures value-added services for your mobile operations. Our one-of-a-kind package of comprehensive solutions provides the best results for your company.</p>
+                          
+                         
+                          
+                          <div class="pr1-readmore-btn">
+                            <a href="#"><u>Learn more</u><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image-app i-1-app">
+                          <img src="{% static 'assets/app-img/courses-03.jpg' %}" alt="">
+                     
+                        </div>
+                        <div class="right-content-app">
+                          <h4>Ecommerce App Development</h4>
+                          <p>
+                            Zaco can help you start a business app. Our expert team turns your ideas into reality. We have used eCommerce solutions in a variety of industries and locations, assisting our clients in expanding strategically and profitably. Contact us right now to start developing your e-commerce application.
+                            </p>
+                         
+                         
+                          
+                            <div class="pr1-readmore-btn">
+                              <a href="#"><u>Learn more</u><i class="fas fa-arrow-right"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image-app">
+                          <img src="{% static 'assets/app-img/courses-04.jpg' %}" alt="">
+                        
+                        </div>
+                        <div class="right-content-app">
+                          <h4>Hybrid App Development</h4>
+                          <p> Zaco's hybrid app development solutions are robust, high-performing, feature-rich, and designed to be both scalable and secure, capable of handling any business and IT requirements. Hybrid application development makes use of native app features and capabilities while also putting businesses and developers on the path to mobile app development.</p>
+                         
+                          
+                         
+                          <div class="pr1-readmore-btn">
+                            <a href="#"><u>Learn more</u><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        </div>
+                      </div>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>        
+            
+
+
+
+
+  {% comment %} section timeline {% endcomment %}
+<section class="timeline">
+  <h4 id="h4-1" style="text-align:center; font-size:40px;">How We <span style="color:#ff6700;">Work</span> </h4>
+  <div class="wrapper-app">
+    <div class="center-line">
+      <a href="#" class="scroll-icon"><i class="fas fa-caret-up"></i></a>
+    </div>
+    <div class="row row-1">
+      <section>
+        {% comment %} <i class="icon "></i> {% endcomment %}
+        <div class="details">
+          <span class="title" style="color:#282670 !important;">OPEN DIALOGUE</span>
+        
+        </div>
+        <p>Many mobile use cases are covered by good website design, but other tasks are exclusive to mobile apps. Your agency should be providing an honest evaluation of whether you actually need an app before beginning to design one</p>
+        
+        <div class="bottom">
+
+          
+          
+        
+        </div>
+      </section>
+
+    <section class="sec-img-1">
+      <img src="{% static 'assets/app-img/open11.jpg' %}" alt="">
+    </section>
+    </div>
+    <div class="row row-2">
+
+      <section class="sec-img-2">
+        <img src="{% static 'assets/app-img/agile1.png' %}" alt="">
+      </section>
+      
+      <section>
+        
+        {% comment %} <i class="icon "></i> {% endcomment %}
+        <div class="details">
+          
+          <span class="title" style="color:#282670 !important;">AGILE APPROACH</span>
+         
+        </div>
+        
+        <p>In today's cutthroat marketplace, an agile strategy is crucial. Consumers first demand frequent updates and improvements to apps.</p>
+        <div class="bottom">
+         
+         
+        </div>
+      </section>
+      
+    </div>
+    <div class="row row-1">
+      <section>
+        {% comment %} <i class="icon "></i> {% endcomment %}
+        <div class="details">
+          <span class="title" style="color:#282670 !important;">EXPERIENCED PROJECT MANAGEMENT</span>
+          
+        </div>
+        <p>Mobile app building is a management challenge as well as a technical effort. To keep the project moving efficiently agency needs complete experience and smooth working process.</p>
+        <div class="bottom">
+        
+        </div>
+      </section>
+
+      <section class="sec-img-1">
+        <img src="{% static 'assets/app-img/p-m.jpg' %}" alt="">
+      </section>
+
+      
+    </div>
+    <div class="row row-2">
+      <section class="sec-img-2">
+        <img src="{% static 'assets/app-img/c-1.jpg' %}" alt="">
+      </section>
+      <section>
+        {% comment %} <i class="icon "></i> {% endcomment %}
+        <div class="details">
+          <span class="title" style="color:#282670 !important;" >FRONT-END AND BACK-END CODING</span>
+         
+        </div>
+        <p>We prefer working in agile sprints to get minimum viable product that includes core features and audience will love to use them. Technical Project Manager Works in collaboration with the Account Director dedicated to, keeping your project running smoothly and on budget</p>
+        <div class="bottom">
+       
+        </div>
+      </section>
+    </div>
+    <div class="row row-1">
+      <section>
+        {% comment %} <i class="icon"></i> {% endcomment %}
+        <div class="details">
+          <span class="title" style="color:#282670 !important;">QA + LAUNCH</span>
+         
+        </div>
+        <p>Quality analysis begins while development is going on. We do our best to eradicate bugs and make sure it works as per the requirement. After the mobile app development company in mumbai and its quality analysis are accomplished, it is time to launch the app.</p>
+        <div class="bottom">
+      
+        </div>
+      </section>
+
+      <section class="sec-img-1">
+        <img src="{% static 'assets/app-img/qa.jpg' %}" alt="">
+      </section>
+    </div>
+    <div class="row row-2">
+      <section class="sec-img-2">
+        <img src="{% static 'assets/app-img/mar1.jpg' %}" alt="">
+      </section>
+      <section>
+       
+        <div class="details">
+          <span class="title" style="color:#282670 !important;">MAINTENANCE, ITERATION + MARKETING </span>
+         
+        </div>
+        <p>Like any digital product an app should be a site of constant testing and improvement, drawing upon user feedback. So testing and optimizing the experience for your customers should be an ongoing process.</p>
+        <div class="bottom">
+         
+        </div>
+      </section>
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- Start of newslatter section
+        ============================================= -->
+        <section id="dia-newslatter" class="dia-newslatter-section position-relative">
+          <div class="container">
+              <div class="dia-newslatter-content">
+                  <div class="row">
+                      <div class="col-lg-8 offset-lg-2">
+                          <div class="dia-newslatter-text dia-headline pera-content" id="cnt">
+                              <h3>Looking For App Development Services?</h3>
+                              <h5>Let's talk about your idea and create something amazing.</h5>
+                              <div class="nws-button text-capitalize" id="my-button">
+                                <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button" type="submit" value="Submit"> call us</button></a>
+                                <a href="https://wa.me/917710051543"> <button class="hover-btn res-button" type="submit" value="Submit"> chat with us</button></a>
+                            </div>
+                          </div>
+                      </div>
+                      {% comment %} <div class="col-lg-6">
+                          <div class="dia-newslatter-form  relative-position">
+                              <form action="#" method="post">
+                                  {% csrf_token %}
+                                  <input id="newsmail" name="email" type="email" placeholder="Enter your email address"> 
+                                
+                                  
+                              
+                              <span id="newsmailMsg"></span>
+                          </div>
+                      </div> {% endcomment %}
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+      <!-- End of newslatter section
+          ============================================= -->
+        
+  {% comment %} section timeline {% endcomment %}
+
+
+ 
+
+ 
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'assets/app-js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/app-js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'assets/app-js/isotope.min.js' %}"></script>
+    <script src="{% static 'assets/app-js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/app-js/lightbox.js' %}"></script>
+    <script src="{% static 'assets/app-js/tabs.js' %}"></script>
+    <script src="{% static 'assets/app-js/video.js' %}"></script>
+    <script src="{% static 'assets/app-js/slick-slider.js' %}"></script>
+    <script src="{% static 'assets/app-js/custom.js' %}"></script>
+    <script>
+        //according to loftblog tut
+     
+    </script>
+
+
+    
+</body>
+
+{% endblock body_about %}

@@ -1,0 +1,126 @@
+<div class="it-header-up-top clearfix" style=" background-color: #FF6700; color: white;">
+    <div class="container">
+        <div class="header-2" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="it-header-top-cta float-left">
+                <a href="#" id="email-link" style="margin-right:30px"><i class="fas fa-envelope"
+                        style="color:white"></i> <span id="email-text">info@india.com</span></a>
+                <a href="#" id="phone-link" style="margin-right:30px"> <svg style="margin-top: 2px;" height="12px"
+                        version="1.1" viewBox="0 0 18 18" width="12px" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                        <g fill="white" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                            <g fill="#ffffff" id="Icons-Communication" transform="translate(-85.000000, -126.000000)">
+                                <g id="phone" transform="translate(85.000000, 126.000000)">
+                                    <path
+                                        d="M3.6,7.8 C5,10.6 7.4,12.9 10.2,14.4 L12.4,12.2 C12.7,11.9 13.1,11.8 13.4,12 C14.5,12.4 15.7,12.6 17,12.6 C17.6,12.6 18,13 18,13.6 L18,17 C18,17.6 17.6,18 17,18 C7.6,18 0,10.4 0,1 C0,0.4 0.4,0 1,0 L4.5,0 C5.1,0 5.5,0.4 5.5,1 C5.5,2.2 5.7,3.4 6.1,4.6 C6.2,4.9 6.1,5.3 5.9,5.6 L3.6,7.8 L3.6,7.8 Z"
+                                        id="Shape" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg> <span id="phone-text">+91 98765 43210</span></a>
+                <a href="#" id="address-link" style="margin-right:30px"><i class="fas fa-map-marker-alt"
+                        style="color:white"></i> <span id="address-text">123, India Street, Delhi</span></a>
+            </div>
+            <div class="it-header-top-social float-right">
+                <div class="dropdown-container" style="padding: 10px;">
+                    <select id="country-select"
+                        style="appearance: none; width: 200px; padding: 1px 15px; font-size: 15px; border: 2px solid #FF6700; border-radius: 5px; background-color: #fff; color: #333; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease; background-image: url('data:image/svg+xml;utf8,<svg fill=&quot;%23FF6700&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><path d=&quot;M7 10l5 5 5-5z&quot;/></svg>'); background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;">
+                        <option value="IN" data-url="{% url 'home' %}">India</option>
+                        <option value="USA" data-url="{% url 'usa_home' %}">USA</option>
+                        <option value="UK" data-url="{% url 'uk_home' %}">UK</option>
+                        <option value="CA" data-url="{% url 'canada_home' %}">Canada</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Define the details for each country
+    const countryDetails = {
+        // "IN": {
+        //     "email": "info@india.com",
+        //     "phone": "+91 98765 43210",
+        //     "address": "123, India Street, Delhi"
+        // },
+        "USA": {
+            "email": "info@zacocomputer.com",
+            "phone": "",
+            "address": ""
+        },
+        "UK": {
+            "email": "info@zacocomputer.com",
+            "phone": "+44 7785 246 591",
+            "address": "124 City Road, London, England, EC1V 2NX."
+        },
+        "CA": {
+            "email": "info@zacocomputer.com",
+            "phone": "+1 587 435 3187",
+            "address": "135 Lower Sherbourne Street, M5A 1Y4, Toronto, ON."
+        }
+    };
+
+// Function to update the contact details
+function updateContactDetails(country) {
+    const details = countryDetails[country];
+    if (details) {
+        // Update the email details
+        document.getElementById('email-text').textContent = details.email;
+        document.getElementById('email-link').setAttribute('href', 'mailto:' + details.email);
+
+        // Update or hide the phone details
+        if (details.phone) {
+            document.getElementById('phone-text').textContent = details.phone;
+            document.getElementById('phone-link').setAttribute('href', 'tel:' + details.phone);
+            document.getElementById('phone-link').style.display = 'inline';
+        } else {
+            document.getElementById('phone-link').style.display = 'none';
+        }
+
+        // Update or hide the address details
+        if (details.address) {
+            document.getElementById('address-text').textContent = details.address;
+            document.getElementById('address-link').style.display = 'inline';
+        } else {
+            document.getElementById('address-link').style.display = 'none';
+        }
+    } else {
+        // If no details are found, reset to default (India)
+        document.getElementById('email-text').textContent = 'info@india.com';
+        document.getElementById('phone-text').textContent = '+91 98765 43210';
+        document.getElementById('address-text').textContent = '123, India Street, Delhi';
+
+        document.getElementById('phone-link').style.display = 'inline';
+        document.getElementById('address-link').style.display = 'inline';
+    }
+}
+
+document.getElementById('country-select').addEventListener('change', function () {
+    // Get the selected option's URL
+    var url = this.options[this.selectedIndex].getAttribute('data-url');
+
+    // Save the selected value to localStorage
+    localStorage.setItem('selectedCountry', this.value);
+
+    // Update the contact details
+    updateContactDetails(this.value);
+
+    // Redirect to the selected URL
+    if (url) {
+        window.location.href = url;
+    }
+});
+
+// On page load, check localStorage for the saved value
+document.addEventListener('DOMContentLoaded', function () {
+    var selectedCountry = localStorage.getItem('selectedCountry') || 'IN'; // Default to India
+    var selectElement = document.getElementById('country-select');
+    selectElement.value = selectedCountry;
+
+    // Update the contact details on page load
+    updateContactDetails(selectedCountry);
+});
+
+</script>

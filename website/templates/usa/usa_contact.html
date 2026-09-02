@@ -1,0 +1,314 @@
+{% extends "usa/nav.html" %}
+{% load static %}
+
+{% comment %} {% include "static.html" %} {% endcomment %}
+ {% block body %}
+
+ <body>
+	<!-- Start of banner section
+	  ============================================= -->
+	<section id="smm-banner" class="smm-banner-section mt-20">
+	  <div class="container">
+		<div class="smm-banner-wrapper position-relative">
+		  <div class="smm-banner-text-content smm-headline pera-content">
+			<h1>Hey, Let’s Talk!</h1>
+			<h2>Let's make something great together.</h2>
+		  </div>
+		  <div class="smm-banner-img">
+			<img src="{% static 'assets/img/contact/ns2.png' %}" alt="" />
+		  </div>
+		</div>
+	  </div>
+	</section>
+	<!-- End of banner section
+	  ============================================= -->
+  
+	<!-- Start of contact section
+	  ============================================= -->
+	<section id="smm-social" class="smm-social-section position-relative">
+	  <div class="container">
+		<div class="smm-social-wrapper">
+		  <div class="row">
+			<div class="col-lg-4 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+			  <div class="smm-social-icon-text">
+				<div class="smm-social-icon float-left">
+				  <img src="{% static 'assets/img/contact/phone.png' %}" alt="" />
+				</div>
+				<div class="smm-social-text pera-content">
+				  <p>Phone</p>
+				  <span><a href="tel:+91-22-69288800">+91-22-69288800</a></span>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+			  <div class="smm-social-icon-text">
+				<div class="smm-social-icon float-left">
+				  <img src="{% static 'assets/img/contact/email.png' %}" alt="" />
+				</div>
+				<div class="smm-social-text pera-content">
+				  <p>Email</p>
+				  <span><a href="mail:info@zacoinfotech.com">info@zacoinfotech.com</a></span>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+			  <div class="smm-social-icon-text">
+				<div class="smm-social-icon float-left">
+				  <img src="{% static 'assets/img/contact/placeholder.png' %}" alt="" />
+				</div>
+				<div class="smm-social-text pera-content">
+				  <p>Location</p>
+				  <span><a href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd."
+					  class="lightbox-image overlay-box">View on Google map</a></span>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</section>
+	<!-- End of contact section
+	  ============================================= -->
+  
+	<!-- Start of Form section
+	  ============================================= -->
+	<section id="smm-about" class="smm-about-section">
+	  <div class="container">
+		<div class="smm-about-wrapper position-relative">
+		  <div class="smm-about-img wow fadeFromLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+			<img src="{% static 'assets/img/contact/contactusbanner2.png' %}" alt="" />
+		  </div>
+		  <div class="smm-about-text-wrap wow fadeFromRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+			<div class="smm-section-title smm-headline">
+			  <h5 class="mb-3">Get In Touch With Us At Any Of Our Offices</h5>
+  
+			  {% comment %} <p>
+				Looking to join our team? Here is our careers page or call our
+				recruitment team on
+				<a href="tel:+91-22-69288800">+91-22-69288800</a>
+			  </p> {% endcomment %}
+			</div>
+			<div class="sa-contact-inner-form">
+			  <form id="contact_form" action="contact" method="post">
+				{% csrf_token %}
+				<div class="row">
+				  <div class="col-md-6">
+					<input type="text" name="name" placeholder="Your Full Name" />
+				  </div>
+				  <div class="col-md-6">
+					<input id="email" type="email" name="mail" placeholder="Your Email Address"  />
+					<span id="emailMsg" class="emailmsg"></span>
+				  </div>
+				  <div class="col-md-6">
+					<input type="text" name="phone" placeholder="Your Mobile Number" />
+				  </div>
+				  <div class="col-md-6">
+					<input  type="text" name="subject" placeholder="Your Subject"  />
+				  </div>
+				  <div class="col-md-12">
+					<textarea name="message" placeholder="Your Valuable Word" row="3"></textarea>
+				  </div>
+				  <div class="sa-contact-inner-btn text-center">
+					<button   type="submit">Send Message</button>
+				  </div>
+				</div>
+			  </form>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</section>
+	<!-- End of form section
+	  ============================================= -->
+  
+	<!-- Start of Location section
+	  ============================================= -->
+	<section id="it-up-achivement" class="it-up-achivement-section position-relative">
+	  <span class="it-up-achive-shape1 position-absolute"><img src="{% static 'assets/img/its/ft-bg.png'%}"
+		  alt="" /></span>
+	  <span class="it-up-achive-shape2 position-absolute"><img src="{% static 'assets/img/its/ft-bg2.png'%}"
+		  alt="" /></span>
+  
+	  <div class="container">
+		<div class="soft-m-section-title text-center soft-m-headline">
+		  <h2>Our Sales Office</h2>
+		</div>
+		<div class="soft-m-intregration-content">
+		  <div class="row justify-content-center">
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="200ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/mumbai.png'%}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>Mumbai</h3>
+				  <p>3, DLH Park, Goregaon (W), Mumbai – 62, India.</p>
+  
+				  <a class="soft-in-more lightbox-image overlay-box"
+					href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd.+mumbai"><i
+					  class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="400ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/uae.png'%}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>UAE</h3>
+				  <p>B.C 1303474, First Floor, AFZ-B1, Ajman, UAE.</p>
+				  <a class="soft-in-more" href="#"><i class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="400ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+					<img src="{%static 'assets/img/canada2.jpg'%}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>CANADA</h3>
+				  <p>135 Lower Sherbourne Street, M5A 1Y4, Toronto, ON.
+				   </p>
+				  <a class="soft-in-more" href="#"><i class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+  
+	  <div class="container">
+		<div class="soft-m-section-title text-center soft-m-headline">
+		  <h2>Our Development Centers</h2>
+		</div>
+		<div class="soft-m-intregration-content">
+		  <div class="row justify-content-center">
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="0ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/mumbai.png'%}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>Mumbai</h3>
+				  <p>
+					3, DLH Park, S. V. Road, Goregaon (West), Mumbai – 400062.
+					Maharashtra, India.
+				  </p>
+				  <a class="soft-in-more lightbox-image overlay-box"
+					href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd.+mumbai"><i
+					  class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="200ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/delhi.png'%}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>Delhi</h3>
+				  <p>
+					252-E, First Floor, Sant Nagar,East of Kailash, New Delhi –
+					110 065, India
+				  </p>
+				  <a class="soft-in-more lightbox-image overlay-box"
+					href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd.+Delhi"><i
+					  class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="400ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/bengaluru.png' %}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>Bengaluru</h3>
+				  <p>
+					32/1, Ground Floor, Ashwini Layout, Ejipura, Bengaluru –
+					560047, India.
+				  </p>
+				  <a class="lightbox-image overlay-box soft-in-more"
+					href="https://www.google.com/maps/search/?api=1&query=zaco+computers+pvt.+ltd.+bengaluru+    karnataka"><i
+					  class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="container">
+		<div class="soft-m-intregration-content">
+		  <div class="row justify-content-center">
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="0ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/chennai.png'%}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>Chennai</h3>
+				  <p>
+					New No.13, Old No. 4, Govindan Road West Mambalam,Chennai-600
+					033,India.
+				  </p>
+				  <a class="lightbox-image overlay-box soft-in-more"
+					href="https://www.google.com/maps/search/?api=1&query=zaco+computers+pvt.+ltd.+chennai+tamilnadu"><i
+					  class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="200ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/charminar.png'%}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>Hyderabad</h3>
+				  <p>
+					2nd floor, 1-10-74/5/1, Chikoti gardens, Begumpet, Hyderabad,
+					Telangana – 500016, India.
+				  </p>
+				  <a class="lightbox-image overlay-box soft-in-more"
+					href="https://www.google.com/maps/search/?api=1&query=zaco+computers+pvt.+ltd.+hyderabad+Telangana"><i
+					  class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+			  <div class="soft-m-intre-innerbox text-center wow fadeFromUp" data-wow-delay="400ms"
+				data-wow-duration="1500ms">
+				<div class="soft-m-intre-img">
+				  <img src="{%static 'assets/img/contact/kolkata.png' %}" alt="" />
+				</div>
+				<div class="soft-m-intre-text soft-m-headline pera-content">
+				  <h3>Kolkata</h3>
+				  <p>
+					330, Ground Floor, Santi Pally, Block BA, Plot No 23, E.K.T.P.
+					Kolkata – 700107, India.
+				  </p>
+				  <a class="lightbox-image overlay-box soft-in-more"
+					href="https://www.google.com/maps/search/?api=1&query=zaco+computers+pvt.+ltd.+kolkata +west+bengal"><i
+					  class="fas fa-map-marker-alt"></i></a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</section>
+	<!-- End of location section
+	  ============================================= -->
+  </body>
+
+
+{% endblock %}

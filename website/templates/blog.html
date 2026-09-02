@@ -1,0 +1,172 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block body_about %}
+
+
+<body class="saas-classic">
+    <!-- Start of breadcurmb section
+        ============================================= -->
+    <section id="saasio-breadcurmb" class="saasio-breadcurmb-section">
+        <div class="container">
+            <div class="breadcurmb-title text-center">
+                <h1>Our Blog</h1>
+            </div>
+            {% comment %} <div class="breadcurmb-item-list text-center ul-li">
+                <ul class="saasio-page-breadcurmb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Blog Feed</a></li>
+                </ul>
+            </div> {% endcomment %}
+        </div>
+    </section>
+    <!-- End of breadcurmb section
+        ============================================= -->
+
+    <!-- Start of blog page section
+        ============================================= -->
+    <section id="news-feed" class="news-feed-section">
+        <div class="container">
+            <div class="blog-feed-content">
+                <div class="row">
+                    <div class="col-md-8">
+                        {% for post in post_list %}
+
+                        <div class="blog-feed-post">
+                            <div class="blog-feed-img-txt">
+                                
+                                <div class="row">
+                                    
+                                    <div class="col-lg-6 col-md-12 col-sm-12">
+                                        <div class="saasio-blog-img">
+                                            <img src="{{ post.image.url}}" alt="" height="301px" width="386px">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12">
+
+                                        <div class="saasio-blog-text">
+                                            <div class="saasio-post-meta">
+                                                <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a>
+                                            </div>
+                                            <h3><a href="{% url 'blog-single' post.slug  %}">{{ post.title }}</a></h3>
+                                            <div class="saasio-post-meta">
+                                                <i class="fas fa-calendar-alt"></i> {{ post.created_on}}
+                                                
+                                                <i class="fas fa-user"></i> {{ post.author }}
+                                            </div>
+                                            <p> {{post.content|slice:":100" }} </p>
+                                            <a class="blog-read-more" href="{% url 'blog-single' post.slug  %}">Read
+                                                More</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+
+                        <div class="saasio-pagination text-center ul-li">
+                            <ul>
+                               <li> {% if page_obj.has_previous %}    
+                                    <a href="?page=1">&laquo;</a>            
+                                    <a href="?page={{ page_obj.previous_page_number }}">&leftarrow;</a>
+                                    {% endif %}
+                                </li>
+                    
+                                <li>
+                                {{ page_obj.number }}
+                                </li>
+                           
+                    
+                                 <li> {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}">&rightarrow;</a>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}"> &raquo;</a> 
+                                        {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="saasio-blog-sidebar">
+                            <div class="side-bar-widget">
+                                <div class="search-widget dia-headline">
+                                    <h3 class="widget-title-2">Search</h3>
+                                    <form action="search" method="get" class="relative-position">
+                                        <input type="text" id="query" name="query"  placeholder="Search Here">
+                                        <button type="submit"><i class="fas fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="side-bar-widget">
+                                
+                                <div class="category-widget dia-headline ul-li-block">
+                                    <h3 class="widget-title-2">Category</h3>
+                                    <ul>
+                                        {% for category in categories_list %}
+                                        <li><a href="">{{ category }}<span>({{category.posts_count}})</span></a></li>
+                                       
+                                        {% endfor %}</ul>
+                                </div>
+                                
+                            </div>
+                            <div class="side-bar-widget">
+                                <div class="category-widget dia-headline ul-li-block">
+                                    <h3 class="widget-title-2">Recent Post</h3>
+                                    <div class="recent-post-area">
+                                        <div class="recent-post-img-text">
+                                            <div class="recent-post-img float-left">
+                                                <img src="{% static 'assets/img/blog/rec1.jpg' %}" alt="">
+                                            </div>
+                                            <div class="recent-post-text dia-headline">
+                                                <h3><a href="#">Engaging New Smart Approach.</a></h3>
+                                                <span class="rec-post-meta"><a href="#">December 12, 2021</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="recent-post-img-text">
+                                            <div class="recent-post-img float-left">
+                                                <img src="{% static 'assets/img/blog/rec-2.jpg' %}" alt="">
+                                            </div>
+                                            <div class="recent-post-text dia-headline">
+                                                <h3><a href="#">Engaging New Smart Approach.</a></h3>
+                                                <span class="rec-post-meta"><a href="#">December 12, 2021</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="recent-post-img-text">
+                                            <div class="recent-post-img float-left">
+                                                <img src="{% static 'assets/img/blog/rec-3' %}" alt="">
+                                            </div>
+                                            <div class="recent-post-text dia-headline">
+                                                <h3><a href="#">Engaging New Smart Approach.</a></h3>
+                                                <span class="rec-post-meta"><a href="#">December 12, 2021</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-bar-widget">
+                                <div class="popular-widget dia-headline ul-li">
+                                    <h3 class="widget-title-2">Popular Tag</h3>
+                                    <ul>
+                                        <li><a href="#"> </a></li>
+                                        <li><a href="#">Software </a></li>
+                                        <li><a href="#">Landing </a></li>
+                                        <li><a href="#">App </a></li>
+                                        <li><a href="#">Design </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of blog section
+        ============================================= -->
+
+
+</body>
+{% endblock body_about %}

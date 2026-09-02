@@ -1,0 +1,2288 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Zaco Info Tech | Services</title>
+<meta name="description" content="">
+{% endblock meta %}
+
+{% block body_about %}
+
+<style>
+    /* ============ Hosting Price table ============ */
+    #elite-pricing-container {
+        margin-top: 20px;
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+    }
+
+    #elite-pricing-sales-text {
+
+        padding-right: 80px;
+        text-align: right;
+        font-size: 24px;
+        font-family: 'Raleway', Helvetica, Arial, Lucida, sans-serif;
+        color: #555555;
+        line-height: 1.5;
+        font-weight: 700;
+        max-width: 450px;
+        padding-top: 90px;
+    }
+
+    #elite-pricing-card.price-card {
+        max-width: 330px;
+        color: white;
+        position: relative;
+        margin: 0 6px;
+        padding: 30px 40px 10px 40px;
+        background: url('https://images.unsplash.com/photo-1464639351491-a172c2aa2911?ixlib=rb-0.3.5&s=427721bc23b5d868669d8f0ba09c8710&auto=format&fit=crop&w=1200&q=80') left top no-repeat black;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+
+
+    #elite-pricing-card.price-card .price-card--header {
+        padding: 0;
+        background-color: transparent;
+    }
+
+    #elite-pricing-card.price-card .price-card--header h4 {
+        font-size: 36px;
+        font-weight: 600;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid #f0c328;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: -webkit-linear-gradient(top left, #efd100 0, #e2a233 38%, #f0c328 60%, #fff1a3 86%, #ffe13e 100%);
+        background-size: 1em 1em;
+        color: #fff1a3;
+    }
+
+    #elite-pricing-card.price-card #elite-pricing-card--desc {
+        padding-bottom: 25px;
+    }
+
+    #elite-pricing-card.price-card .price-card--features {
+        border-top: 1px solid #f0c328;
+    }
+
+    #elite-pricing-card.price-card ul.price-card--features--list {
+        padding: 0 11px;
+    }
+
+    #elite-pricing-card.price-card .price-card--features--item {
+        padding-bottom: 16px;
+    }
+
+    #elite-pricing-card.price-card .price-card--features--item:before {
+        color: #f0c328 !important;
+        left: -12px !important;
+    }
+
+
+    #elite-pricing-card.price-card .price-card--cta--button.btn {
+        background-color: #f0c328;
+        color: white;
+        margin: 0 auto;
+
+    }
+
+    #elite-pricing-card.price-card .price-card--cta--button.btn:hover {
+        background-color: white;
+    }
+
+    #elite-pricing-card--desc {
+        font-size: 16px;
+        line-height: 1.5;
+        max-width: 400px;
+    }
+
+
+    @media (max-width: 980px) {
+        #pricing-cards {
+            /* 		display:none !important; */
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /* - - - - - - - - - Tooltips - - - */
+
+    .has-tooltip:not(.tooltip-disabled) {
+        cursor: help;
+        position: relative;
+    }
+
+    .has-tooltip:not(.tooltip-disabled):hover .tooltip-container {
+        display: block;
+    }
+
+    .has-tooltip .tooltip-container {
+        display: none;
+        position: absolute;
+        background-color: white;
+        z-index: 20;
+        bottom: calc(100% + 13px);
+        left: -10px;
+        right: -10px;
+        padding: 16px 20px;
+        border-radius: 8px;
+        box-shadow: 0 6px 55px -10px #777;
+    }
+
+    .has-tooltip .tooltip-container:after {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid white;
+        font-size: 0;
+        line-height: 0;
+        content: "";
+        position: absolute;
+        bottom: -10px;
+    }
+
+    .has-tooltip .tooltip-container h6 {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 0px;
+    }
+
+    .has-tooltip .tooltip-container p {
+        color: #555;
+        margin-top: 4px;
+    }
+
+    /* - - - - - - - End Tooltips - - - */
+
+
+
+
+
+    #pricing-container * {
+        box-sizing: border-box;
+    }
+
+    #pricing-container {
+        font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        max-width: 1080px;
+        margin: 0 auto 50px;
+        justify-content: center;
+        line-height: 1;
+        color: #000;
+    }
+
+
+
+    /* Cards */
+
+    #pricing-cards {
+        display: flex;
+        font-size: 14px;
+    }
+
+    #pricing-container .price-card {
+        background-color: white;
+        font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif;
+        display: block;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        transition: all 0.25s;
+        position: relative;
+        margin: 0 6px;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    #pricing-container .price-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.14),
+            0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* - - - - - - - - - Header Section - - - */
+
+    #pricing-container .price-card--header {
+        background-color: #daf1df;
+        margin: 0;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    #pricing-container .price-card--header h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 28px;
+        color: #1b5e20;
+        font-family: "Raleway", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 700;
+    }
+
+
+    /* - - - - - - - - - Price Section - - - */
+
+    #pricing-container .price-card--price {
+        text-align: center;
+        padding: 28px 0 6px 0;
+    }
+
+    #pricing-container .price-card--price-text {
+        font-size: 48px;
+    }
+
+    #pricing-container .price-card--price-number {
+        font-weight: 500;
+        opacity: 0.89;
+    }
+
+    .odometer div {
+        display: inline-block;
+    }
+
+    #pricing-container .price-card--price-number:before {
+        content: "₹";
+        font-size: 24px;
+        top: -16px;
+        display: inline-block;
+        position: relative;
+    }
+
+    #pricing-container .price-card--price-number:after {
+        content: "/month";
+        font-size: 12px;
+        display: inline-block;
+        color: grey;
+    }
+
+    #pricing-container .price-card--price-conditions {
+        padding: 14px 0;
+        color: #888;
+        line-height: 1.5;
+    }
+
+    #pricing-container .price-card--onboarding-fee {
+        color: green;
+    }
+
+    #pricing-container .price-card--onboarding-fee.has-fee {
+        color: #888;
+    }
+
+
+    /* - - - - - - - - - CTA Button Section - - - */
+
+    #pricing-container .price-card--cta {
+        padding: 0 20px 24px;
+        text-align: center;
+    }
+
+    #pricing-container .price-card--cta--button.btn {
+        min-width: 20px;
+        display: block;
+        max-width: 183px;
+        margin: 0 auto;
+        background-color: #ff6700;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    #pricing-container .price-card--cta--button.btn:hover {
+        background-color: #06386d;
+    }
+
+
+
+
+
+    /* - - - - - - - - - Features Section - - - */
+
+    #pricing-container .price-card--features {
+        border-top: 1px solid #ddd;
+        padding: 16px 0 20px;
+    }
+
+    #pricing-container ul.price-card--features--list {
+        padding: 0 32px;
+        list-style: none;
+        margin: 0;
+    }
+
+    #pricing-container li.price-card--features--item {
+        margin: 8px 0;
+        padding-left: 8px;
+        line-height: 1.5;
+        position: relative;
+    }
+
+    #pricing-container li.price-card--features--item:not(.features-disabled):before {
+        content: "✓";
+        color: green;
+        display: block;
+        position: absolute;
+        left: -8px;
+    }
+
+    #pricing-container li.price-card--features--item.features-highlight {
+        /* 	font-weight: 600; */
+    }
+
+    #pricing-container li.price-card--features--item.features-disabled {
+        opacity: 0.1;
+        /* 	text-decoration: line-through; */
+    }
+
+
+
+
+    /* - - - - - - - - - Mobile Features Toggle - - - */
+
+    #pricing-container .price-card--mobile-features-toggle {
+        text-align: center;
+        border-top: 1px solid #ddd;
+        margin: 24px 0 0;
+        padding: 16px 0;
+        cursor: pointer;
+        display: none;
+        color: green;
+    }
+
+    #pricing-container .price-card--mobile-features-toggle:after {
+        content: "Show All Features ▾";
+    }
+
+    #pricing-container .price-card--mobile-features-toggle.hideall:after {
+        content: "Hide Features ▴";
+    }
+
+    /* - - - - - - - - - Hero Card Styles - - - */
+
+    #pricing-container .price-card--hero {
+        margin: -38px 6px 0;
+        /* 	width:31%; */
+        z-index: 10;
+    }
+
+    #pricing-container .price-card--hero-text {
+        background-color: #3f9b63;
+        height: 38px;
+        color: white;
+        line-height: 38px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    /* - - - - - - - - - Only Yearly Basic Styles - - - */
+
+    #pricing-container .only-yearly {
+        position: relative;
+    }
+
+    #pricing-container .only-yearly .price-card--price-number {
+        transition: opacity 0.2s;
+    }
+
+    #pricing-container .only-yearly .only-yearly--text {
+        position: absolute;
+        top: -0.2em;
+        left: 0;
+        right: 0;
+        display: none;
+    }
+
+    #pricing-container .only-yearly .only-yearly--text span {
+        font-size: 14px;
+    }
+
+    #pricing-container .only-yearly.if-monthly .price-card--price-number {
+        opacity: 0;
+    }
+
+    #pricing-container .only-yearly.if-monthly .only-yearly--text {
+        display: block;
+    }
+
+    /* - - - - - - - - - Switch Section - - - */
+
+    #pricing-switch {
+        margin: 40px auto 100px;
+        text-align: center;
+        line-height: 1.4;
+        position: relative;
+        max-width: 1080px;
+    }
+
+    #pricing-switch .switch-label {
+        display: inline-block;
+        width: 200px;
+        text-align: center;
+        opacity: 0.4;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 0 20px;
+    }
+
+    #pricing-switch .switch-label .save-money {
+        color: #4caf50;
+        font-style: italic;
+        padding-left: 8px;
+    }
+
+    #pricing-switch .save-money--mobile {
+        color: #4caf50;
+        font-style: italic;
+        padding-top: 22px;
+        display: none;
+    }
+
+    #pricing-switch .switch-label.active {
+        font-size: 18px;
+        opacity: 1;
+    }
+
+    #pricing-switch .switch-label-monthly {
+        text-align: right;
+    }
+
+    #pricing-switch .switch-label-yearly {
+        text-align: left;
+    }
+
+    #pricing-switch .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        vertical-align: -50%;
+        margin: 0;
+    }
+
+    #pricing-switch .switch input {
+        display: none;
+    }
+
+    #pricing-switch .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #3f9b63;
+        border-radius: 34px;
+        -webkit-transition: 0.1s;
+        transition: 0.1s;
+    }
+
+    #pricing-switch .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        border-radius: 50%;
+        -webkit-transition: 0.1s;
+        transition: 0.1s;
+    }
+
+    /* #pricing-switch input:checked + .slider {
+	background-color: green;
+} */
+
+    #pricing-switch input:focus+.slider {
+        box-shadow: 0 0 1px #2196f3;
+    }
+
+    #pricing-switch input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    @media (max-width: 767px) {}
+
+
+
+
+    /* - - - - - - - - - - - - - - - - - - - */
+    /* - - - - - - - - - Media Queries - - - */
+    /* - - - - - - - - - - - - - - - - - - - */
+
+    @media (max-width: 1280px) {
+
+        /* Tweak the card price font size */
+        #pricing-container .price-card--price-text {
+            font-size: 32px;
+        }
+
+        #pricing-container .price-card--price-number:before {
+            top: -10px;
+            font-size: 18px;
+        }
+    }
+
+    @media (min-width: 981px) {
+
+        /* 	always show features when not in mobile view */
+        #pricing-container .price-card--features {
+            display: block !important;
+        }
+    }
+
+    @media (max-width: 980px) {
+        #pricing-cards {
+            display: block;
+            padding: 0 24px;
+        }
+
+        #pricing-container .price-card {
+            max-width: 360px;
+            margin: 0 auto 48px;
+        }
+
+        #pricing-container .price-card:hover {
+            transform: none;
+        }
+
+        #pricing-container .price-card-full-width {
+            display: block;
+        }
+
+        #pricing-container .price-card-full-width .price-card--features--list {
+            columns: 1;
+        }
+
+        #pricing-container .price-card--price {
+            padding: 28px 0 0;
+        }
+
+        #pricing-container .price-card--features {
+            display: none;
+            margin: 26px 0 0 0;
+            padding-bottom: 0;
+        }
+
+        #pricing-container ul.price-card--features--list {
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        #pricing-container li.price-card--features--item.features-disabled {
+            display: none;
+        }
+
+        #pricing-container .price-card--mobile-features-toggle {
+            display: block;
+        }
+
+        /* Pricing Switch */
+        #pricing-switch {
+            margin: 26px 0 52px;
+        }
+
+        #pricing-switch .switch-label {
+            display: inline-block;
+            width: auto;
+            font-size: 15px;
+        }
+
+        #pricing-switch .switch-label.active {
+            font-size: 16px;
+        }
+
+        #pricing-switch .switch-label .save-money {
+            display: none;
+        }
+
+        #pricing-switch .save-money--mobile {
+            display: block;
+        }
+
+        /* Elite Pricing */
+        #elite-pricing-container {
+            display: block;
+            padding: 0 24px
+        }
+
+        #elite-pricing-sales-text {
+            padding-right: 0;
+            padding-bottom: 32px;
+            padding-top: 0;
+            width: auto;
+            max-width: 360px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        #elite-pricing-card.price-card .price-card--mobile-features-toggle {
+            border-top: none;
+            color: #f0c328;
+            display: none;
+        }
+
+        #elite-pricing-card.price-card .price-card--features {
+            display: block;
+        }
+    }
+
+
+    @media (max-width: 480px) {
+        #pricing-container .price-card {
+            max-width: 360px;
+            margin: 0 auto 36px;
+        }
+
+        #pricing-switch {
+            margin: 26px 0 36px;
+        }
+
+        #elite-pricing-card.price-card {
+            padding: 30px 20px 10px 20px;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    /* ****************** */
+    /* Odometer Theme CSS */
+    /* ****************** */
+    /* https://raw.githubusercontent.com/HubSpot/odometer/master/themes/odometer-theme-default.css */
+
+    .odometer.odometer-auto-theme,
+    .odometer.odometer-theme-default {
+        display: inline-block;
+        vertical-align: middle;
+        /* vertical-align: auto; */
+        /* zoom: 1; */
+        /* display: inline; */
+        position: relative;
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit,
+    .odometer.odometer-theme-default .odometer-digit {
+        display: inline-block;
+        vertical-align: middle;
+        /* vertical-align: auto; */
+        /* zoom: 1; */
+        /* display: inline; */
+        position: relative;
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer,
+    .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer {
+        display: inline-block;
+        vertical-align: middle;
+        /* vertical-align: auto; */
+        /* zoom: 1; */
+        /* display: inline; */
+        visibility: hidden;
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner,
+    .odometer.odometer-theme-default .odometer-digit .odometer-digit-inner {
+        text-align: left;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon,
+    .odometer.odometer-theme-default .odometer-digit .odometer-ribbon {
+        display: block;
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon-inner,
+    .odometer.odometer-theme-default .odometer-digit .odometer-ribbon-inner {
+        display: block;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit .odometer-value,
+    .odometer.odometer-theme-default .odometer-digit .odometer-value {
+        display: block;
+        -webkit-transform: translateZ(0);
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value,
+    .odometer.odometer-theme-default .odometer-digit .odometer-value.odometer-last-value {
+        position: absolute;
+    }
+
+    .odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner,
+    .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner {
+        -webkit-transition: -webkit-transform 2s;
+        -moz-transition: -moz-transform 2s;
+        -ms-transition: -ms-transform 2s;
+        -o-transition: -o-transform 2s;
+        transition: transform 2s;
+    }
+
+    .odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner,
+    .odometer.odometer-theme-default.odometer-animating-up.odometer-animating .odometer-ribbon-inner {
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    .odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner,
+    .odometer.odometer-theme-default.odometer-animating-down .odometer-ribbon-inner {
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    .odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner,
+    .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+        -webkit-transition: -webkit-transform 2s;
+        -moz-transition: -moz-transform 2s;
+        -ms-transition: -ms-transform 2s;
+        -o-transition: -o-transform 2s;
+        transition: transform 2s;
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    .odometer.odometer-auto-theme,
+    .odometer.odometer-theme-default {
+        font-family: "Helvetica Neue", sans-serif;
+        line-height: 1.1em;
+    }
+
+    .odometer.odometer-auto-theme .odometer-value,
+    .odometer.odometer-theme-default .odometer-value {
+        text-align: center;
+    }
+
+    /* ************************** */
+    /* UPDATES TO CHANGE DURATION */
+    /* ************************** */
+
+    .odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner,
+    .odometer.odometer-theme-minimal.odometer-animating-up .odometer-ribbon-inner,
+    .odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner,
+    .odometer.odometer-theme-minimal.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+        -webkit-transition: -webkit-transform 0.4s;
+        -moz-transition: -moz-transform 0.4s;
+        -ms-transition: -ms-transform 0.4s;
+        -o-transition: -o-transform 0.4s;
+        transition: transform 0.4s;
+        will-change: auto;
+    }
+</style>
+
+<body class="saas-classic">
+    <!-- Start of header section
+        ============================================= -->
+    <section id="dia-banner" class="dia-banner-section position-relative">
+        <div class="banner-side-img banner-img2 position-absolute resize"><img
+                src="  {% static 'assets/img/technologies/fe.png' %}" alt=""></div>
+
+        <div class="container">
+            <div class="dia-banner-content dia-headline pera-content">
+                <h1 class="cd-headline clip is-full-width">Upgrade to Web Hosting <span>Plus</span>
+
+
+                </h1>
+                <h5 class="bannerhead">
+                    Tailored for your growth and success. Choose your <span>Web Hosting Plus Plan</span> today and take
+                    your online journey to new heights!
+                </h5>
+                <div class="dia-banner-btn d-flex">
+
+                    <div class="dia-abt-btn text-center d-inline-block">
+                        <a href="#viewPlans">View Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of header section
+        ============================================= -->
+
+
+    <!-- Service Section -->
+    <!-- <section class="pr1-work-section">
+        <span class="pr1-work-shape-1" data-parallax='{"y": 120}'><img
+                src="{% static 'assets/img/business-1/work/shape-01.png' %}" alt="">
+        </span>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pr1-title-area wow fadeInLeft">
+                        <div class="pr1-headline">
+                            <h2>Discover Zaco Infotech Web Hosting Plus</h2>
+                        </div>
+                        <div class="pr1-pera-txt">
+                            <p>Elevate your online presence with our Web Hosting Plus plans, designed for businesses
+                                that require enhanced performance, scalability, and features. Whether you're managing
+                                multiple websites or need advanced resources, our Web Hosting Plus packages have you
+                                covered.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section> -->
+    <!-- Service Section End -->
+
+    <section class="dia-exp-section">
+        <div class="container">
+            <div class="dia-exp-content">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 wow fadeFromLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="dia-aboutexp-img text-center position-relative">
+                            <img src="{% static 'assets/img/about/about3banner.png' %}" alt="">
+                            <div class="ab-shape1 position-absolute" data-parallax='{"x" : -30}'> <img
+                                    src="{% static 'assets/img/d-agency/shape/as1.png' %}" alt=""></div>
+                            <div class="ab-shape2 position-absolute" data-parallax='{"x" : 30}'> <img
+                                    src="{% static 'assets/img/d-agency/shape/as1.png' %}" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 wow fadeFromRight" data-wow-delay="300ms" data-wow-duration="1500ms">
+                        <div class="dio-exp-text-area">
+                            <div class="dia-exp-text">
+                                <div class="dia-about-title-text margin--top">
+                                    <div class="dia-section-title text-left text-capitalize dia-headline">
+
+                                        <h2>Discover Zaco Infotech Web Hosting Plus</h2>
+                                    </div>
+                                    <div class="dia-about-text">
+                                        <p class="ptext">
+                                            Elevate your online presence with our Web Hosting Plus plans, tailor-made
+                                            for businesses that demand enhanced performance and scalability. These plans
+                                            are perfect for organizations looking to manage growing online traffic,
+                                            ensuring fast loading times and smooth user experiences.
+                                        </p>
+                                        <p class="ptext">
+                                            Whether you're overseeing multiple websites or need advanced resources to
+                                            support your digital operations, our Web Hosting Plus packages offer the
+                                            ideal solution. With increased bandwidth, storage, and customization
+                                            options, you can confidently scale your business and meet future demands.
+                                        </p>
+                                        <p class="ptext">
+                                            Our Web Hosting Plus plans also include robust security features and 24/7
+                                            expert support, giving you the peace of mind to focus on your business
+                                            growth. Enjoy premium hosting with the flexibility to expand as your needs
+                                            evolve, without compromising on quality or performance.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- ========== Start of Choose plan Section ========== -->
+    <section class="pr1-work-section">
+        <span class="pr1-work-shape-1" data-parallax='{"y": 120}'><img
+                src="{% static 'assets/img/business-1/work/shape-01.png' %}" alt="">
+        </span>
+        <div class="container" id="viewPlans">
+            <div class="pr1-title-area wow fadeInLeft">
+                <div class="pr1-headline">
+                    <h2>Choose Your Ideal Web Hosting Plus Plan</h2>
+                </div>
+            </div>
+        </div>
+
+        <section id="pricing-container">
+
+            <!-- <div id="pricing-switch">
+
+                <span class="switch-label switch-label-monthly">Monthly</span>
+                <label class="switch" id="">
+                    <input type="checkbox" checked="checked">
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label switch-label-yearly active">Yearly</span> -->
+                <!-- 
+              Use https://codepen.io/raubaca/pen/VejpQP for styled dropdown 
+              and https://lipis.github.io/flag-icon-css/flags/4x3/us.svg for flags
+            -->
+                <!-- <div class="save-money--mobile">Save 10% on Yearly Plans</div>
+
+            </div> -->
+            <!-- end of pricing-switch -->
+
+            <div id="pricing-cards">
+
+                <!-- ============================= -->
+                <!-- = Launch Subscription Card = -->
+                <!-- ============================= -->
+                <div class="price-card" style="border: 1px solid #ddd;">
+
+                    <div class="price-card--header">
+                        <h4>Launch</h4>
+                        <!-- <p>for growing your business</p> -->
+                    </div>
+
+                    <div class="price-card--price">
+                        <div class="price-card--price-text">
+                            <div class="price-card--price-number toggle-price-content odometer"
+                                data-price-monthly="1,000" data-price-yearly="650">1,000</div>
+                        </div>
+                        <div class="price-card--price-conditions">
+                            <div class="toggle-price-content" data-price-monthly="Billed Monthly"
+                                data-price-yearly="Billed Annually">With a 1-yr term.<br>You pay ₹ 7800 today</div>
+                            <div class="price-card--onboarding-fee toggle-price-content"
+                                data-price-monthly="Regular Price" data-price-yearly="Save 35%">Save 35% <span style="text-decoration: line-through; color: #adadad !important;">1000</span> <span style="color: #010148 !important;">/</span> <span>650</span></div>
+                        </div>
+                    </div>
+
+                    <div class="price-card--cta">
+                        <a class="price-card--cta--button btn" href="https://billing.zacoinfotech.com/index.php?rp=/store/web-hosting-plus/web-hosting-plus-launch">Get Started</a>
+                    </div>
+
+                    <div class="price-card--features">
+
+                        <ul class="price-card--features--list">
+                            <li class="price-card--features--item has-tooltip">50 Websites
+                                <div class="tooltip-container"><strong>50 Websites</strong>
+                                    <p>Upload and manage up to 50 websites for easy access to your favorite content.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Unlimited Databases
+                                <div class="tooltip-container"><strong>Unlimited Databases</strong>
+                                    <p>Enjoy unlimited databases, giving you the flexibility to store and manage as much data as you need.</p>
+                                </div>
+                            </li>
+                                                        
+                            <li class="price-card--features--item has-tooltip">Free Domain (₹999.00/yr value)
+                                <div class="tooltip-container"><strong>Free Domain (₹999.00/yr value)</strong>
+                                    <p>Receive a free domain valued at ₹999.00 per year, giving you a professional online presence at no extra cost.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Free, Unlimited SSL for All Websites
+                                <div class="tooltip-container"><strong>Free, Unlimited SSL for All Websites</strong>
+                                    <p>Enjoy free, unlimited SSL for all websites, ensuring enhanced security and trust for your online presence.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="price-card--mobile-features-toggle"></div>
+
+                </div>
+                <!-- End of Card -->
+
+                <!-- ================================ -->
+                <!-- = Enhance Subscription Card = -->
+                <!-- ================================ -->
+                <div class="price-card" style="border: 1px solid #ddd;">
+
+                    <div class="price-card--header">
+                        <h4>Enhance</h4>
+                        <!-- <p>for growing your business</p> -->
+                    </div>
+                    <!-- <div class="price-card--hero-text">
+                        Most Popular Plan
+                    </div> -->
+
+                    <div class="price-card--price">
+                        <div class="price-card--price-text">
+                            <div class="price-card--price-number toggle-price-content odometer" data-price-monthly="2,250"
+                                data-price-yearly="1,305">2,250</div>
+                        </div>
+                        <div class="price-card--price-conditions">
+                            <div class="toggle-price-content" data-price-monthly="Billed Monthly"
+                                data-price-yearly="Billed Annually">With a 1-yr term.<br>You pay ₹ 15660 today</div>
+                            <div class="price-card--onboarding-fee toggle-price-content"
+                                data-price-monthly="Regular Price" data-price-yearly="Save 42%">Save 42% <span style="text-decoration: line-through; color: #adadad !important;">2,250</span> <span style="color: #010148 !important;">/</span> <span>1,305</span></div>
+                        </div>
+                    </div>
+
+                    <div class="price-card--cta">
+                        <a class="price-card--cta--button btn" href="https://billing.zacoinfotech.com/index.php?rp=/store/web-hosting-plus/web-hosting-plus-enhance">Get Started</a>
+                    </div>
+
+                    <div class="price-card--features">
+                        <ul class="price-card--features--list">
+
+                            <li class="price-card--features--item has-tooltip">100 Websites
+                                <div class="tooltip-container"><strong>100 Websites</strong>
+                                    <p>Upload and manage up to 100 websites for easy access to your favorite content.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Unlimited Databases
+                                <div class="tooltip-container"><strong>Unlimited Databases</strong>
+                                    <p>Enjoy unlimited databases, giving you the flexibility to store and manage as much data as you need.</p>
+                                </div>
+                            </li>
+                                                        
+                            <li class="price-card--features--item has-tooltip">Free Domain (₹999.00/yr value)
+                                <div class="tooltip-container"><strong>Free Domain (₹999.00/yr value)</strong>
+                                    <p>Receive a free domain valued at ₹999.00 per year, giving you a professional online presence at no extra cost.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Free, Unlimited SSL for All Websites
+                                <div class="tooltip-container"><strong>Free, Unlimited SSL for All Websites</strong>
+                                    <p>Enjoy free, unlimited SSL for all websites, ensuring enhanced security and trust for your online presence.</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="price-card--mobile-features-toggle"></div>
+
+                </div>
+                <!-- End of Card -->
+
+                <!-- ========================= -->
+                <!-- = Grow Subscription Card = -->
+                <!-- ========================= -->
+                <div class="price-card" style="border: 1px solid #ddd;">
+
+                    <div class="price-card--header">
+                        <h4>Grow</h4>
+                        <!--                <p>growing your business</p> -->
+                    </div>
+
+                    <div class="price-card--price">
+                        <div class="price-card--price-text">
+                            <div class="price-card--price-number toggle-price-content odometer" data-price-monthly="4,500"
+                                data-price-yearly="2,700">4,500</div>
+                        </div>
+                        <div class="price-card--price-conditions">
+                            <div class="toggle-price-content" data-price-monthly="Billed Monthly"
+                                data-price-yearly="Billed Annually">With a 1-yr term.<br>You pay ₹ 32400 today</div>
+                            <div class="price-card--onboarding-fee toggle-price-content"
+                                data-price-monthly="Regular Price" data-price-yearly="Save 40%">Save 40% <span style="text-decoration: line-through; color: #adadad !important;">4,500</span> <span style="color: #010148 !important;">/</span> <span>2,700</span></div>
+                        </div>
+                    </div>
+
+                    <div class="price-card--cta">
+                        <a class="price-card--cta--button btn" href="https://billing.zacoinfotech.com/index.php?rp=/store/web-hosting-plus/web-hosting-plus-grow">Get Started</a>
+                    </div>
+
+                    <div class="price-card--features">
+                        <ul class="price-card--features--list">
+
+                            <li class="price-card--features--item has-tooltip">150 Websites
+                                <div class="tooltip-container"><strong>150 Websites</strong>
+                                    <p>Upload and manage up to 150 websites for easy access to your favorite content.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Unlimited Databases
+                                <div class="tooltip-container"><strong>Unlimited Databases</strong>
+                                    <p>Enjoy unlimited databases, giving you the flexibility to store and manage as much data as you need.</p>
+                                </div>
+                            </li>
+                                                        
+                            <li class="price-card--features--item has-tooltip">Free Domain (₹999.00/yr value)
+                                <div class="tooltip-container"><strong>Free Domain (₹999.00/yr value)</strong>
+                                    <p>Receive a free domain valued at ₹999.00 per year, giving you a professional online presence at no extra cost.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Free, Unlimited SSL for All Websites
+                                <div class="tooltip-container"><strong>Free, Unlimited SSL for All Websites</strong>
+                                    <p>Enjoy free, unlimited SSL for all websites, ensuring enhanced security and trust for your online presence.</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="price-card--mobile-features-toggle"></div>
+
+                </div>
+                <!-- End of Card -->
+
+                <!-- =========================== -->
+                <!-- = Expand Subscription Card = -->
+                <!-- =========================== -->
+                <div class="price-card" style="border: 1px solid #ddd;">
+
+                    <div class="price-card--header">
+                        <h4>Expand</h4>
+                        <!--                <p>growing your business</p> -->
+                    </div>
+
+                    <div class="price-card--price">
+                        <div class="price-card--price-text">
+                            <div class="price-card--price-number toggle-price-content odometer" data-price-monthly="5,700"
+                                data-price-yearly="3,420">5,700</div>
+                        </div>
+                        <div class="price-card--price-conditions">
+                            <div class="toggle-price-content" data-price-monthly="Billed Monthly"
+                                data-price-yearly="Billed Annually">With a 1-yr term.<br>You pay ₹ 41040 today</div>
+                            <div class="price-card--onboarding-fee toggle-price-content"
+                                data-price-monthly="Regular Price" data-price-yearly="Save 40%">Save 40% <span style="text-decoration: line-through; color: #adadad !important;">5,700</span> <span style="color: #010148 !important;">/</span> <span>3,420</span></div>
+                        </div>
+                    </div>
+
+                    <div class="price-card--cta">
+                        <a class="price-card--cta--button btn" href="https://billing.zacoinfotech.com/index.php?rp=/store/web-hosting-plus/web-hosting-plus-expand">Get Started</a>
+                    </div>
+
+                    <div class="price-card--features">
+                        <ul class="price-card--features--list">
+
+                            <li class="price-card--features--item has-tooltip">200 Websites
+                                <div class="tooltip-container"><strong>200 Websites</strong>
+                                    <p>Upload and manage up to 200 websites for easy access to your favorite content.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Unlimited Databases
+                                <div class="tooltip-container"><strong>Unlimited Databases</strong>
+                                    <p>Enjoy unlimited databases, giving you the flexibility to store and manage as much data as you need.</p>
+                                </div>
+                            </li>
+                                                        
+                            <li class="price-card--features--item has-tooltip">Free Domain (₹999.00/yr value)
+                                <div class="tooltip-container"><strong>Free Domain (₹999.00/yr value)</strong>
+                                    <p>Receive a free domain valued at ₹999.00 per year, giving you a professional online presence at no extra cost.</p>
+                                </div>
+                            </li>
+                            <li class="price-card--features--item has-tooltip">Free, Unlimited SSL for All Websites
+                                <div class="tooltip-container"><strong>Free, Unlimited SSL for All Websites</strong>
+                                    <p>Enjoy free, unlimited SSL for all websites, ensuring enhanced security and trust for your online presence.</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="price-card--mobile-features-toggle"></div>
+
+                </div>
+                <!-- End of Card -->
+
+            </div>
+            <!--    end of pricing-cards -->
+
+            <!-- <div id="elite-pricing-container"> -->
+
+            <!-- <div id="elite-pricing-sales-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris enim?
+                </div> -->
+
+            <!-- =========================== -->
+            <!-- = Elite Subscription Card = -->
+            <!-- =========================== -->
+            <!-- <div id="elite-pricing-card" class="price-card">
+
+                    <div class="price-card--header">
+                        <h4>Elite</h4>
+                    </div>
+
+                    <div id="elite-pricing-card--desc">
+                        Praesent semper ac mi eu hendrerit. Sed sit amet lectus libero. Maecenas mattis porttitor
+                        ullamcorper.
+                    </div>
+
+                    <div class="price-card--cta">
+                        <a class="price-card--cta--button btn" href="">Contact Sales</a>
+                    </div>
+
+                    <div class="price-card--features">
+
+
+                        <ul class="price-card--features--list">
+
+                            <li class="price-card--features--item">
+                                <strong>Unlimited 1-on-1 support</strong>
+                                <div class="executive-feature-desc">
+                                    Praesent semper ac mi eu hendrerit. Sed sit amet lectus.
+                                </div>
+                            </li>
+
+                            <li class="price-card--features--item">
+                                <strong>Premium, tailor-made marketing</strong>
+                                <div class="executive-feature-desc">
+                                    Pad sit amet lectus libero. Maecenas mattis porttitor.
+                                </div>
+                            </li>
+
+                            <li class="price-card--features--item">
+                                <strong>Executive Sponsorship</strong>
+                                <div class="executive-feature-desc">
+                                    Semper ac mi eu hendrerit. Sed sit amet lectus libero.
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="price-card--mobile-features-toggle"></div>
+
+                </div> -->
+            <!-- End of Card -->
+
+            <!-- </div> -->
+
+        </section>
+    </section>
+    <!-- ========== End of Choose plan Section ========== -->
+
+
+
+    <!-- ======= Start of Why Choose Zaco Infotech ======= -->
+    <section class="dia-exp-section">
+        <div class="container">
+            <div class="dia-exp-content">
+                <div class="row wrapper">
+
+                    <div class="col-lg-6 col-md-12 about-mobile-row wow fadeFromRight" data-wow-delay="300ms"
+                        data-wow-duration="1500ms">
+                        <div class="dio-exp-text-area">
+                            <div class="dia-exp-text">
+                                <div class="dia-about-title-text p--top">
+                                    <div class="dia-section-title text-left text-capitalize dia-headline">
+
+                                        <h2>Why Choose Zaco Infotech Web Hosting Plus?</h2>
+                                    </div>
+                                    <div class="dia-about-text">
+                                        <!-- <p class="ptext">We are the partner of choice for many of the
+                                            world’s leading enterprises. We
+                                            help businesses elevate through custom software solutions,
+                                            UI/UX
+                                            design, web development, mobile app development, digital marketing and
+                                            consultancy services.</p>
+                                        <p class="ptext">We feel empowered by our certified technology experts and
+                                            R&D team who have
+                                            always challenged themselves to help global customers with a plethora of
+                                            IT
+                                            services and solutions.Our team ensures that our clients
+                                            gets quick and cost effective solutions.</p> -->
+
+                                        <ul class="ptext">
+                                            
+                                            <li class="mb-2"><span>Scalability:</span> With plans that support up to 200
+                                                websites, easily scale as your business grows.</li>
+                                            <li class="mb-2"><span>Expert Support:</span> Our dedicated team is
+                                                available 24/7 to provide assistance and ensure your websites are always
+                                                performing at their best.</li>
+                                            <li class="mb-2"><span>Robust Security:</span> Benefit from free, unlimited
+                                                SSL certificates to keep your websites secure and trustworthy.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 about-mobile-row2 wow fadeFromLeft" data-wow-delay="0ms"
+                        data-wow-duration="1500ms">
+                        <div class="dia-aboutexp1-img text-center position-relative">
+                            <img src="{% static 'assets/img/about/whatwedo.png'%}" alt="">
+                            <div class="ab-shape1 position-absolute" data-parallax='{"x" : -30}'> <img
+                                    src="{% static 'assets/img/d-agency/shape/as1.png' %}" alt=""></div>
+                            <div class="ab-shape2 position-absolute" data-parallax='{"x" : 30}'> <img
+                                    src="{% static 'assets/img/d-agency/shape/as1.png' %}" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- ======= End of Why Choose Zaco Infotech ======= -->
+
+
+    <!-- ======= Start of Get Started Today Section ======= -->
+    <section id="dia-newslatter" class="dia-newslatter-section position-relative">
+        <div class="container">
+            <div class="dia-newslatter-content">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="dia-newslatter-text dia-headline pera-content" id="cnt">
+                            <h3>Get Started Today!</h3>
+                            <h5>Don’t miss out on the opportunity to enhance your online presence with our Web Hosting
+                                Plus packages. Choose your plan and experience the difference!</h5>
+                            <div class="nws-button text-capitalize" id="my-button">
+                                <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button"
+                                        type="submit" value="Submit"> call us</button></a>
+                                <a href="https://wa.me/917710051543" target="_blank"> <button
+                                        class="hover-btn res-button" type="submit" value="Submit"> chat with
+                                        us</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} <div class="col-lg-6">
+                        <div class="dia-newslatter-form  relative-position">
+                            <form action="#" method="post">
+                                {% csrf_token %}
+                                <input id="newsmail" name="email" type="email" placeholder="Enter your email address">
+
+
+
+                                <span id="newsmailMsg"></span>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= End of Get Started Today Section ======= -->
+
+
+    <!-- Start of newslatter section ============================================= -->
+    <section id="dia-newslatter" class="dia-newslatter-section position-relative">
+        <div class="container">
+            <div class="dia-newslatter-content">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="dia-newslatter-text dia-headline pera-content">
+                            <h3>Stay Updated</h3>
+                            <p>Subscribe to our newsletter for tips, updates, and resources to help you maximize your
+                                web hosting experience.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="dia-newslatter-form  relative-position">
+                            <form action="#" method="post">
+                                {% csrf_token %}
+                                <input id="newsmail" name="email" type="email" placeholder="Enter your email address">
+                                <div class="nws-button position-absolute text-capitalize">
+                                    <button class="hover-btn" type="submit" value="Submit"> Subscribe</button>
+                                </div>
+
+                            </form>
+                            <span id="newsmailMsg"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of newslatter section ============================================= -->
+
+    <script>
+        jQuery.noConflict();
+        (function ($) {
+            $(function () {
+                var toggleSwitch = $("#pricing-switch input");
+
+                (function () {
+                    $(toggleSwitch).change(function () {
+                        // Change prices for plans
+                        togglePriceContent();
+
+                        // Toggle monthly/yearly style
+                        $(".switch-label-monthly, .switch-label-yearly").toggleClass("active");
+
+                        // Basic is only available yearly message
+                        $(".only-yearly").toggleClass("if-monthly");
+
+                        // Highlight "No Onboarding" fee
+                        $(".price-card--onboarding-fee").toggleClass("has-fee");
+                    });
+
+                    $(".switch-label-monthly, .switch-label-yearly").click(function () {
+                        // Toggle switch when monthly/yearly is clicked
+                        $(toggleSwitch).click();
+                    });
+
+                    $(".price-card--mobile-features-toggle").click(function () {
+                        // Show/Hide features while in mobile
+                        $(this)
+                            .siblings(".price-card--features")
+                            .slideToggle(200);
+                        $(this).toggleClass("hideall");
+                    });
+                })();
+
+                function togglePriceContent() {
+                    if ($(toggleSwitch).is(":checked") === true) {
+                        // if toggle is yearly
+                        $(".toggle-price-content").each(function () {
+                            $(this).html($(this).data("price-yearly"));
+                        });
+                    } else {
+                        // if toggle is monthly
+                        $(".toggle-price-content").each(function () {
+                            $(this).html($(this).data("price-monthly"));
+                        });
+                    }
+                }
+            });
+        })(jQuery);
+
+        window.odometerOptions = {
+            duration: 400
+        };
+
+        // http://github.hubspot.com/odometer/
+        // https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.js
+        (function () {
+            var COUNT_FRAMERATE,
+                COUNT_MS_PER_FRAME,
+                DIGIT_FORMAT,
+                DIGIT_HTML,
+                DIGIT_SPEEDBOOST,
+                DURATION,
+                FORMAT_MARK_HTML,
+                FORMAT_PARSER,
+                FRAMERATE,
+                FRAMES_PER_VALUE,
+                MS_PER_FRAME,
+                MutationObserver,
+                Odometer,
+                RIBBON_HTML,
+                TRANSITION_END_EVENTS,
+                TRANSITION_SUPPORT,
+                VALUE_HTML,
+                addClass,
+                createFromHTML,
+                fractionalPart,
+                now,
+                removeClass,
+                requestAnimationFrame,
+                round,
+                transitionCheckStyles,
+                trigger,
+                truncate,
+                wrapJQuery,
+                _jQueryWrapped,
+                _old,
+                _ref,
+                _ref1,
+                __slice = [].slice;
+
+            VALUE_HTML = '<span class="odometer-value"></span>';
+
+            RIBBON_HTML =
+                '<span class="odometer-ribbon"><span class="odometer-ribbon-inner">' +
+                VALUE_HTML +
+                "</span></span>";
+
+            DIGIT_HTML =
+                '<span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner">' +
+                RIBBON_HTML +
+                "</span></span>";
+
+            FORMAT_MARK_HTML = '<span class="odometer-formatting-mark"></span>';
+
+            DIGIT_FORMAT = "(,ddd).dd";
+
+            FORMAT_PARSER = /^\(?([^)]*)\)?(?:(.)(d+))?$/;
+
+            FRAMERATE = 30;
+
+            DURATION = 2000;
+
+            COUNT_FRAMERATE = 20;
+
+            FRAMES_PER_VALUE = 2;
+
+            DIGIT_SPEEDBOOST = 0.5;
+
+            MS_PER_FRAME = 1000 / FRAMERATE;
+
+            COUNT_MS_PER_FRAME = 1000 / COUNT_FRAMERATE;
+
+            TRANSITION_END_EVENTS =
+                "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd";
+
+            transitionCheckStyles = document.createElement("div").style;
+
+            TRANSITION_SUPPORT =
+                transitionCheckStyles.transition != null ||
+                transitionCheckStyles.webkitTransition != null ||
+                transitionCheckStyles.mozTransition != null ||
+                transitionCheckStyles.oTransition != null;
+
+            requestAnimationFrame =
+                window.requestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.msRequestAnimationFrame;
+
+            MutationObserver =
+                window.MutationObserver ||
+                window.WebKitMutationObserver ||
+                window.MozMutationObserver;
+
+            createFromHTML = function (html) {
+                var el;
+                el = document.createElement("div");
+                el.innerHTML = html;
+                return el.children[0];
+            };
+
+            removeClass = function (el, name) {
+                return (el.className = el.className.replace(
+                    new RegExp("(^| )" + name.split(" ").join("|") + "( |$)", "gi"),
+                    " "
+                ));
+            };
+
+            addClass = function (el, name) {
+                removeClass(el, name);
+                return (el.className += " " + name);
+            };
+
+            trigger = function (el, name) {
+                var evt;
+                if (document.createEvent != null) {
+                    evt = document.createEvent("HTMLEvents");
+                    evt.initEvent(name, true, true);
+                    return el.dispatchEvent(evt);
+                }
+            };
+
+            now = function () {
+                var _ref, _ref1;
+                return (_ref =
+                    (_ref1 = window.performance) != null
+                        ? typeof _ref1.now === "function" ? _ref1.now() : void 0
+                        : void 0) != null
+                    ? _ref
+                    : +new Date();
+            };
+
+            round = function (val, precision) {
+                if (precision == null) {
+                    precision = 0;
+                }
+                if (!precision) {
+                    return Math.round(val);
+                }
+                val *= Math.pow(10, precision);
+                val += 0.5;
+                val = Math.floor(val);
+                return (val /= Math.pow(10, precision));
+            };
+
+            truncate = function (val) {
+                if (val < 0) {
+                    return Math.ceil(val);
+                } else {
+                    return Math.floor(val);
+                }
+            };
+
+            fractionalPart = function (val) {
+                return val - round(val);
+            };
+
+            _jQueryWrapped = false;
+
+            (wrapJQuery = function () {
+                var property, _i, _len, _ref, _results;
+                if (_jQueryWrapped) {
+                    return;
+                }
+                if (window.jQuery != null) {
+                    _jQueryWrapped = true;
+                    _ref = ["html", "text"];
+                    _results = [];
+                    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                        property = _ref[_i];
+                        _results.push(
+                            (function (property) {
+                                var old;
+                                old = window.jQuery.fn[property];
+                                return (window.jQuery.fn[property] = function (val) {
+                                    var _ref1;
+                                    if (
+                                        val == null ||
+                                        ((_ref1 = this[0]) != null ? _ref1.odometer : void 0) == null
+                                    ) {
+                                        return old.apply(this, arguments);
+                                    }
+                                    return this[0].odometer.update(val);
+                                });
+                            })(property)
+                        );
+                    }
+                    return _results;
+                }
+            })();
+
+            setTimeout(wrapJQuery, 0);
+
+            Odometer = (function () {
+                function Odometer(options) {
+                    var e,
+                        k,
+                        property,
+                        v,
+                        _base,
+                        _i,
+                        _len,
+                        _ref,
+                        _ref1,
+                        _ref2,
+                        _this = this;
+                    this.options = options;
+                    this.el = this.options.el;
+                    if (this.el.odometer != null) {
+                        return this.el.odometer;
+                    }
+                    this.el.odometer = this;
+                    _ref = Odometer.options;
+                    for (k in _ref) {
+                        v = _ref[k];
+                        if (this.options[k] == null) {
+                            this.options[k] = v;
+                        }
+                    }
+                    if ((_base = this.options).duration == null) {
+                        _base.duration = DURATION;
+                    }
+                    this.MAX_VALUES =
+                        (this.options.duration / MS_PER_FRAME / FRAMES_PER_VALUE) | 0;
+                    this.resetFormat();
+                    this.value = this.cleanValue(
+                        (_ref1 = this.options.value) != null ? _ref1 : ""
+                    );
+                    this.renderInside();
+                    this.render();
+                    try {
+                        _ref2 = ["innerHTML", "innerText", "textContent"];
+                        for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+                            property = _ref2[_i];
+                            if (this.el[property] != null) {
+                                (function (property) {
+                                    return Object.defineProperty(_this.el, property, {
+                                        get: function () {
+                                            var _ref3;
+                                            if (property === "innerHTML") {
+                                                return _this.inside.outerHTML;
+                                            } else {
+                                                return (_ref3 = _this.inside.innerText) != null
+                                                    ? _ref3
+                                                    : _this.inside.textContent;
+                                            }
+                                        },
+                                        set: function (val) {
+                                            return _this.update(val);
+                                        }
+                                    });
+                                })(property);
+                            }
+                        }
+                    } catch (_error) {
+                        e = _error;
+                        this.watchForMutations();
+                    }
+                    this;
+                }
+
+                Odometer.prototype.renderInside = function () {
+                    this.inside = document.createElement("div");
+                    this.inside.className = "odometer-inside";
+                    this.el.innerHTML = "";
+                    return this.el.appendChild(this.inside);
+                };
+
+                Odometer.prototype.watchForMutations = function () {
+                    var e,
+                        _this = this;
+                    if (MutationObserver == null) {
+                        return;
+                    }
+                    try {
+                        if (this.observer == null) {
+                            this.observer = new MutationObserver(function (mutations) {
+                                var newVal;
+                                newVal = _this.el.innerText;
+                                _this.renderInside();
+                                _this.render(_this.value);
+                                return _this.update(newVal);
+                            });
+                        }
+                        this.watchMutations = true;
+                        return this.startWatchingMutations();
+                    } catch (_error) {
+                        e = _error;
+                    }
+                };
+
+                Odometer.prototype.startWatchingMutations = function () {
+                    if (this.watchMutations) {
+                        return this.observer.observe(this.el, {
+                            childList: true
+                        });
+                    }
+                };
+
+                Odometer.prototype.stopWatchingMutations = function () {
+                    var _ref;
+                    return (_ref = this.observer) != null ? _ref.disconnect() : void 0;
+                };
+
+                Odometer.prototype.cleanValue = function (val) {
+                    var _ref;
+                    if (typeof val === "string") {
+                        val = val.replace(
+                            (_ref = this.format.radix) != null ? _ref : ".",
+                            "<radix>"
+                        );
+                        val = val.replace(/[.,]/g, "");
+                        val = val.replace("<radix>", ".");
+                        val = parseFloat(val, 10) || 0;
+                    }
+                    return round(val, this.format.precision);
+                };
+
+                Odometer.prototype.bindTransitionEnd = function () {
+                    var event,
+                        renderEnqueued,
+                        _i,
+                        _len,
+                        _ref,
+                        _results,
+                        _this = this;
+                    if (this.transitionEndBound) {
+                        return;
+                    }
+                    this.transitionEndBound = true;
+                    renderEnqueued = false;
+                    _ref = TRANSITION_END_EVENTS.split(" ");
+                    _results = [];
+                    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                        event = _ref[_i];
+                        _results.push(
+                            this.el.addEventListener(
+                                event,
+                                function () {
+                                    if (renderEnqueued) {
+                                        return true;
+                                    }
+                                    renderEnqueued = true;
+                                    setTimeout(function () {
+                                        _this.render();
+                                        renderEnqueued = false;
+                                        return trigger(_this.el, "odometerdone");
+                                    }, 0);
+                                    return true;
+                                },
+                                false
+                            )
+                        );
+                    }
+                    return _results;
+                };
+
+                Odometer.prototype.resetFormat = function () {
+                    var format, fractional, parsed, precision, radix, repeating, _ref, _ref1;
+                    format = (_ref = this.options.format) != null ? _ref : DIGIT_FORMAT;
+                    format || (format = "d");
+                    parsed = FORMAT_PARSER.exec(format);
+                    if (!parsed) {
+                        throw new Error("Odometer: Unparsable digit format");
+                    }
+                    (_ref1 = parsed.slice(1, 4)),
+                        (repeating = _ref1[0]),
+                        (radix = _ref1[1]),
+                        (fractional = _ref1[2]);
+                    precision = (fractional != null ? fractional.length : void 0) || 0;
+                    return (this.format = {
+                        repeating: repeating,
+                        radix: radix,
+                        precision: precision
+                    });
+                };
+
+                Odometer.prototype.render = function (value) {
+                    var classes, cls, match, newClasses, theme, _i, _len;
+                    if (value == null) {
+                        value = this.value;
+                    }
+                    this.stopWatchingMutations();
+                    this.resetFormat();
+                    this.inside.innerHTML = "";
+                    theme = this.options.theme;
+                    classes = this.el.className.split(" ");
+                    newClasses = [];
+                    for (_i = 0, _len = classes.length; _i < _len; _i++) {
+                        cls = classes[_i];
+                        if (!cls.length) {
+                            continue;
+                        }
+                        if ((match = /^odometer-theme-(.+)$/.exec(cls))) {
+                            theme = match[1];
+                            continue;
+                        }
+                        if (/^odometer(-|$)/.test(cls)) {
+                            continue;
+                        }
+                        newClasses.push(cls);
+                    }
+                    newClasses.push("odometer");
+                    if (!TRANSITION_SUPPORT) {
+                        newClasses.push("odometer-no-transitions");
+                    }
+                    if (theme) {
+                        newClasses.push("odometer-theme-" + theme);
+                    } else {
+                        newClasses.push("odometer-auto-theme");
+                    }
+                    this.el.className = newClasses.join(" ");
+                    this.ribbons = {};
+                    this.formatDigits(value);
+                    return this.startWatchingMutations();
+                };
+
+                Odometer.prototype.formatDigits = function (value) {
+                    var digit,
+                        valueDigit,
+                        valueString,
+                        wholePart,
+                        _i,
+                        _j,
+                        _len,
+                        _len1,
+                        _ref,
+                        _ref1;
+                    this.digits = [];
+                    if (this.options.formatFunction) {
+                        valueString = this.options.formatFunction(value);
+                        _ref = valueString.split("").reverse();
+                        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                            valueDigit = _ref[_i];
+                            if (valueDigit.match(/0-9/)) {
+                                digit = this.renderDigit();
+                                digit.querySelector(".odometer-value").innerHTML = valueDigit;
+                                this.digits.push(digit);
+                                this.insertDigit(digit);
+                            } else {
+                                this.addSpacer(valueDigit);
+                            }
+                        }
+                    } else {
+                        wholePart = !this.format.precision || !fractionalPart(value) || false;
+                        _ref1 = value
+                            .toString()
+                            .split("")
+                            .reverse();
+                        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+                            digit = _ref1[_j];
+                            if (digit === ".") {
+                                wholePart = true;
+                            }
+                            this.addDigit(digit, wholePart);
+                        }
+                    }
+                };
+
+                Odometer.prototype.update = function (newValue) {
+                    var diff,
+                        _this = this;
+                    newValue = this.cleanValue(newValue);
+                    if (!(diff = newValue - this.value)) {
+                        return;
+                    }
+                    removeClass(
+                        this.el,
+                        "odometer-animating-up odometer-animating-down odometer-animating"
+                    );
+                    if (diff > 0) {
+                        addClass(this.el, "odometer-animating-up");
+                    } else {
+                        addClass(this.el, "odometer-animating-down");
+                    }
+                    this.stopWatchingMutations();
+                    this.animate(newValue);
+                    this.startWatchingMutations();
+                    setTimeout(function () {
+                        _this.el.offsetHeight;
+                        return addClass(_this.el, "odometer-animating");
+                    }, 0);
+                    return (this.value = newValue);
+                };
+
+                Odometer.prototype.renderDigit = function () {
+                    return createFromHTML(DIGIT_HTML);
+                };
+
+                Odometer.prototype.insertDigit = function (digit, before) {
+                    if (before != null) {
+                        return this.inside.insertBefore(digit, before);
+                    } else if (!this.inside.children.length) {
+                        return this.inside.appendChild(digit);
+                    } else {
+                        return this.inside.insertBefore(digit, this.inside.children[0]);
+                    }
+                };
+
+                Odometer.prototype.addSpacer = function (chr, before, extraClasses) {
+                    var spacer;
+                    spacer = createFromHTML(FORMAT_MARK_HTML);
+                    spacer.innerHTML = chr;
+                    if (extraClasses) {
+                        addClass(spacer, extraClasses);
+                    }
+                    return this.insertDigit(spacer, before);
+                };
+
+                Odometer.prototype.addDigit = function (value, repeating) {
+                    var chr, digit, resetted, _ref;
+                    if (repeating == null) {
+                        repeating = true;
+                    }
+                    if (value === "-") {
+                        return this.addSpacer(value, null, "odometer-negation-mark");
+                    }
+                    if (value === ".") {
+                        return this.addSpacer(
+                            (_ref = this.format.radix) != null ? _ref : ".",
+                            null,
+                            "odometer-radix-mark"
+                        );
+                    }
+                    if (repeating) {
+                        resetted = false;
+                        while (true) {
+                            if (!this.format.repeating.length) {
+                                if (resetted) {
+                                    throw new Error("Bad odometer format without digits");
+                                }
+                                this.resetFormat();
+                                resetted = true;
+                            }
+                            chr = this.format.repeating[this.format.repeating.length - 1];
+                            this.format.repeating = this.format.repeating.substring(
+                                0,
+                                this.format.repeating.length - 1
+                            );
+                            if (chr === "d") {
+                                break;
+                            }
+                            this.addSpacer(chr);
+                        }
+                    }
+                    digit = this.renderDigit();
+                    digit.querySelector(".odometer-value").innerHTML = value;
+                    this.digits.push(digit);
+                    return this.insertDigit(digit);
+                };
+
+                Odometer.prototype.animate = function (newValue) {
+                    if (!TRANSITION_SUPPORT || this.options.animation === "count") {
+                        return this.animateCount(newValue);
+                    } else {
+                        return this.animateSlide(newValue);
+                    }
+                };
+
+                Odometer.prototype.animateCount = function (newValue) {
+                    var cur,
+                        diff,
+                        last,
+                        start,
+                        tick,
+                        _this = this;
+                    if (!(diff = +newValue - this.value)) {
+                        return;
+                    }
+                    start = last = now();
+                    cur = this.value;
+                    return (tick = function () {
+                        var delta, dist, fraction;
+                        if (now() - start > _this.options.duration) {
+                            _this.value = newValue;
+                            _this.render();
+                            trigger(_this.el, "odometerdone");
+                            return;
+                        }
+                        delta = now() - last;
+                        if (delta > COUNT_MS_PER_FRAME) {
+                            last = now();
+                            fraction = delta / _this.options.duration;
+                            dist = diff * fraction;
+                            cur += dist;
+                            _this.render(Math.round(cur));
+                        }
+                        if (requestAnimationFrame != null) {
+                            return requestAnimationFrame(tick);
+                        } else {
+                            return setTimeout(tick, COUNT_MS_PER_FRAME);
+                        }
+                    })();
+                };
+
+                Odometer.prototype.getDigitCount = function () {
+                    var i, max, value, values, _i, _len;
+                    values = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+                    for (i = _i = 0, _len = values.length; _i < _len; i = ++_i) {
+                        value = values[i];
+                        values[i] = Math.abs(value);
+                    }
+                    max = Math.max.apply(Math, values);
+                    return Math.ceil(Math.log(max + 1) / Math.log(10));
+                };
+
+                Odometer.prototype.getFractionalDigitCount = function () {
+                    var i, parser, parts, value, values, _i, _len;
+                    values = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+                    parser = /^\-?\d*\.(\d*?)0*$/;
+                    for (i = _i = 0, _len = values.length; _i < _len; i = ++_i) {
+                        value = values[i];
+                        values[i] = value.toString();
+                        parts = parser.exec(values[i]);
+                        if (parts == null) {
+                            values[i] = 0;
+                        } else {
+                            values[i] = parts[1].length;
+                        }
+                    }
+                    return Math.max.apply(Math, values);
+                };
+
+                Odometer.prototype.resetDigits = function () {
+                    this.digits = [];
+                    this.ribbons = [];
+                    this.inside.innerHTML = "";
+                    return this.resetFormat();
+                };
+
+                Odometer.prototype.animateSlide = function (newValue) {
+                    var boosted,
+                        cur,
+                        diff,
+                        digitCount,
+                        digits,
+                        dist,
+                        end,
+                        fractionalCount,
+                        frame,
+                        frames,
+                        i,
+                        incr,
+                        j,
+                        mark,
+                        numEl,
+                        oldValue,
+                        start,
+                        _base,
+                        _i,
+                        _j,
+                        _k,
+                        _l,
+                        _len,
+                        _len1,
+                        _len2,
+                        _m,
+                        _ref,
+                        _results;
+                    oldValue = this.value;
+                    fractionalCount = this.getFractionalDigitCount(oldValue, newValue);
+                    if (fractionalCount) {
+                        newValue = newValue * Math.pow(10, fractionalCount);
+                        oldValue = oldValue * Math.pow(10, fractionalCount);
+                    }
+                    if (!(diff = newValue - oldValue)) {
+                        return;
+                    }
+                    this.bindTransitionEnd();
+                    digitCount = this.getDigitCount(oldValue, newValue);
+                    digits = [];
+                    boosted = 0;
+                    for (
+                        i = _i = 0;
+                        0 <= digitCount ? _i < digitCount : _i > digitCount;
+                        i = 0 <= digitCount ? ++_i : --_i
+                    ) {
+                        start = truncate(oldValue / Math.pow(10, digitCount - i - 1));
+                        end = truncate(newValue / Math.pow(10, digitCount - i - 1));
+                        dist = end - start;
+                        if (Math.abs(dist) > this.MAX_VALUES) {
+                            frames = [];
+                            incr =
+                                dist / (this.MAX_VALUES + this.MAX_VALUES * boosted * DIGIT_SPEEDBOOST);
+                            cur = start;
+                            while ((dist > 0 && cur < end) || (dist < 0 && cur > end)) {
+                                frames.push(Math.round(cur));
+                                cur += incr;
+                            }
+                            if (frames[frames.length - 1] !== end) {
+                                frames.push(end);
+                            }
+                            boosted++;
+                        } else {
+                            frames = function () {
+                                _results = [];
+                                for (
+                                    var _j = start;
+                                    start <= end ? _j <= end : _j >= end;
+                                    start <= end ? _j++ : _j--
+                                ) {
+                                    _results.push(_j);
+                                }
+                                return _results;
+                            }.apply(this);
+                        }
+                        for (i = _k = 0, _len = frames.length; _k < _len; i = ++_k) {
+                            frame = frames[i];
+                            frames[i] = Math.abs(frame % 10);
+                        }
+                        digits.push(frames);
+                    }
+                    this.resetDigits();
+                    _ref = digits.reverse();
+                    for (i = _l = 0, _len1 = _ref.length; _l < _len1; i = ++_l) {
+                        frames = _ref[i];
+                        if (!this.digits[i]) {
+                            this.addDigit(" ", i >= fractionalCount);
+                        }
+                        if ((_base = this.ribbons)[i] == null) {
+                            _base[i] = this.digits[i].querySelector(".odometer-ribbon-inner");
+                        }
+                        this.ribbons[i].innerHTML = "";
+                        if (diff < 0) {
+                            frames = frames.reverse();
+                        }
+                        for (j = _m = 0, _len2 = frames.length; _m < _len2; j = ++_m) {
+                            frame = frames[j];
+                            numEl = document.createElement("div");
+                            numEl.className = "odometer-value";
+                            numEl.innerHTML = frame;
+                            this.ribbons[i].appendChild(numEl);
+                            if (j === frames.length - 1) {
+                                addClass(numEl, "odometer-last-value");
+                            }
+                            if (j === 0) {
+                                addClass(numEl, "odometer-first-value");
+                            }
+                        }
+                    }
+                    if (start < 0) {
+                        this.addDigit("-");
+                    }
+                    mark = this.inside.querySelector(".odometer-radix-mark");
+                    if (mark != null) {
+                        mark.parent.removeChild(mark);
+                    }
+                    if (fractionalCount) {
+                        return this.addSpacer(
+                            this.format.radix,
+                            this.digits[fractionalCount - 1],
+                            "odometer-radix-mark"
+                        );
+                    }
+                };
+
+                return Odometer;
+            })();
+
+            Odometer.options = (_ref = window.odometerOptions) != null ? _ref : {};
+
+            setTimeout(function () {
+                var k, v, _base, _ref1, _results;
+                if (window.odometerOptions) {
+                    _ref1 = window.odometerOptions;
+                    _results = [];
+                    for (k in _ref1) {
+                        v = _ref1[k];
+                        _results.push(
+                            (_base = Odometer.options)[k] != null
+                                ? (_base = Odometer.options)[k]
+                                : (_base[k] = v)
+                        );
+                    }
+                    return _results;
+                }
+            }, 0);
+
+            Odometer.init = function () {
+                var el, elements, _i, _len, _ref1, _results;
+                if (document.querySelectorAll == null) {
+                    return;
+                }
+                elements = document.querySelectorAll(
+                    Odometer.options.selector || ".odometer"
+                );
+                _results = [];
+                for (_i = 0, _len = elements.length; _i < _len; _i++) {
+                    el = elements[_i];
+                    _results.push(
+                        (el.odometer = new Odometer({
+                            el: el,
+                            value: (_ref1 = el.innerText) != null ? _ref1 : el.textContent
+                        }))
+                    );
+                }
+                return _results;
+            };
+
+            if (
+                ((_ref1 = document.documentElement) != null ? _ref1.doScroll : void 0) !=
+                null &&
+                document.createEventObject != null
+            ) {
+                _old = document.onreadystatechange;
+                document.onreadystatechange = function () {
+                    if (document.readyState === "complete" && Odometer.options.auto !== false) {
+                        Odometer.init();
+                    }
+                    return _old != null ? _old.apply(this, arguments) : void 0;
+                };
+            } else {
+                document.addEventListener(
+                    "DOMContentLoaded",
+                    function () {
+                        if (Odometer.options.auto !== false) {
+                            return Odometer.init();
+                        }
+                    },
+                    false
+                );
+            }
+
+            if (typeof define === "function" && define.amd) {
+                define([], function () {
+                    return Odometer;
+                });
+            } else if (typeof exports !== "undefined" && exports !== null) {
+                module.exports = Odometer;
+            } else {
+                window.Odometer = Odometer;
+            }
+        }.call(this));
+
+    </script>
+</body>
+
+
+{% endblock body_about %}

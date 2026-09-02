@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Font Awesome 5 Brands Regular";
+    src: url("../fonts/fa-brands-400.eot");
+    src: url("../fonts/fa-brands-400.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/fa-brands-400.woff2") format("woff2"),
+         url("../fonts/fa-brands-400.woff") format("woff"),
+         url("../fonts/fa-brands-400.ttf") format("truetype"),
+         url("../fonts/fa-brands-400.svg#FontAwesome5Brands-Regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+      font-family: "Font Awesome 5 Brands Regular";
+      src: url("../fonts/fa-brands-400.svg#FontAwesome5Brands-Regular") format("svg");
+    }
+  }
+  
+  [class^="fa-brands-400-"]:before, [class*="fa-brands-400-"]:before,
+  [class^="fa-brands-400-"]:after, [class*="fa-brands-400-"]:after {   
+    font-family: Font Awesome 5 Brands Regular;
+    font-size: 20px;
+    font-style: normal;
+  }
+  .fa-brands-400-html5:before { content: "\f13b"; }
+  .fa-brands-400-js-square:before { content: "\f3b9"; }

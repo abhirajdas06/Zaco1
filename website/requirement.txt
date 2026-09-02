@@ -1,0 +1,16 @@
+
+asgiref==3.5.2
+bleach==5.0.1
+Django==4.0.4
+django-ckeditor==6.7.2
+django-summernote==0.8.20.0
+python-dotenv==0.21.1
+Pillow==9.2.0
+six==1.16.0
+sqlparse==0.4.2
+tzdata==2022.1
+webencodings==0.5.1
+
+# Production server + static file serving
+gunicorn==20.1.0
+whitenoise==6.4.0
