@@ -5,12 +5,12 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Website and mobile app UI/UX design by Zaco. Get a free, no-obligation quote - call {{ CONTACT_PHONE }} or WhatsApp us.">
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    <title>UI-UX</title>
+    <title>UI/UX Design Services | Get a Free Quote - Zaco</title>
 
     <!-- Bootstrap core CSS -->
     {% comment %} <link href="{% static 'assets/new-web-css/bootstrap.min.css' %}" rel="stylesheet"> {% endcomment %}
@@ -204,16 +204,7 @@
           </h1>
           <h5 class="bannerhead">Zaco assists brands in navigating all aspects of the digital landscape. Your viewers are our top priority, and our basic requirement is complete client satisfaction.
           </h5>
-          <div class="dia-banner-btn d-flex">
-             
-                  {% comment %} <a href="https://www.youtube.com/watch?v=kxPCFljwJws"
-                      class="lightbox-image overlay-box"> {% endcomment %}
-                      {% comment %} <i class="fa fa-play"></i></a> {% endcomment %}
-             
-              <div class="dia-abt-btn text-center d-inline-block btn-res">
-                  <a href="/contact">Contact Us</a>
-              </div>
-          </div>
+          {% include "services/_svc_hero_cta.html" with service_name="UI/UX design" %}
       </div>
   </div>
 </section>
@@ -592,35 +583,7 @@
   <!-- Start of newslatter section
         ============================================= -->
      
-<section id="dia-newslatter" class="dia-newslatter-section position-relative">
-  <div class="container">
-      <div class="dia-newslatter-content">
-          <div class="row">
-              <div class="col-lg-8 offset-lg-2">
-                  <div class="dia-newslatter-text dia-headline pera-content" id="cnt">
-                      <h3>Looking For UI & UX Services?</h3>
-                      <h5>Let's talk about your idea and create something amazing.</h5>
-                      <div class="nws-button text-capitalize" id="my-button">
-                        <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button" type="submit" value="Submit"> Call Us</button></a>
-                        <a href="https://wa.me/917710051543" target="_blank"> <button class="hover-btn res-button" type="submit" value="Submit"> Chat With Us</button></a>
-                    </div>
-                  </div>
-              </div>
-              {% comment %} <div class="col-lg-6">
-                  <div class="dia-newslatter-form  relative-position">
-                      <form action="#" method="post">
-                          {% csrf_token %}
-                          <input id="newsmail" name="email" type="email" placeholder="Enter your email address"> 
-                        
-                          
-                      
-                      <span id="newsmailMsg"></span>
-                  </div>
-              </div> {% endcomment %}
-          </div>
-      </div>
-  </div>
-</section>
+{% include "services/_svc_enquiry.html" with service_key="ui" service_name="UI/UX design" heading="Looking For UI &amp; UX Services?" point1="Website &amp; mobile app design" point2="Wireframes and prototypes reviewed with you" point3="Clear process from first call to delivery" %}
       <!-- End of newslatter section
           ============================================= -->
 
@@ -648,4 +611,6 @@
   
  
  
+{% include "services/_svc_cta_assets.html" with service_name="UI/UX design" lead_key="ui_ux" %}
+
 {% endblock body_about %}

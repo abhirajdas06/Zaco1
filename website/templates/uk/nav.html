@@ -3,6 +3,7 @@
 
 <body>
     {% block nav %}
+    {% include "_messages.html" %}
 
 
 <!-- Start of header section
@@ -148,7 +149,7 @@
                                     </g>
                                 </g>
                             </g>
-                        </svg></span><a href="tel:+44 7785 246 591">+44 7785 246 591</a></li>
+                        </svg></span><a href="tel:{{ CONTACT_PHONE_TEL }}">{{ CONTACT_PHONE }}</a></li>
                         <li><span class="fas fa-envelope"></span><a href="mailto:info@zacoinfotech.com">info@zacoinfotech.com</a>
                         </li>
                         <div class="footersocial text-md-left">

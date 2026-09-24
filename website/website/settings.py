@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
+
+import django
 from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
 
@@ -50,6 +52,10 @@ ALLOWED_HOSTS = [
     for host in os.environ.get('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
     if host.strip()
 ]
+if DEBUG:
+    # Local development: always allow the loopback addresses, even when .env
+    # lists only the production domains.
+    ALLOWED_HOSTS += [h for h in ('127.0.0.1', 'localhost', '[::1]') if h not in ALLOWED_HOSTS]
 
 
 # Application definition
@@ -97,6 +103,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'home.context_processors.site_contact',
             ],
         },
     },
@@ -155,7 +162,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # WhiteNoise: serve compressed, cache-busted static files directly from
 # gunicorn without needing nginx/S3 for static assets.
 # https://whitenoise.readthedocs.io/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#
+# Django 4.2 replaced STATICFILES_STORAGE with STORAGES (and 5.1 dropped the
+# old name), while requirement.txt currently pins 4.0.4 - so support both.
+if django.VERSION >= (4, 2):
+    STORAGES = {
+        'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+        'staticfiles': {'BACKEND': 'website.storage.ForgivingManifestStaticFilesStorage'},
+    }
+else:
+    STATICFILES_STORAGE = 'website.storage.ForgivingManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -192,6 +208,27 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+# Gmail rewrites the From header to the authenticated account anyway, so use
+# it directly when set; visitors' addresses go in Reply-To instead.
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER or 'noreply@zacoinfotech.com'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+# Every enquiry (contact form, newsletter signup) is emailed to all of these.
+# Override with LEAD_NOTIFICATION_EMAILS=a@x.com,b@y.com in .env.
+LEAD_NOTIFICATION_EMAILS = [
+    e.strip()
+    for e in os.environ.get(
+        'LEAD_NOTIFICATION_EMAILS',
+        'info@zacoinfotech.com,abhiraj@zacocomputer.com',
+    ).split(',')
+    if e.strip()
+]
+
+# Contact details shown across the site (exposed to templates by
+# home.context_processors.site_contact). Change the number here only.
+CONTACT_PHONE_DISPLAY = '+91 97025 73082'
+CONTACT_PHONE_TEL = '+919702573082'
+CONTACT_WHATSAPP = '919702573082'
 
 SUMMERNOTE_THEME = 'bs4'
 

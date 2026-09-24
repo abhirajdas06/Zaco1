@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block meta %}
-<title>Zaco Info Tech | Services</title>
-<meta name="description" content="">
+<title>IT Services Company | Get a Free Quote - Zaco</title>
+<meta name="description" content="Web, app, software, UI/UX and digital marketing services by Zaco. Get a free, no-obligation quote - call {{ CONTACT_PHONE }} or WhatsApp us.">
 {% endblock meta %}
 
 {% block body_about %}
@@ -26,12 +26,7 @@
                 <h5 class="bannerhead">Power up your business transformation with innovative and cost-effective software
                     solutions.
                     </p>
-                    <div class="dia-banner-btn d-flex">
-
-                        <div class="dia-abt-btn text-center d-inline-block">
-                            <a href="contact">Get a Quote</a>
-                        </div>
-                    </div>
+                    {% include "services/_svc_hero_cta.html" with service_name="your IT project" %}
             </div>
         </div>
 
@@ -244,7 +239,7 @@
                                                 <p class="ptext">Our experts will find a custom solution that fits your ideas to build a successful software, your business need. </p>
                                             </div>
                                             <div class="pr1-readmore-btn">
-                                                <a href="#">Learn more <i class="fas fa-arrow-right"></i></a>
+                                                <a href="#enquiry" data-cta="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -263,7 +258,7 @@
                                                     design and realize exceptional business value from technology.</p>
                                             </div>
                                             <div class="pr1-readmore-btn">
-                                                <a href="#">Learn more <i class="fas fa-arrow-right"></i></a>
+                                                <a href="#enquiry" data-cta="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -276,5 +271,8 @@
     </section>
     <!-- Business Section End -->
 </body>
+{% include "services/_svc_enquiry.html" with service_key="general" service_name="your IT project" heading="Looking For IT Services?" point1="Web, apps, software, UI/UX &amp; digital marketing" point2="One team from idea to delivery" point3="Clear process from first call to delivery" %}
 {% include 'newsletter.html' %}
+{% include "services/_svc_cta_assets.html" with service_name="your IT project" lead_key="services_overview" %}
+
 {% endblock body_about %}

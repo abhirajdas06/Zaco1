@@ -107,14 +107,8 @@
     <div class="up">
         <a href="#" id="scrollup" class="dia-scrollup text-center"><i class="fas fa-angle-up"></i></a>
     </div>
-    {% for message in messages  %}            
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
-          <strong>Message : </strong> {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    {% endfor %}
+-->
+    {% include "_messages.html" %}
 
     <!-- Event snippet for Phone Call conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
@@ -298,7 +292,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
               "logo": "https://zacoinfotech.com/static/assets/z_img/ZIT_logo2-250x70.png",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+91 22-69288800",
+                "telephone": "{{ CONTACT_PHONE }}",
                 "contactType": "customer service",
                 "contactOption": ["TollFree","HearingImpairedSupported"],
                 "areaServed": ["IN","US","GB","AE","CA","AU","AT","BS","BE","BY","BD","BZ","BJ","BM","BT","BO","BQ","BA","BW","BV","BR","IO","VG","KH","CM","CV","CF","TD","CL","CN","CO","CR","HR","CU","CZ","CD","DK","DM","DO","EG","GR","GL","HK","HU","IS","ID","JO","JP","JE","KW","MV","MY","MX","NP","NL","NC","NZ","NG","OM","PY","PH","PL","PT","PR","QA","CG","ZA","ES","LK","SE","CH","TH","TR","VI","UG","UA","UM","UY","VN","002","015","142","145","034","035","030","143","155","039","154","151","150","419"],
@@ -365,7 +359,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                         {% comment %} <li><span class="fas fa-map-marker-alt"></span><a class=" lightbox-image overlay-box"
                                 href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd.+mumbai">3,
                                 DLH Park, Goregaon (W), Mumbai.</a></li>
-                        <li><span class="fas fa-phone"></span><a href="tel:+91-22-69288800">Call us</a></li>
+                        <li><span class="fas fa-phone"></span><a href="tel:{{ CONTACT_PHONE_TEL }}">Call us</a></li>
                         <li><span class="fas fa-envelope"></span><a href="mailto:info@zacoinfotech.com">E-mail us</a>
                         </li> {% endcomment %}
                         <div class="footersocial text-md-left">

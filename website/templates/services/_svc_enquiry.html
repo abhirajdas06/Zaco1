@@ -1,0 +1,113 @@
+{% comment %}
+  "Get your free quote" section shared by every service page: pitch + call/WhatsApp
+  buttons on the left, lead form on the right. The form posts to the site-wide
+  contact endpoint (home.views.contact), which saves the lead and emails
+  LEAD_NOTIFICATION_EMAILS.
+
+  Params:
+    service_key   web | app | digital | ui | software | consult | general  (picks the dropdown options)
+    service_name  lower-case name for the WhatsApp message
+    heading       section heading
+    point1..3     three short bullet points
+{% endcomment %}
+{% with wa_msg="Hi Zaco, I'm interested in "|add:service_name|add:"." %}
+<section id="enquiry" class="zc-enquiry">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 zc-enq-copy">
+        <span class="zc-eyebrow">Free Consultation</span>
+        <h2>{{ heading }}</h2>
+        <p>Tell us about your project and we'll get back to you with a free, no-obligation quote. Prefer to talk right now? Reach us directly:</p>
+        <div class="zc-cta-row">
+          <a href="tel:{{ CONTACT_PHONE_TEL }}" class="zc-btn zc-btn-primary" data-cta="form_call"><i class="fas fa-phone-alt"></i> Call {{ CONTACT_PHONE }}</a>
+          <a href="https://wa.me/{{ CONTACT_WHATSAPP }}?text={{ wa_msg|urlencode }}" target="_blank" rel="noopener" class="zc-btn zc-btn-wa" data-cta="form_whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+        </div>
+        <ul class="zc-points">
+          <li><i class="fas fa-check-circle"></i> {{ point1 }}</li>
+          <li><i class="fas fa-check-circle"></i> {{ point2 }}</li>
+          <li><i class="fas fa-check-circle"></i> {{ point3 }}</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <form class="zc-form" id="zc-lead-form" action="{% url 'contact' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}#enquiry">
+          <input type="hidden" name="tracking" id="zc-tracking" value="">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+          <h3>Get Your Free Quote</h3>
+          <p class="zc-form-sub">Takes less than a minute.</p>
+          <div class="zc-field">
+            <label for="zc-name">Full name</label>
+            <input id="zc-name" type="text" name="name" placeholder="Your full name" autocomplete="name" required minlength="2">
+          </div>
+          <div class="zc-row">
+            <div class="zc-field">
+              <label for="zc-phone">Mobile number</label>
+              <input id="zc-phone" type="tel" name="phone" placeholder="Your mobile number" autocomplete="tel" inputmode="tel" required>
+            </div>
+            <div class="zc-field">
+              <label for="zc-mail">Email</label>
+              <input id="zc-mail" type="email" name="mail" placeholder="you@company.com" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="zc-field">
+            <label for="zc-subject">What do you need?</label>
+            <select id="zc-subject" name="subject" required>
+              {% if service_key == "web" %}
+              <option value="Web Development - Custom Website">Custom website</option>
+              <option value="Web Development - E-commerce Website">E-commerce website</option>
+              <option value="Web Development - Web Application">Web application</option>
+              <option value="Web Development - CMS / Website Redesign">CMS / website redesign</option>
+              <option value="Web Development - Other">Something else</option>
+              {% elif service_key == "app" %}
+              <option value="App Development - Android App">Android app</option>
+              <option value="App Development - iOS App">iOS app</option>
+              <option value="App Development - Cross-platform App">Cross-platform app</option>
+              <option value="App Development - App Redesign / Maintenance">App redesign / maintenance</option>
+              <option value="App Development - Other">Something else</option>
+              {% elif service_key == "digital" %}
+              <option value="Digital Marketing - SEO">SEO</option>
+              <option value="Digital Marketing - Social Media Marketing">Social media marketing</option>
+              <option value="Digital Marketing - Paid Ads / PPC">Paid ads / PPC</option>
+              <option value="Digital Marketing - Content & Branding">Content &amp; branding</option>
+              <option value="Digital Marketing - Other">Something else</option>
+              {% elif service_key == "ui" %}
+              <option value="UI/UX - Website Design">Website design</option>
+              <option value="UI/UX - Mobile App Design">Mobile app design</option>
+              <option value="UI/UX - Redesign / UX Audit">Redesign / UX audit</option>
+              <option value="UI/UX - Prototype / Wireframes">Prototype / wireframes</option>
+              <option value="UI/UX - Other">Something else</option>
+              {% elif service_key == "software" %}
+              <option value="Custom Software - Business Software">Business software</option>
+              <option value="Custom Software - CRM / ERP">CRM / ERP</option>
+              <option value="Custom Software - Automation / Integration">Automation / integration</option>
+              <option value="Custom Software - Software Modernisation">Software modernisation</option>
+              <option value="Custom Software - Other">Something else</option>
+              {% elif service_key == "consult" %}
+              <option value="Technical Consulting - Technology Strategy">Technology strategy</option>
+              <option value="Technical Consulting - Architecture / Code Review">Architecture / code review</option>
+              <option value="Technical Consulting - Digital Transformation">Digital transformation</option>
+              <option value="Technical Consulting - Other">Something else</option>
+              {% else %}
+              <option value="Services - Web Development">Website development</option>
+              <option value="Services - App Development">Mobile app development</option>
+              <option value="Services - Digital Marketing">Digital marketing</option>
+              <option value="Services - UI/UX Design">UI/UX design</option>
+              <option value="Services - Custom Software">Custom software</option>
+              <option value="Services - Technical Consulting">Technical consulting</option>
+              <option value="Services - Other">Something else</option>
+              {% endif %}
+            </select>
+          </div>
+          <div class="zc-field">
+            <label for="zc-message">Tell us about your project <span>(optional)</span></label>
+            <textarea id="zc-message" name="message" rows="3" placeholder="What are you looking to build?"></textarea>
+          </div>
+          <button type="submit" class="zc-btn zc-btn-primary zc-btn-block">Get My Free Quote</button>
+          <p class="zc-privacy"><i class="fas fa-lock"></i> Your details are only used to respond to your enquiry.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endwith %}

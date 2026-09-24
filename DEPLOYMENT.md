@@ -116,6 +116,7 @@ DJANGO_ALLOWED_HOSTS=zacoinfotech.com,www.zacoinfotech.com
 DJANGO_SECURE_SSL_REDIRECT=False   # flip to True after step 8 (HTTPS)
 EMAIL_HOST_USER=your-address@gmail.com
 EMAIL_HOST_PASSWORD=<the new app password from step 0>
+LEAD_NOTIFICATION_EMAILS=info@zacoinfotech.com,abhiraj@zacocomputer.com
 ```
 
 `.env` is gitignored — it must only ever exist on the server, never in the
@@ -129,7 +130,7 @@ Still as `abc`, with the venv active:
 
 ```bash
 cd /home/abc/zaco/website
-python manage.py migrate
+python manage.py migrate --fake-initial
 python manage.py collectstatic --noinput
 python manage.py createsuperuser
 ```
@@ -148,6 +149,25 @@ sudo mkdir -p /home/abc/zaco/website/media
 sudo chown -R abc:www-data /home/abc/zaco/website/media
 sudo chmod -R 2775 /home/abc/zaco/website/media   # setgid so new uploads inherit www-data
 ```
+
+---
+
+### Test that enquiry emails actually arrive
+
+Contact-form and newsletter submissions are saved to the database *and*
+emailed to every address in `LEAD_NOTIFICATION_EMAILS`. If SMTP is
+misconfigured the visitor still sees the thank-you message and the lead is
+kept (see it in `/admin/` -> Contacts), but nothing is emailed - the error is
+written to the Gunicorn log. Send a test from the Django shell before going
+live:
+
+```bash
+cd /home/abc/zaco/website && source ../venv/bin/activate
+python manage.py shell -c "from django.core.mail import send_mail; from django.conf import settings; print(send_mail('Zaco SMTP test', 'It works.', settings.DEFAULT_FROM_EMAIL, settings.LEAD_NOTIFICATION_EMAILS))"
+```
+
+It prints `1` on success. A Gmail `530 Authentication Required` error means
+`EMAIL_HOST_USER` / `EMAIL_HOST_PASSWORD` in `.env` are missing or wrong.
 
 ---
 
@@ -271,7 +291,7 @@ git pull
 source venv/bin/activate
 pip install -r website/requirement.txt
 cd website
-python manage.py migrate
+python manage.py migrate --fake-initial
 python manage.py collectstatic --noinput
 sudo systemctl restart gunicorn-zaco
 ```

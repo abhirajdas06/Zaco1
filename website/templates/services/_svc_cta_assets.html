@@ -1,0 +1,124 @@
+{% comment %}
+  Shared CTA styling + behaviour for every service page. Include ONCE per page, near the end.
+  Provides: button/form/section styles, the mobile sticky Call/WhatsApp/Quote bar,
+  click tracking (call, WhatsApp, CTA), utm/gclid capture into the lead form, double-submit guard,
+  and the Google/Meta conversion events fired after a successful lead.
+  Used together with services/_svc_hero_cta.html and services/_svc_enquiry.html.
+  Params: service_name (lower-case, for the WhatsApp text), lead_key (event label, e.g. "web_development").
+{% endcomment %}
+{% with wa_msg="Hi Zaco, I'm interested in "|add:service_name|add:"." %}
+<!-- Sticky call / WhatsApp / quote bar (mobile only) -->
+  <div class="zc-sticky" role="navigation" aria-label="Quick contact">
+    <a href="tel:{{ CONTACT_PHONE_TEL }}" data-cta="sticky_call"><i class="fas fa-phone-alt"></i> Call</a>
+    <a href="https://wa.me/{{ CONTACT_WHATSAPP }}?text={{ wa_msg|urlencode }}" target="_blank" rel="noopener" data-cta="sticky_whatsapp" class="zc-sticky-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="#enquiry" data-cta="sticky_quote" class="zc-sticky-quote">Free Quote</a>
+  </div>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    #enquiry { scroll-margin-top: 80px; }
+    .zc-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 18px; }
+    .zc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 14px 26px; border-radius: 8px; border: 2px solid transparent; font: 600 16px/1.2 Poppins, Arial, sans-serif; text-decoration: none !important; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease; }
+    .zc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(35, 38, 112, .22); }
+    .zc-btn-primary { background: #f25c00; color: #fff !important; }
+    .zc-btn-primary:hover { background: #d94f00; }
+    .zc-btn-outline { background: #fff; color: #232670 !important; border-color: #232670; }
+    .zc-btn-outline:hover { background: #232670; color: #fff !important; }
+    .zc-btn-wa { background: #128c4a; color: #fff !important; }
+    .zc-btn-wa:hover { background: #0e6f3a; }
+    .zc-btn-block { width: 100%; padding: 16px; font-size: 18px; }
+    .zc-btn:disabled { opacity: .7; cursor: wait; transform: none; }
+    .zc-trust, .zc-points { list-style: none; margin: 0; padding: 0; }
+    .zc-trust { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+    .zc-trust li, .zc-points li { color: #282650; font-weight: 500; font-size: 15px; }
+    .zc-trust i, .zc-points i { color: #128c4a; margin-right: 6px; }
+    .zc-points li { margin-bottom: 10px; }
+
+    .zc-enquiry { background: linear-gradient(135deg, #f4f5fb 0%, #fff4ec 100%); padding: 80px 0; }
+    .zc-eyebrow { display: inline-block; color: #f25c00; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; margin-bottom: 10px; }
+    .zc-enq-copy h2 { font: 700 38px/1.2 Poppins, Arial, sans-serif; color: #232670; margin-bottom: 14px; }
+    .zc-enq-copy p { color: #4a4a68; font-size: 17px; line-height: 1.6; }
+    .zc-form { position: relative; background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 18px 50px rgba(35, 38, 112, .16); }
+    .zc-form h3 { font: 700 26px/1.2 Poppins, Arial, sans-serif; color: #232670; margin: 0 0 4px; }
+    .zc-form-sub { color: #6b6b85; margin: 0 0 20px; }
+    .zc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .zc-field { margin-bottom: 14px; }
+    .zc-field label { display: block; font: 600 14px/1.3 Poppins, Arial, sans-serif; color: #282650; margin-bottom: 6px; }
+    .zc-field label span { font-weight: 400; color: #8a8aa3; }
+    .zc-field input, .zc-field select, .zc-field textarea { width: 100%; border: 1.5px solid #d5d8e8; border-radius: 8px; padding: 12px 14px; font: 400 16px/1.4 Poppins, Arial, sans-serif; color: #222; background: #fff; }
+    .zc-field input:focus, .zc-field select:focus, .zc-field textarea:focus { outline: 3px solid rgba(242, 92, 0, .25); border-color: #f25c00; }
+    .zc-privacy { margin: 12px 0 0; text-align: center; font-size: 13px; color: #6b6b85; }
+
+    .zc-hero-cta { margin-top: 6px; }
+    .zc-hero-cta .zc-cta-row { margin-top: 10px; }
+
+    @media (max-width: 991px) {
+      .zc-hero-cta .zc-cta-row, .zc-hero-cta .zc-trust { justify-content: center; }
+    }
+    .zc-sticky { display: none; }
+    @media (max-width: 767px) {
+      body { padding-bottom: 68px; }
+      .zc-row { grid-template-columns: 1fr; gap: 0; }
+      .zc-enquiry { padding: 48px 0; }
+      .zc-enq-copy h2 { font-size: 28px; }
+      .zc-form { padding: 22px 18px; margin-top: 28px; }
+      .zc-hero-cta .zc-btn, .zc-enq-copy .zc-btn { flex: 1 1 100%; }
+      .zc-sticky { display: grid; grid-template-columns: 1fr 1fr 1.2fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; background: #fff; box-shadow: 0 -4px 18px rgba(0, 0, 0, .18); }
+      .zc-sticky a { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 16px 6px; font: 600 15px/1 Poppins, Arial, sans-serif; color: #232670; text-decoration: none; }
+      .zc-sticky .zc-sticky-wa { color: #fff; background: #128c4a; }
+      .zc-sticky .zc-sticky-quote { color: #fff; background: #f25c00; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      function ev(name, params) { try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {} }
+      function fb(name) { try { if (window.fbq) fbq('track', name); } catch (e) {} }
+
+      // Click tracking for every CTA (call / WhatsApp / scroll-to-form)
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a[data-cta]') : null;
+        if (!a) return;
+        var cta = a.getAttribute('data-cta'), href = a.getAttribute('href') || '';
+        if (href.indexOf('tel:') === 0) { ev('click_to_call', { cta: cta }); fb('Contact'); }
+        else if (href.indexOf('wa.me') > -1) { ev('click_whatsapp', { cta: cta }); fb('Contact'); }
+        else { ev('cta_click', { cta: cta }); }
+      });
+
+      // Keep ad attribution (utm_*, gclid) so it is emailed with the lead
+      try {
+        var q = new URLSearchParams(window.location.search), parts = [];
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach(function (k) {
+          var v = q.get(k); if (v) parts.push(k + '=' + v);
+        });
+        if (parts.length) sessionStorage.setItem('zc_tracking', parts.join('&'));
+        var field = document.getElementById('zc-tracking');
+        if (field) field.value = (sessionStorage.getItem('zc_tracking') || '').slice(0, 500);
+      } catch (e) {}
+
+      // After a submit we redirect to #enquiry; the theme's preloader resets the scroll position, so re-apply it
+      if (window.location.hash === '#enquiry') {
+        window.addEventListener('load', function () {
+          setTimeout(function () { var el = document.getElementById('enquiry'); if (el) el.scrollIntoView(); }, 400);
+        });
+      }
+
+      // Prevent double submissions
+      var form = document.getElementById('zc-lead-form');
+      if (form) form.addEventListener('submit', function () {
+        var b = form.querySelector('button[type=submit]');
+        if (b) { b.disabled = true; b.textContent = 'Sending...'; }
+      });
+    })();
+  </script>
+
+  {% for message in messages %}{% if 'lead' in message.tags %}
+  <script>
+    /* Lead form submitted successfully - report the conversion */
+    (function () {
+      try { if (window.gtag) gtag('event', 'generate_lead', { form: '{{ lead_key }}' }); } catch (e) {}
+      try { if (window.fbq) fbq('track', 'Lead'); } catch (e) {}
+    })();
+  </script>
+  {% endif %}{% endfor %}
+{% endwith %}

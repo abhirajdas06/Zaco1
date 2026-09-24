@@ -1,0 +1,19 @@
+{% comment %}
+  Hero call-to-action block shared by every service page.
+  Params: service_name (lower-case, e.g. "website development") - used in the WhatsApp message.
+  Styles live in services/_svc_cta_assets.html.
+{% endcomment %}
+{% with wa_msg="Hi Zaco, I'm interested in "|add:service_name|add:"." %}
+<div class="zc-hero-cta">
+    <div class="zc-cta-row">
+        <a href="#enquiry" class="zc-btn zc-btn-primary" data-cta="hero_quote"><i class="fas fa-paper-plane"></i> Get a Free Quote</a>
+        <a href="tel:{{ CONTACT_PHONE_TEL }}" class="zc-btn zc-btn-outline" data-cta="hero_call"><i class="fas fa-phone-alt"></i> Call {{ CONTACT_PHONE }}</a>
+        <a href="https://wa.me/{{ CONTACT_WHATSAPP }}?text={{ wa_msg|urlencode }}" target="_blank" rel="noopener" class="zc-btn zc-btn-wa" data-cta="hero_whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+    <ul class="zc-trust">
+        <li><i class="fas fa-check-circle"></i> Free consultation</li>
+        <li><i class="fas fa-check-circle"></i> No-obligation quote</li>
+        <li><i class="fas fa-check-circle"></i> Tailored to your business</li>
+    </ul>
+</div>
+{% endwith %}

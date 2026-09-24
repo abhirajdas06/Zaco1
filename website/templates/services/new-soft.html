@@ -11,14 +11,14 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Custom website, e-commerce and web application development by Zaco. Get a free, no-obligation quote - call {{ CONTACT_PHONE }} or WhatsApp us.">
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6766028831.js" crossorigin="anonymous"></script>
 
-    <title>Web Development</title>
+    <title>Website Development Company | Get a Free Quote - Zaco</title>
 
     <!-- Bootstrap core CSS -->
     {% comment %} <link href="{% static 'assets/new-web-css/bootstrap.min.css' %}" rel="stylesheet"> {% endcomment %}
@@ -116,16 +116,7 @@
             </h1>
             <h5 class="bannerhead">We are here to deliver you finest web development services with clear results and development process at a <b style="color:#282650 !important">minimal cost.</b>
             </h5>
-            <div class="dia-banner-btn d-flex">
-               
-                    {% comment %} <a href="https://www.youtube.com/watch?v=kxPCFljwJws"
-                        class="lightbox-image overlay-box"> {% endcomment %}
-                        {% comment %} <i class="fa fa-play"></i></a> {% endcomment %}
-               
-                <div class="dia-abt-btn text-center d-inline-block">
-                    <a href="/contact">Contact Us</a>
-                </div>
-            </div>
+            {% include "services/_svc_hero_cta.html" with service_name="website development" %}
         </div>
     </div>
   </section>
@@ -238,7 +229,7 @@
 
                              {% comment %} table start {% endcomment %}
                              {% comment %} <div class="it-nw-btn text-center">
-                              <a class="d-flex justify-content-center align-items-center" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                              <a class="d-flex justify-content-center align-items-center" href="#enquiry" data-cta="service_quote">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
                             </div> {% endcomment %}
 
                         {% comment %} table end {% endcomment %}
@@ -273,7 +264,7 @@
                           
                           {% comment %} table start {% endcomment %}
                           <div class="it-nw-btn text-center">
-                            <a class="d-flex justify-content-center align-items-center" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                            <a class="d-flex justify-content-center align-items-center" href="#enquiry" data-cta="service_quote">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
                           </div>
 
 
@@ -304,7 +295,7 @@
                           
                           {% comment %} table start {% endcomment %}
                           <div class="it-nw-btn text-center">
-                            <a class="d-flex justify-content-center align-items-center" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                            <a class="d-flex justify-content-center align-items-center" href="#enquiry" data-cta="service_quote">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
                           </div>
 
 
@@ -338,7 +329,7 @@
                          
                          <!-- HTML !-->
                          <div class="it-nw-btn text-center">
-                          <a class="d-flex justify-content-center align-items-center" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                          <a class="d-flex justify-content-center align-items-center" href="#enquiry" data-cta="service_quote">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
                         </div>
 
 
@@ -367,7 +358,7 @@
 
                           {% comment %} table start {% endcomment %}
                           {% comment %} <div class="it-nw-btn text-center">
-                            <a class="d-flex justify-content-center align-items-center" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+                            <a class="d-flex justify-content-center align-items-center" href="#enquiry" data-cta="service_quote">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
                           </div> {% endcomment %}
 
                           {% comment %} table end {% endcomment %}
@@ -483,35 +474,7 @@
 </section>
 
 
-<section id="dia-newslatter" class="dia-newslatter-section position-relative">
-  <div class="container">
-      <div class="dia-newslatter-content">
-          <div class="row">
-              <div class="col-lg-8 offset-lg-2">
-                  <div class="dia-newslatter-text dia-headline pera-content" id="cnt">
-                      <h3>Looking For Web Development Services?</h3>
-                      <h5>Let's talk about your idea and create something amazing.</h5>
-                      <div class="nws-button text-capitalize" id="my-button">
-                        <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button" type="submit" value="Submit"> call us</button></a>
-                        <a href="https://wa.me/917710051543" target="_blank"> <button class="hover-btn res-button" type="submit" value="Submit"> chat with us</button></a>
-                    </div>
-                  </div>
-              </div>
-              {% comment %} <div class="col-lg-6">
-                  <div class="dia-newslatter-form  relative-position">
-                      <form action="#" method="post">
-                          {% csrf_token %}
-                          <input id="newsmail" name="email" type="email" placeholder="Enter your email address"> 
-                        
-                          
-                      
-                      <span id="newsmailMsg"></span>
-                  </div>
-              </div> {% endcomment %}
-          </div>
-      </div>
-  </div>
-</section>
+{% include "services/_svc_enquiry.html" with service_key="web" service_name="website development" heading="Looking For Web Development Services?" point1="Custom websites, e-commerce, web apps &amp; CMS" point2="Design mock-up reviewed with you before we build" point3="Clear process from first call to delivery" %}
       <!-- End of newslatter section
           ============================================= -->
 
@@ -519,6 +482,8 @@
 
  
 
+
+  {% include "services/_svc_cta_assets.html" with service_name="website development" lead_key="web_development" %}
 
   <!-- Scripts -->
   <script src="{% static 'assets/new-web-js/jquery.min.js' %}"></script>

@@ -5,13 +5,13 @@
 {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Technology strategy and engineering consulting by Zaco. Get a free, no-obligation consultation - call {{ CONTACT_PHONE }} or WhatsApp us.">
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title>Technical Consulting Services</title>
+    <title>Technical Consulting Services | Get a Free Quote - Zaco</title>
 
     <!-- Bootstrap core CSS -->
     {% comment %} <link href="{% static 'assets/new-tech-css/bootstrap.min.css' %}" rel="stylesheet"> {% endcomment %}
@@ -92,16 +92,7 @@
           </h1>
           <h5 class="bannerhead">We're a team of engineering experts with hands-on experience in helping you align technology needs with business goals. We offer a range of technical consultancy services to help you get the most out of your technology investments.
           </h5>
-          <div class="dia-banner-btn d-flex">
-             
-                  {% comment %} <a href="https://www.youtube.com/watch?v=kxPCFljwJws"
-                      class="lightbox-image overlay-box"> 
-                     <i class="fa fa-play"></i></a>  {% endcomment %}
-             
-              <div class="dia-abt-btn text-center d-inline-block">
-                  <a href="/contact">Contact Us</a>
-              </div>
-          </div>
+          {% include "services/_svc_hero_cta.html" with service_name="technical consulting" %}
       </div>
   </div>
 </section> 
@@ -278,35 +269,7 @@
   <!-- Start of newslatter section
         ============================================= -->
        
-<section id="dia-newslatter" class="dia-newslatter-section position-relative">
-  <div class="container">
-      <div class="dia-newslatter-content">
-          <div class="row">
-              <div class="col-lg-8 offset-lg-2">
-                  <div class="dia-newslatter-text dia-headline pera-content" id="cnt">
-                      <h3>Looking For Technical Consultancy Services?</h3>
-                      <h5>Let's talk about your idea and create something amazing.</h5>
-                      <div class="nws-button text-capitalize" id="my-button">
-                        <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button" type="submit" value="Submit"> Call Us</button></a>
-                        <a href="https://wa.me/917710051543" target="_blank"> <button class="hover-btn res-button" type="submit" value="Submit"> Chat With Us</button></a>
-                    </div>
-                  </div>
-              </div>
-              {% comment %} <div class="col-lg-6">
-                  <div class="dia-newslatter-form  relative-position">
-                      <form action="#" method="post">
-                          {% csrf_token %}
-                          <input id="newsmail" name="email" type="email" placeholder="Enter your email address"> 
-                        
-                          
-                      
-                      <span id="newsmailMsg"></span>
-                  </div>
-              </div> {% endcomment %}
-          </div>
-      </div>
-  </div>
-</section>
+{% include "services/_svc_enquiry.html" with service_key="consult" service_name="technical consulting" heading="Looking For Technical Consultancy Services?" point1="Technology strategy &amp; architecture advice" point2="Hands-on engineers, not just slideware" point3="Clear next steps from the first call" %}
       <!-- End of newslatter section
           ============================================= -->
 
@@ -335,6 +298,8 @@
       
   </script>
 </body>
+{% include "services/_svc_cta_assets.html" with service_name="technical consulting" lead_key="technical_consulting" %}
+
 {% endblock body_about %}
 
 

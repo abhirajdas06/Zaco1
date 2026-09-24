@@ -21,7 +21,7 @@
                                         </g>
                                     </g>
                                 </g>
-                            </svg> <span id="phone-text1">+91 98765 43210</span></a>
+                            </svg> <span id="phone-text1">{{ CONTACT_PHONE }}</span></a>
                         <a href="#" id="address-link1" style="margin-right:10px"><i class="fas fa-map-marker-alt"
                                 style="color:black"></i> <span id="address-text1">123, India Street, Delhi</span></a>
                     </div> {% endcomment %}
@@ -43,7 +43,7 @@
     const countryDetails1 = {
         // "IN": {
         //     "email": "info@india.com",
-        //     "phone": "+91 98765 43210",
+        //     "phone": "{{ CONTACT_PHONE }}",
         //     "address": "123, India Street, Delhi"
         // },
         "USA": {
@@ -53,12 +53,12 @@
         },
         "UK": {
             "email": "info@zacocomputer.com",
-            "phone": "+44 7785 246 591",
+            "phone": "{{ CONTACT_PHONE }}",
             "address": "124 City Road, London, England, EC1V 2NX."
         },
         "CA": {
             "email": "info@zacocomputer.com",
-            "phone": "+1 587 435 3187",
+            "phone": "{{ CONTACT_PHONE }}",
             "address": "135 Lower Sherbourne Street, M5A 1Y4, Toronto, ON."
         }
     };
@@ -90,7 +90,7 @@ function updateContactDetails1(country) {
     } else {
         // If no details are found, reset to default (India)
         document.getElementById('email-text1').textContent = 'info@india.com';
-        document.getElementById('phone-text1').textContent = '+91 98765 43210';
+        document.getElementById('phone-text1').textContent = '{{ CONTACT_PHONE }}';
         document.getElementById('address-text1').textContent = '123, India Street, Delhi';
 
         document.getElementById('phone-link1').style.display = 'inline';

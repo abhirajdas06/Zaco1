@@ -257,9 +257,9 @@
                             <h3>Get Started Today!</h3>
                             <h5>Ready to launch your website with our shared hosting solutions? Choose the plan that best suits your needs and get started today!</h5>
                             <div class="nws-button text-capitalize" id="my-button">
-                                <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button"
+                                <a href="tel:{{ CONTACT_PHONE_TEL }}" class="btn-gap"> <button class="hover-btn res-button"
                                         type="submit" value="Submit"> call us</button></a>
-                                <a href="https://wa.me/917710051543" target="_blank"> <button
+                                <a href="https://wa.me/{{ CONTACT_WHATSAPP }}" target="_blank"> <button
                                         class="hover-btn res-button" type="submit" value="Submit"> chat with
                                         us</button></a>
                             </div>
@@ -267,8 +267,9 @@
                     </div>
                     {% comment %} <div class="col-lg-6">
                         <div class="dia-newslatter-form  relative-position">
-                            <form action="#" method="post">
+                            <form action="{% url 'subscribe' %}" method="post">
                                 {% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.path }}">
                                 <input id="newsmail" name="email" type="email" placeholder="Enter your email address">
 
 
@@ -296,8 +297,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="dia-newslatter-form  relative-position">
-                            <form action="#" method="post">
+                            <form action="{% url 'subscribe' %}" method="post">
                                 {% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.path }}">
                                 <input id="newsmail" name="email" type="email" placeholder="Enter your email address">
                                 <div class="nws-button position-absolute text-capitalize">
                                     <button class="hover-btn" type="submit" value="Submit"> Subscribe</button>

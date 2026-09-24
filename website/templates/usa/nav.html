@@ -3,6 +3,7 @@
 
 <body>
     {% block nav %}
+    {% include "_messages.html" %}
 
 
 <!-- Start of header section
@@ -156,7 +157,7 @@
                         {% comment %} <li><span class="fas fa-map-marker-alt"></span><a class=" lightbox-image overlay-box"
                                 href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd.+mumbai">3,
                                 DLH Park, Goregaon (W), Mumbai.</a></li>
-                        <li><span class="fas fa-phone"></span><a href="tel:+91-22-69288800">Call us</a></li> {% endcomment %}
+                        <li><span class="fas fa-phone"></span><a href="tel:{{ CONTACT_PHONE_TEL }}">Call us</a></li> {% endcomment %}
                         <li><span class="fas fa-envelope"></span><a href="mailto:info@zacoinfotech.com">E-mail us</a> 
                         </li>
                         <div class="footersocial text-md-left">

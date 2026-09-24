@@ -1,0 +1,20 @@
+{% comment %}Site-wide flash messages (form success / error). Included by header.html and the country nav templates.{% endcomment %}
+{% if messages %}
+<style>
+  .site-flash-wrap{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100000;width:min(560px,calc(100vw - 24px));display:flex;flex-direction:column;gap:8px}
+  .site-flash{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:10px;color:#fff;font:500 15px/1.4 Poppins,Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .site-flash.ok{background:#1e8e4e}
+  .site-flash.err{background:#c0392b}
+  .site-flash span{flex:1}
+  .site-flash button{background:none;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:0 2px}
+</style>
+<div class="site-flash-wrap" role="status" aria-live="polite">
+  {% for message in messages %}
+  <div class="site-flash {% if 'danger' in message.tags or 'error' in message.tags %}err{% else %}ok{% endif %}">
+    <span>{{ message }}</span>
+    <button type="button" aria-label="Close" onclick="this.parentNode.remove()">&times;</button>
+  </div>
+  {% endfor %}
+</div>
+<script>setTimeout(function(){var w=document.querySelector('.site-flash-wrap');if(w){w.style.transition='opacity .4s';w.style.opacity='0';setTimeout(function(){w.remove()},450)}},9000);</script>
+{% endif %}

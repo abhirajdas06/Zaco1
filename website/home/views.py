@@ -1,78 +1,128 @@
-from wsgiref.util import request_uri
-from django.shortcuts import render, redirect
-from .models import Contact
+import logging
+
+from django.conf import settings
 from django.contrib import messages
-from .forms import SubscibersForm
-from website.settings import EMAIL_HOST_USER
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from django.shortcuts import render, redirect
+from django.utils.http import url_has_allowed_host_and_scheme
+from django.views.decorators.http import require_POST
+
 from blog.models import Post
+from .forms import ContactForm, SubscibersForm
+from .models import Contact, Subscribers
+
+logger = logging.getLogger(__name__)
 
 
-# home canada
+def _notify_team(subject, body, reply_to=None):
+    """Email the lead recipients. Never raises: the lead is already saved in
+    the database, so an SMTP outage must not turn into a 500 for the visitor.
+    Returns True if the mail was handed to the mail server."""
+    try:
+        EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=settings.LEAD_NOTIFICATION_EMAILS,
+            reply_to=[reply_to] if reply_to else None,
+        ).send(fail_silently=False)
+        return True
+    except Exception:
+        logger.exception('Could not send lead notification email: %s', subject)
+        return False
 
-#newsletter
-def subs(request):   
-    if request.method == 'POST':
-        form = SubscibersForm(request.POST)
-        
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Subscription Successful')
-            return redirect('/')
 
-    else:
-        form = SubscibersForm()
-        context = {
-        'form': form,
-        }
-        
+def _safe_next(request, default):
+    """Where to send the visitor back to after a form post (open-redirect safe)."""
+    target = request.POST.get('next') or request.META.get('HTTP_REFERER') or default
+    if url_has_allowed_host_and_scheme(
+        target, allowed_hosts={request.get_host()}, require_https=request.is_secure()
+    ):
+        return target
+    return default
 
 
 # Create your views here.
 def index(request):
-    a = subs(request)
     return render(request,"index-6.html")
 
 def about(request):
-    a = subs(request)
     return render(request,"about.html")
 
 def service(request):
-    a = subs(request)
     return render(request,"canada/service.html")
 
+
 def contact(request):
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('mail')
-        phone = request.POST.get('phone')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-
-        if len(name) < 2 or len(email) < 3 or len(subject) < 2:
-            messages.error(request, "Please fill the form correctly")
-        else:
-            contact = Contact.objects.create(name=name, email=email, phone=phone, subject=subject, message=message)
-            contact.save()
-
-            # Sending email (your existing code)
-            emailhead = 'Inquiry from Zaco Infotech Website'
-            newline = '\n'
-            emailmessage = f"Name: {name}{newline}Email: {email}{newline}Contact: {phone}{newline}Subject: {subject}{newline}Inquiry: {message}"
-            from_email = 'noreply@zacoinfotech.com'
-            send_mail(emailhead, emailmessage, from_email, ['info@zacoinfotech.com'], fail_silently=False)
-
-            messages.success(request, "Thank you for your submission. A member of our team will be in touch with you shortly.")
-
-            return redirect('/contact')
-    else:
+    """Contact page (GET) and the endpoint every contact/enquiry form posts to."""
+    if request.method != "POST":
         return render(request, "contact.html")
 
-        
+    back = _safe_next(request, '/contact')
+    form = ContactForm(request.POST)
+
+    if not form.is_valid():
+        # Spam bots get a silent success so they don't learn what tripped us.
+        if 'website' in form.errors:
+            return redirect(back)
+        first_error = next(iter(form.errors.values()))[0]
+        messages.error(request, f"Please check the form and try again. {first_error}")
+        return redirect(back)
+
+    data = form.cleaned_data
+    enquiry = data['message'] or '(no message provided)'
+    Contact.objects.create(
+        name=data['name'], email=data['mail'], phone=data['phone'],
+        subject=data['subject'], message=enquiry,
+    )
+
+    _notify_team(
+        subject=f"Website enquiry: {data['subject']} - {data['name']}",
+        body="\n".join([
+            f"Name: {data['name']}",
+            f"Email: {data['mail']}",
+            f"Phone: {data['phone']}",
+            f"Subject: {data['subject']}",
+            f"Page: {request.META.get('HTTP_REFERER', 'unknown')}",
+            f"Ad tracking: {data['tracking'] or 'none'}",
+            "",
+            "Message:",
+            enquiry,
+        ]),
+        reply_to=data['mail'],
+    )
+
+    messages.success(
+        request,
+        "Thank you for your submission. A member of our team will be in touch with you shortly.",
+        extra_tags='lead',
+    )
+    return redirect(back)
+
+
+@require_POST
+def subscribe(request):
+    """Newsletter signup - the target of every 'Enter your email address' form."""
+    back = _safe_next(request, '/')
+    form = SubscibersForm(request.POST)
+
+    if not form.is_valid():
+        messages.error(request, "Please enter a valid email address.")
+        return redirect(back)
+
+    email = form.cleaned_data['email']
+    _, created = Subscribers.objects.get_or_create(email=email)
+    if created:
+        _notify_team(
+            subject=f"New newsletter subscriber: {email}",
+            body=f"{email} subscribed to the newsletter from {request.META.get('HTTP_REFERER', 'the website')}.",
+            reply_to=email,
+        )
+    messages.success(request, "Subscription Successful")
+    return redirect(back)
 
 
 def technologies(request):
-    a = subs(request)
     return render(request,"technologies/technologies.html") 
 
 def frontend(request):
@@ -85,7 +135,6 @@ def database(request):
     return render(request,"technologies/database.html") 
 
 def solutions(request):
-    a = subs(request)
     return render(request,"") 
 
 def asset_management(request):

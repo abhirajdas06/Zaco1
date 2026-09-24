@@ -3,6 +3,7 @@
 
 <body>
     {% block nav %}
+    {% include "_messages.html" %}
     {% comment %} {% block nav %} {% endcomment %}
 
 
@@ -151,7 +152,7 @@
 									</g>
 								</g>
 							</g>
-						</svg></span><a href="tel:+1 587 435 3187">+1 587 435 3187</a></li></br>
+						</svg></span><a href="tel:{{ CONTACT_PHONE_TEL }}">{{ CONTACT_PHONE }}</a></li></br>
                         <li><span class="fas fa-envelope"></span><a href="mailto:info@zacoinfotech.com">info@zacoinfotech.com</a>
                         </li>
                         <div class="footersocial text-md-left">

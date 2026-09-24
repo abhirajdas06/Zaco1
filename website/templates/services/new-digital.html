@@ -5,12 +5,12 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="SEO, social media marketing and paid ads by Zaco. Get a free, no-obligation quote - call {{ CONTACT_PHONE }} or WhatsApp us.">
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Digital Marketing</title>
+    <title>Digital Marketing Services | Get a Free Quote - Zaco</title>
 
     <!-- Bootstrap core CSS -->
     {% comment %} <link href="{% static 'assets/new-web-css/bootstrap.min.css' %}" rel="stylesheet"> {% endcomment %}
@@ -71,16 +71,7 @@
           </h1>
           <h5 class="bannerhead">Are you looking for SEO, web design, or social media marketing services? Contact our Digital Expert Soon. Utilize social media marketing to expand your online network. Please contact our Experts as soon as possible.
           </h5>
-          <div class="dia-banner-btn d-flex">
-             
-                  {% comment %} <a href="https://www.youtube.com/watch?v=kxPCFljwJws"
-                      class="lightbox-image overlay-box"> {% endcomment %}
-                      {% comment %} <i class="fa fa-play"></i></a> {% endcomment %}
-             
-              <div class="dia-abt-btn text-center d-inline-block start-btn btn-res">
-                  <a href="/contact">Contact Us</a>
-              </div>
-          </div>
+          {% include "services/_svc_hero_cta.html" with service_name="digital marketing" %}
       </div>
   </div>
 </section>
@@ -248,7 +239,7 @@
                       </div>
                      <p>Social media marketing is the most effective method for boosting web traffic and sales. Our digital marketing services offer real-time solutions as well as access to a variety of media platforms. Through a comprehensive suite of performance and advertising solutions, we assist marketers in improving their brand image, influencing buyers, and generating revenue. We assist you in performing in the digital landscape in order to reach, grow, and convert your audience..</p>
                       <div class="dia-service-btn-digi wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                        <a href="#">Read More ---></a>
+                        <a href="#enquiry" data-cta="learn_more">Read More ---></a>
 
                       </div>
                   </div>
@@ -301,7 +292,7 @@
                       </div>
                   </div>
                   <div class="dia-service-btn-digi wow fadeInUp" data-wow-delay="500ms" data-wow-duration="1000ms">
-                    <a href="#">Read More ---></a>
+                    <a href="#enquiry" data-cta="learn_more">Read More ---></a>
 
                   </div>
                       </div>
@@ -328,7 +319,7 @@
                         </div>
                        <p> We provide a variety of SEM services to give your company a competitive advantage. With our sem services, you can maximize business leverage at a low cost and risk. Rather than using a standard approach for each client, we create a custom SEM strategy to achieve the best results while taking into account your company's constraints, requirements, and objectives. <br><br> At the same time, we take a flexible approach to keep up with changing search engine algorithms in order to maximize ROI in the shortest amount of time. Our goal is to get you the desired traffic using search engines so that you can increase your sales and brand value.  </p>
                        <div class="dia-service-btn-digi wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                        <a href="#">Read More ---></a>
+                        <a href="#enquiry" data-cta="learn_more">Read More ---></a>
 
                       </div>
                     </div>
@@ -378,7 +369,7 @@
                         </div>
                     </div>
                     <div class="dia-service-btn-digi wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                      <a href="#">Read More ---></a>
+                      <a href="#enquiry" data-cta="learn_more">Read More ---></a>
   
                     </div>
                         </div>
@@ -394,35 +385,7 @@
 <!-- Start of newslatter section
         ============================================= -->
       
-<section id="dia-newslatter" class="dia-newslatter-section position-relative">
-  <div class="container">
-      <div class="dia-newslatter-content">
-          <div class="row">
-              <div class="col-lg-8 offset-lg-2">
-                  <div class="dia-newslatter-text dia-headline pera-content" id="cnt">
-                      <h3>Looking For Digital Marketing Services?</h3>
-                      <h5>Let's talk about your idea and create something amazing.</h5>
-                      <div class="nws-button text-capitalize" id="my-button">
-                        <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button" type="submit" value="Submit"> Call Us</button></a>
-                        <a href="https://wa.me/917710051543" target="_blank"> <button class="hover-btn res-button" type="submit" value="Submit"> Chat With Us</button></a>
-                    </div>
-                  </div>
-              </div>
-              {% comment %} <div class="col-lg-6">
-                  <div class="dia-newslatter-form  relative-position">
-                      <form action="#" method="post">
-                          {% csrf_token %}
-                          <input id="newsmail" name="email" type="email" placeholder="Enter your email address"> 
-                        
-                          
-                      
-                      <span id="newsmailMsg"></span>
-                  </div>
-              </div> {% endcomment %}
-          </div>
-      </div>
-  </div>
-</section>
+{% include "services/_svc_enquiry.html" with service_key="digital" service_name="digital marketing" heading="Looking For Digital Marketing Services?" point1="SEO, social media &amp; paid advertising" point2="Strategy built around your business goals" point3="Clear reporting from first call to results" %}
 
 
 
@@ -443,4 +406,6 @@
   <script src="{% static 'assets/new-dg-css/templatemo-custom.js' %}"></script>
 
 </body>
+{% include "services/_svc_cta_assets.html" with service_name="digital marketing" lead_key="digital_marketing" %}
+
 {% endblock body_about %}

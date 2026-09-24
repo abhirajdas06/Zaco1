@@ -399,15 +399,16 @@
                       <h3>Looking For Web Development Services?</h3>
                       <h5>Let's talk about your idea and create something amazing.</h5>
                       <div class="nws-button text-capitalize" id="my-button">
-                        <a href="tel:+91-22-69288800" class="btn-gap"> <button class="hover-btn res-button" type="submit" value="Submit"> Call Us</button></a>
-                        <a href="https://wa.me/917710051543" target="_blank"> <button class="hover-btn res-button" type="submit" value="Submit"> Chat With Us</button></a>
+                        <a href="tel:{{ CONTACT_PHONE_TEL }}" class="btn-gap"> <button class="hover-btn res-button" type="submit" value="Submit"> Call Us</button></a>
+                        <a href="https://wa.me/{{ CONTACT_WHATSAPP }}" target="_blank"> <button class="hover-btn res-button" type="submit" value="Submit"> Chat With Us</button></a>
                     </div>
                   </div>
               </div>
               {% comment %} <div class="col-lg-6">
                   <div class="dia-newslatter-form  relative-position">
-                      <form action="#" method="post">
+                      <form action="{% url 'subscribe' %}" method="post">
                           {% csrf_token %}
+                          <input type="hidden" name="next" value="{{ request.path }}">
                           <input id="newsmail" name="email" type="email" placeholder="Enter your email address"> 
                         
                           

@@ -393,8 +393,9 @@
                         </div>
                         {% comment %} <div class="col-lg-6">
                             <div class="dia-newslatter-form  relative-position">
-                                <form action="#" method="post">
+                                <form action="{% url 'subscribe' %}" method="post">
                                     {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.path }}">
                                     <input id="newsmail" name="email" type="email" placeholder="Enter your email address"> 
                                   
                                     
