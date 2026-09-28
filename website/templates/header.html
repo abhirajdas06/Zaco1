@@ -5,24 +5,7 @@
 
 <head>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EBQ1RKFL4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9EBQ1RKFL4');
-</script>
-
-
-
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MLQ8MTVW');</script>
-    <!-- End Google Tag Manager -->
+    {% if TRACKING_ENABLED %}{% include "google_tags.html" with slot="head" %}{% endif %}
 
 
     <meta charset="UTF-8">
@@ -88,16 +71,6 @@
 
 
    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841900284">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-16841900284');
-</script>
 </head>
 
 
@@ -110,10 +83,7 @@
 -->
     {% include "_messages.html" %}
 
-    <!-- Event snippet for Phone Call conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-
-    <!-- Meta Pixel Code -->
+<!-- Meta Pixel Code -->
 <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -133,11 +103,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
     <!-- Start of header section
         ============================================= -->
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLQ8MTVW"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div class="county-outter">
+<div class="county-outter">
 
 		{% include 'top.html' %}
 	</div>
@@ -537,6 +503,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
     </script>
 
+{% if TRACKING_ENABLED %}{% include "google_tags.html" with slot="body_end" %}{% endif %}
 </body>
 
 </html>

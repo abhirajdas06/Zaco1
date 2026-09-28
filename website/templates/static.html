@@ -37,6 +37,7 @@
     <!-- Include other CSS files here -->
     {% block extra_css %}
     {% endblock %}
+    {% if TRACKING_ENABLED %}{% include "google_tags.html" with slot="head" %}{% endif %}
 </head>
 <body>
     {% block nav %}

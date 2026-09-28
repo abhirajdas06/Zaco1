@@ -1,0 +1,76 @@
+{% load static %}
+{% comment %}Contact details cards (phone numbers, email, location) for the contact page.{% endcomment %}
+<style>
+  /* Equal-height, evenly spaced cards (the theme sizes each card to its own content). */
+  #smm-social .smm-social-wrapper > .row { align-items: stretch; }
+  #smm-social .smm-social-wrapper > .row > [class*="col-"] { display: flex; margin-bottom: 24px; }
+  #smm-social .smm-social-icon-text { display: flex; align-items: flex-start; gap: 18px; width: 100%; height: 100%; padding: 28px 24px; box-sizing: border-box; }
+  #smm-social .smm-social-icon { float: none; margin: 0; flex: 0 0 56px; }
+  #smm-social .smm-social-icon img { width: 56px; height: 56px; object-fit: contain; }
+  #smm-social .smm-social-text { flex: 1 1 auto; min-width: 0; }
+  #smm-social .smm-social-text p { margin: 0 0 10px; }
+  #smm-social .cd-item { display: block; margin-bottom: 12px; font-size: 16px; line-height: 1.45; overflow-wrap: anywhere; }
+  #smm-social .cd-item:last-child { margin-bottom: 0; }
+  #smm-social .cd-item small { display: block; margin-bottom: 2px; color: #8a8aa3; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
+  #smm-social .cd-item a { font-weight: 600; }
+  @media (max-width: 991px) {
+    #smm-social .smm-social-wrapper > .row > [class*="col-"] { margin-bottom: 18px; }
+  }
+</style>
+<section id="smm-social" class="smm-social-section position-relative">
+  <div class="container">
+    <div class="smm-social-wrapper">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="smm-social-icon-text">
+            <div class="smm-social-icon">
+              <img src="{% static 'assets/img/contact/phone.png' %}" alt="" />
+            </div>
+            <div class="smm-social-text pera-content">
+              <p>Phone</p>
+              <span class="cd-item">
+                <small>Mobile / WhatsApp</small>
+                <a href="tel:{{ CONTACT_PHONE_TEL }}">{{ CONTACT_PHONE }}</a>
+              </span>
+              <span class="cd-item">
+                <small>Office landline</small>
+                <a href="tel:{{ CONTACT_PHONE_2_TEL }}">{{ CONTACT_PHONE_2 }}</a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="smm-social-icon-text">
+            <div class="smm-social-icon">
+              <img src="{% static 'assets/img/contact/email.png' %}" alt="" />
+            </div>
+            <div class="smm-social-text pera-content">
+              <p>Email</p>
+              <span class="cd-item">
+                <small>Write to us</small>
+                <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="smm-social-icon-text">
+            <div class="smm-social-icon">
+              <img src="{% static 'assets/img/contact/placeholder.png' %}" alt="" />
+            </div>
+            <div class="smm-social-text pera-content">
+              <p>Location</p>
+              <span class="cd-item">
+                <small>Head office</small>
+                3, DLH Park, S. V. Road, Goregaon (West), Mumbai &ndash; 400062.
+              </span>
+              <span class="cd-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd." target="_blank" rel="noopener">View on Google Maps</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

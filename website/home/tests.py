@@ -38,7 +38,7 @@ class ContactFormTests(TestCase):
     def test_valid_submission_saves_and_emails_both_recipients(self):
         r = self.client.post(reverse('contact'), {**VALID, 'next': '/services/web-development#enquiry'})
         self.assertEqual(r.status_code, 302)
-        self.assertEqual(r['Location'], '/services/web-development#enquiry')
+        self.assertEqual(r['Location'], '/thank-you')
         self.assertEqual(Contact.objects.count(), 1)
         self.assertEqual(len(mail.outbox), 1)
         msg = mail.outbox[0]
@@ -47,10 +47,13 @@ class ContactFormTests(TestCase):
         self.assertIn('+91 98765 43210', msg.body)
         self.assertIn('Need a website for my clinic.', msg.body)
 
-    def test_success_message_is_tagged_as_lead_for_conversion_tracking(self):
+    def test_success_lands_on_a_personal_thank_you_page(self):
         r = self.client.post(reverse('contact'), VALID, follow=True)
-        tags = [m.tags for m in r.context['messages']]
-        self.assertTrue(any('lead' in t and 'success' in t for t in tags))
+        self.assertEqual(r.redirect_chain[-1][0], '/thank-you')
+        body = r.content.decode()
+        self.assertIn('Thank you, Asha!', body)
+        self.assertIn('Web Development - Custom Website', body)
+        self.assertIn('tel:+919702573082', body)
 
     def test_message_is_optional_for_landing_page_form(self):
         data = {**VALID, 'message': '', 'tracking': 'utm_source=google&gclid=abc'}
@@ -71,11 +74,13 @@ class ContactFormTests(TestCase):
         self.assertEqual(r.status_code, 302)
         self.assertEqual(Contact.objects.count(), 0)
 
-    def test_honeypot_is_silently_dropped(self):
-        r = self.client.post(reverse('contact'), {**VALID, 'website': 'http://spam.example'})
-        self.assertEqual(r.status_code, 302)
+    def test_honeypot_is_silently_dropped_without_a_conversion(self):
+        r = self.client.post(reverse('contact'), {**VALID, 'website': 'http://spam.example'}, follow=True)
         self.assertEqual(Contact.objects.count(), 0)
         self.assertEqual(len(mail.outbox), 0)
+        # bots see the thank-you page, but it must not report a conversion
+        self.assertEqual(r.redirect_chain[-1][0], '/thank-you')
+        self.assertNotIn("'generate_lead'", r.content.decode())
 
     def test_smtp_failure_still_saves_lead_and_thanks_visitor(self):
         with override_settings(EMAIL_BACKEND='home.tests.BrokenBackend'):
@@ -83,9 +88,17 @@ class ContactFormTests(TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(Contact.objects.count(), 1)
 
-    def test_redirect_target_cannot_leave_the_site(self):
-        r = self.client.post(reverse('contact'), {**VALID, 'next': 'https://evil.example/'})
-        self.assertEqual(r['Location'], '/contact')
+    def test_back_target_cannot_leave_the_site(self):
+        r = self.client.post(reverse('contact'), {**VALID, 'next': 'https://evil.example/'}, follow=True)
+        body = r.content.decode()
+        self.assertNotIn('evil.example', body)
+        # falls back to the contact page as the "back" link
+        self.assertIn('href="/contact"', body)
+
+    def test_invalid_submission_returns_to_the_form_not_the_thank_you_page(self):
+        r = self.client.post(reverse('contact'),
+                             {**VALID, 'mail': 'nope', 'next': '/services/web-development#enquiry'})
+        self.assertEqual(r['Location'], '/services/web-development#enquiry')
 
     def test_phone_up_to_20_chars_is_stored(self):
         self.client.post(reverse('contact'), {**VALID, 'phone': '+91 97025 73082'})
@@ -109,6 +122,10 @@ class NewsletterTests(TestCase):
         self.assertEqual(Subscribers.objects.count(), 1)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].to, RECIPIENTS)
+
+    def test_successful_signup_redirects_to_thank_you(self):
+        r = self.client.post(reverse('subscribe'), {'email': 'new@example.com', 'next': '/about'})
+        self.assertEqual(r['Location'], '/thank-you')
 
     def test_invalid_email_rejected(self):
         r = self.client.post(reverse('subscribe'), {'email': 'nope'}, follow=True)
@@ -136,7 +153,9 @@ class PageTests(TestCase):
             'contact/',
         )
     ]
-    OLD_NUMBERS = ['69288800', '9288 800', '7710051543', '587 435 3187',
+    # The old landline is now the intentional secondary number (022 6928 8800),
+    # so only its old display formats count as leftovers.
+    OLD_NUMBERS = ['+91-22-69288800', '+91 226 9288 800', '7710051543', '587 435 3187',
                    '7785 246 591', '98765 43210']
 
     def test_every_page_renders_with_new_number_only(self):
@@ -170,24 +189,104 @@ class PageTests(TestCase):
         self.assertIn('zc-sticky', body)
 
     def test_flash_message_is_rendered_visibly(self):
-        r = self.client.post('/subscribe', {'email': 'x@example.com', 'next': '/about'}, follow=True)
+        r = self.client.post('/subscribe', {'email': 'nope', 'next': '/about'}, follow=True)
         body = r.content.decode()
         self.assertIn('site-flash', body)
-        self.assertIn('Subscription Successful', body)
+        self.assertIn('Please enter a valid email address.', body)
+
+    def test_second_number_in_top_bar_and_contact_details_section(self):
+        home = self.client.get('/').content.decode()
+        self.assertIn('tel:+912269288800', home)
+        self.assertIn('022 6928 8800', home)
+        contact = self.client.get('/contact').content.decode()
+        self.assertIn('tel:+912269288800', contact)
+        self.assertIn('tel:+919702573082', contact)
+        self.assertIn('href="mailto:info@zacoinfotech.com"', contact)
+        self.assertNotIn('href="mail:', contact)
 
 
 @test_settings
-class LandingPageConversionTests(TestCase):
-    def test_conversion_events_fire_after_successful_lead(self):
+class ThankYouPageTests(TestCase):
+    def test_enquiry_redirects_to_thank_you_and_reports_conversion_once(self):
         r = self.client.post(reverse('contact'), {**VALID, 'next': '/services/web-development#enquiry'}, follow=True)
+        self.assertEqual(r.redirect_chain[-1][0], '/thank-you')
         body = r.content.decode()
-        self.assertIn("gtag('event', 'generate_lead'", body)
-        self.assertIn("fbq('track', 'Lead')", body)
-        self.assertIn('Thank you for your submission', body)
+        self.assertIn("'generate_lead'", body)
+        self.assertIn("fbq('track', isEnquiry ? 'Lead' : 'Subscribe')", body)
+        self.assertIn('href="/services/web-development"', body)   # back link, fragment stripped
+        self.assertIn('noindex', body)
+        # a refresh / revisit must NOT report the conversion again
+        again = self.client.get('/thank-you').content.decode()
+        self.assertNotIn("'generate_lead'", again)
+        self.assertIn('Thank you!', again)
 
-    def test_no_conversion_event_on_plain_page_view(self):
-        body = self.client.get('/services/web-development').content.decode()
-        self.assertNotIn("gtag('event', 'generate_lead'", body)
+    def test_direct_visit_shows_page_but_no_conversion(self):
+        r = self.client.get('/thank-you')
+        self.assertEqual(r.status_code, 200)
+        self.assertNotIn("'generate_lead'", r.content.decode())
+        self.assertEqual(r['Cache-Control'], 'no-store')
+
+    def test_newsletter_signup_gets_its_own_thank_you(self):
+        r = self.client.post('/subscribe', {'email': 'fan@example.com', 'next': '/about'}, follow=True)
+        self.assertEqual(r.redirect_chain[-1][0], '/thank-you')
+        body = r.content.decode()
+        self.assertIn("You're subscribed!", body)
+        self.assertIn("'sign_up'", body)
+
+    def test_every_form_page_posts_to_an_endpoint_that_ends_on_thank_you(self):
+        for next_url in ['/contact', '/services/', '/services/web-development', '/services/application-development',
+                         '/services/digital-marketing', '/services/ui-ux', '/services/custom-software',
+                         '/services/technical-consultation']:
+            with self.subTest(next=next_url):
+                r = self.client.post(reverse('contact'), {**VALID, 'next': next_url}, follow=True)
+                self.assertEqual(r.redirect_chain[-1][0], '/thank-you')
+                self.assertEqual(r.status_code, 200)
+
+    def test_country_visitors_get_their_own_layout(self):
+        for c in ('canada', 'usa', 'uk'):
+            with self.subTest(country=c):
+                r = self.client.post(reverse('contact'), {**VALID, 'next': f'/{c}/contact/'}, follow=True)
+                self.assertEqual(r.redirect_chain[-1][0], '/thank-you')
+                self.assertTemplateUsed(r, f'{c}/thank-you.html')
+                self.assertIn("'generate_lead'", r.content.decode())
+
+
+@test_settings
+class GoogleTagsTests(TestCase):
+    LAYOUT_PAGES = ['/', '/services/web-development', '/contact', '/thank-you',
+                    '/canada/', '/usa/contact/', '/uk/about/']
+
+    def test_tags_render_in_head_and_before_body_end_when_tracking_is_on(self):
+        with override_settings(TRACKING_ENABLED=True):
+            for url in self.LAYOUT_PAGES:
+                with self.subTest(url=url):
+                    body = self.client.get(url).content.decode()
+                    self.assertEqual(body.count('BOX 1: HEAD TAGS - PASTE BELOW'), 1)
+                    self.assertEqual(body.count('BOX 2: END-OF-BODY TAGS - PASTE BELOW'), 1)
+                    head_end = body.index('</head>')
+                    self.assertLess(body.index('BOX 1: HEAD TAGS - PASTE BELOW'), head_end)
+                    self.assertGreater(body.index('BOX 2: END-OF-BODY TAGS - PASTE BELOW'), head_end)
+                    self.assertLess(body.index('BOX 2: END-OF-BODY TAGS - PASTE BELOW'), body.rindex('</body>'))
+                    self.assertIn('googletagmanager.com/gtag/js?id=G-9EBQ1RKFL4', body)
+
+    def test_tags_are_absent_when_tracking_is_off(self):
+        with override_settings(TRACKING_ENABLED=False):
+            for url in self.LAYOUT_PAGES:
+                with self.subTest(url=url):
+                    body = self.client.get(url).content.decode()
+                    self.assertNotIn('PASTE BELOW', body)
+                    self.assertNotIn('googletagmanager', body)
+
+    def test_no_google_tag_left_hardcoded_in_layouts(self):
+        from pathlib import Path
+        from django.conf import settings
+        root = Path(settings.BASE_DIR) / 'templates'
+        offenders = [
+            str(p.relative_to(root)) for p in root.rglob('*.html')
+            if p.parts[-2] != 'extra' and p.name != 'google_tags.html'
+            and 'googletagmanager.com' in p.read_text(encoding='utf-8', errors='ignore')
+        ]
+        self.assertEqual(offenders, [])
 
 
 class ForgivingStorageTests(TestCase):
@@ -266,4 +365,5 @@ class ServicePagesCtaTests(TestCase):
                 self.assertEqual(r.status_code, 200)
                 self.assertEqual(mail.outbox[0].to, RECIPIENTS)
                 self.assertIn(option, mail.outbox[0].subject)
-                self.assertIn("gtag('event', 'generate_lead'", r.content.decode())
+                self.assertEqual(r.redirect_chain[-1][0], '/thank-you')
+                self.assertIn("'generate_lead'", r.content.decode())

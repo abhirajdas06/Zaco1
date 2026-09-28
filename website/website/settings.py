@@ -229,6 +229,15 @@ LEAD_NOTIFICATION_EMAILS = [
 CONTACT_PHONE_DISPLAY = '+91 97025 73082'
 CONTACT_PHONE_TEL = '+919702573082'
 CONTACT_WHATSAPP = '919702573082'
+# Second number, used for the Google Business Profile (GMB) listing.
+CONTACT_PHONE_2_DISPLAY = '022 6928 8800'
+CONTACT_PHONE_2_TEL = '+912269288800'
+CONTACT_EMAIL = 'info@zacoinfotech.com'
+
+# Google tags (templates/google_tags.html) are only rendered when this is on,
+# so local development never pollutes analytics. Defaults to on in production
+# (DEBUG off); force with TRACKING_ENABLED=True/False in .env.
+TRACKING_ENABLED = os.environ.get('TRACKING_ENABLED', str(not DEBUG)) == 'True'
 
 SUMMERNOTE_THEME = 'bs4'
 

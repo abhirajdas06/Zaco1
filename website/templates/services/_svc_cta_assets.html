@@ -96,7 +96,7 @@
         if (field) field.value = (sessionStorage.getItem('zc_tracking') || '').slice(0, 500);
       } catch (e) {}
 
-      // After a submit we redirect to #enquiry; the theme's preloader resets the scroll position, so re-apply it
+      // A rejected submit redirects back to #enquiry; the theme's preloader resets the scroll position, so re-apply it
       if (window.location.hash === '#enquiry') {
         window.addEventListener('load', function () {
           setTimeout(function () { var el = document.getElementById('enquiry'); if (el) el.scrollIntoView(); }, 400);
@@ -112,13 +112,5 @@
     })();
   </script>
 
-  {% for message in messages %}{% if 'lead' in message.tags %}
-  <script>
-    /* Lead form submitted successfully - report the conversion */
-    (function () {
-      try { if (window.gtag) gtag('event', 'generate_lead', { form: '{{ lead_key }}' }); } catch (e) {}
-      try { if (window.fbq) fbq('track', 'Lead'); } catch (e) {}
-    })();
-  </script>
-  {% endif %}{% endfor %}
+  {% comment %}The generate_lead / Lead conversion is reported on /thank-you (see _thank_you_body.html), not here.{% endcomment %}
 {% endwith %}

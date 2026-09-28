@@ -24,48 +24,7 @@
 
   <!-- Start of contact section
     ============================================= -->
-  {% comment %} <section id="smm-social" class="smm-social-section position-relative">
-    <div class="container">
-      <div class="smm-social-wrapper">
-        <div class="row">
-          <div class="col-lg-4 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-            <div class="smm-social-icon-text">
-              <div class="smm-social-icon float-left">
-                <img src="{% static 'assets/img/contact/phone.png' %}" alt="" />
-              </div>
-              <div class="smm-social-text pera-content">
-                <p>Phone</p>
-                <span><a href="tel:{{ CONTACT_PHONE_TEL }}">{{ CONTACT_PHONE }}</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-            <div class="smm-social-icon-text">
-              <div class="smm-social-icon float-left">
-                <img src="{% static 'assets/img/contact/email.png' %}" alt="" />
-              </div>
-              <div class="smm-social-text pera-content">
-                <p>Email</p>
-                <span><a href="mail:info@zacoinfotech.com">info@zacoinfotech.com</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 wow fadeFromUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-            <div class="smm-social-icon-text">
-              <div class="smm-social-icon float-left">
-                <img src="{% static 'assets/img/contact/placeholder.png' %}" alt="" />
-              </div>
-              <div class="smm-social-text pera-content">
-                <p>Location</p>
-                <span><a href="https://www.google.com/maps/search/?api=1&query=Zaco+Computers+Pvt.+Ltd."
-                    class="lightbox-image overlay-box">View on Google map</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> {% endcomment %}
+  {% include "_contact_details.html" %}
   <!-- End of contact section
     ============================================= -->
 
@@ -79,18 +38,7 @@
         </div>
         <div class="smm-about-text-wrap wow fadeFromRight" data-wow-delay="0ms" data-wow-duration="1500ms">
           <div class="smm-section-title smm-headline">
-            <div class="container">
-              {% if messages %}
-              <div class="messages">
-                {% for message in messages %}
-                <div class="alert alert-success" role="alert">
-                  {{ message }}
-                </div>
-                {% endfor %}
-              </div>
-              {% endif %}
-            </div>
-            <h5 class="mb-3">Get In Touch With Us At Any Of Our Offices</h5>
+<h5 class="mb-3">Get In Touch With Us At Any Of Our Offices</h5>
 
             {% comment %} <p>
               Looking to join our team? Here is our careers page or call our

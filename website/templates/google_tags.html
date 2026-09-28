@@ -1,0 +1,54 @@
+{% comment %}
+  GOOGLE TAGS - HOW TO USE
+  ------------------------
+  1. Google gives you a tag and says where it goes:
+       "in the <head>"                      ->  paste it in BOX 1 below
+       "before </body>" / "after <body>"    ->  paste it in BOX 2 below
+  2. Paste it between the two "PASTE BELOW" / "PASTE ABOVE" lines of that box.
+     Delete a tag you no longer want.
+  3. Save the file. Done.
+
+  Do not change the grey lines that start with { % (they make the boxes work).
+  Tags only show on the live website, never on your own computer.
+{% endcomment %}
+
+{% if slot == "head" %}
+<!-- ========== BOX 1: HEAD TAGS - PASTE BELOW THIS LINE ========== -->
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9EBQ1RKFL4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9EBQ1RKFL4');
+</script>
+
+<!-- Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841900284"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-16841900284');
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MLQ8MTVW');</script>
+
+<!-- ========== BOX 1: HEAD TAGS - PASTE ABOVE THIS LINE ========== -->
+{% endif %}
+
+{% if slot == "body_end" %}
+<!-- ========== BOX 2: END-OF-BODY TAGS - PASTE BELOW THIS LINE ========== -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLQ8MTVW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ========== BOX 2: END-OF-BODY TAGS - PASTE ABOVE THIS LINE ========== -->
+{% endif %}

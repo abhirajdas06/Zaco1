@@ -42,6 +42,47 @@ def _safe_next(request, default):
     return default
 
 
+THANK_YOU_SESSION_KEY = 'thank_you'
+# Country sites have their own layout templates; pick the matching thank-you page.
+COUNTRY_PREFIXES = ('canada', 'usa', 'uk')
+
+
+def _redirect_to_thank_you(request, kind, back, name='', subject=''):
+    """Remember what was just submitted (once) and send the visitor to /thank-you.
+
+    The details live in the session and are consumed by the thank_you view, so
+    the conversion event only ever fires right after a real submission - not on
+    a refresh, a bookmark or someone typing the URL.
+    """
+    request.session[THANK_YOU_SESSION_KEY] = {
+        'kind': kind,
+        'name': name,
+        'subject': subject,
+        'back': back.split('#')[0],
+    }
+    return redirect('thank_you')
+
+
+def thank_you(request):
+    lead = request.session.pop(THANK_YOU_SESSION_KEY, None)
+    back = (lead or {}).get('back') or '/'
+    context = {
+        'lead': lead,                                # None => plain visit, no conversion event
+        'kind': (lead or {}).get('kind', ''),        # 'enquiry' | 'newsletter'
+        'first_name': ((lead or {}).get('name') or '').split(' ')[0],
+        'subject': (lead or {}).get('subject', ''),
+        'back_url': back,
+    }
+    template = 'thank-you.html'
+    for prefix in COUNTRY_PREFIXES:
+        if back.startswith(f'/{prefix}/') or back == f'/{prefix}':
+            template = f'{prefix}/thank-you.html'
+            break
+    response = render(request, template, context)
+    response['Cache-Control'] = 'no-store'
+    return response
+
+
 # Create your views here.
 def index(request):
     return render(request,"index-6.html")
@@ -62,9 +103,10 @@ def contact(request):
     form = ContactForm(request.POST)
 
     if not form.is_valid():
-        # Spam bots get a silent success so they don't learn what tripped us.
+        # Spam bots get a silent "success" so they don't learn what tripped us,
+        # but with no session data, so no conversion is ever reported.
         if 'website' in form.errors:
-            return redirect(back)
+            return redirect('thank_you')
         first_error = next(iter(form.errors.values()))[0]
         messages.error(request, f"Please check the form and try again. {first_error}")
         return redirect(back)
@@ -92,12 +134,8 @@ def contact(request):
         reply_to=data['mail'],
     )
 
-    messages.success(
-        request,
-        "Thank you for your submission. A member of our team will be in touch with you shortly.",
-        extra_tags='lead',
-    )
-    return redirect(back)
+    return _redirect_to_thank_you(
+        request, 'enquiry', back, name=data['name'], subject=data['subject'])
 
 
 @require_POST
@@ -118,8 +156,7 @@ def subscribe(request):
             body=f"{email} subscribed to the newsletter from {request.META.get('HTTP_REFERER', 'the website')}.",
             reply_to=email,
         )
-    messages.success(request, "Subscription Successful")
-    return redirect(back)
+    return _redirect_to_thank_you(request, 'newsletter', back)
 
 
 def technologies(request):
